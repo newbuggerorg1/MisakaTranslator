@@ -7,7 +7,7 @@
     <PlatformMinorVersion>0</PlatformMinorVersion>
     <PlatformBuildVersion>22000</PlatformBuildVersion>
     <PlatformMinVersion>10.0.17763.0</PlatformMinVersion>
-    <DotNetVersion>48</DotNetVersion>
+    <DotNetVersion>6.0</DotNetVersion>
     <GlobalProjectOutputPath>$(SolutionDir)Output\</GlobalProjectOutputPath>
   </PropertyGroup>
 

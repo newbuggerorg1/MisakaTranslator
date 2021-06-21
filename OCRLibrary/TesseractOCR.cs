@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,18 +18,18 @@ namespace OCRLibrary
         {
             try
             {
-                using (var page = TessOCR.Process(img))
-                {
-                    string res = page.GetText();
-                    return Task.FromResult(res);
-                }
+                using MemoryStream ms = new();
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                using var page = TessOCR.Process(Pix.LoadFromMemory(ms.GetBuffer()));
+                string res = page.GetText();
+                return Task.FromResult(res);
             }
             catch (Exception ex)
             {
                 errorInfo = ex.Message;
                 return Task.FromResult<string>(null);
             }
-            
+
         }
 
         public override bool OCR_Init(string param1 = "", string param2 = "")
@@ -38,7 +39,7 @@ namespace OCRLibrary
                 TessOCR = new TesseractEngine(Environment.CurrentDirectory + "\\tessdata", srcLangCode, EngineMode.Default);
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 errorInfo = ex.Message;
                 return false;

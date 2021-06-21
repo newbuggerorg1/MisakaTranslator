@@ -46,9 +46,9 @@
     </None>
   </ItemGroup>
 
-  <!-- WPF(.NET Framework) 在.NET SDK项目模板下 即使指定DebugType为none 不会自动清除pdb文件-->
+  <!-- WPF(.NET Framework) 在.NET SDK项目模板下 即使指定DebugType为none 不会自动清除pdb文件
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(DebugType)'=='none'">
     <Exec Command="del /q $(TargetDir)\*.pdb" />
-  </Target>
+  </Target> -->
 
 </Project>

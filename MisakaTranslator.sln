@@ -38,6 +38,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{0887A180-FDCE-4DB3-8EF5-876D6A8A2DA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{F9743A38-4529-43A9-9DF1-501B691A493F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\Bug_Report.md = .github\ISSUE_TEMPLATE\Bug_Report.md
+		.github\ISSUE_TEMPLATE\Feature_Request.md = .github\ISSUE_TEMPLATE\Feature_Request.md
+		.github\ISSUE_TEMPLATE\TODO.md = .github\ISSUE_TEMPLATE\TODO.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{09D720BF-7840-4BB6-95BD-183D490B9ED0}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{AE2803E8-A4CB-43A5-90DF-54176782790C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{64C1AEAF-000D-4F57-9F3B-8D1DEF9C4BBF}"
+	ProjectSection(SolutionItems) = preProject
+		About.jpg = About.jpg
+		background.png = background.png
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		Directory.Build.props = Directory.Build.props
+		index.html = index.html
+		LICENSE = LICENSE
+		README.md = README.md
+		README_EN.md = README_EN.md
+		THANKLIST.MD = THANKLIST.MD
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -235,6 +268,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0887A180-FDCE-4DB3-8EF5-876D6A8A2DA2} = {3339AFE3-C28A-4413-B587-7A0ED142329B}
+		{F9743A38-4529-43A9-9DF1-501B691A493F} = {0887A180-FDCE-4DB3-8EF5-876D6A8A2DA2}
+		{09D720BF-7840-4BB6-95BD-183D490B9ED0} = {0887A180-FDCE-4DB3-8EF5-876D6A8A2DA2}
+		{AE2803E8-A4CB-43A5-90DF-54176782790C} = {3339AFE3-C28A-4413-B587-7A0ED142329B}
+		{64C1AEAF-000D-4F57-9F3B-8D1DEF9C4BBF} = {3339AFE3-C28A-4413-B587-7A0ED142329B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C671EE52-326B-4046-A096-7B3BD07A53D9}
