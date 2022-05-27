@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="MisakaTranslator" 
         WindowStartupLocation="CenterScreen"
@@ -17,13 +16,13 @@
         <ResourceDictionary Source = "Appearance.xaml"/>
     </Window.Resources>
     <hc:Window.NonClientAreaContent>
-        <StackPanel Height="29">
+        <StackPanel Height="32">
             <Menu HorizontalAlignment="Right">
                 <MenuItem>
                     <MenuItem.Header>
-                        <fa:FontAwesome Icon="Language" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></fa:FontAwesome>
+                        <Label Content="" FontSize="16" Background="#00000000" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"/>
                     </MenuItem.Header>
-                    <MenuItem Header="中文" Click="Language_MenuItem_Click" Tag="zh-cn"/>
+                    <MenuItem Header="简体中文" Click="Language_MenuItem_Click" Tag="zh-cn"/>
                     <MenuItem Header="English" Click="Language_MenuItem_Click" Tag="en-us"/>
                 </MenuItem>
             </Menu>
@@ -43,40 +42,40 @@
             </hc:WaterfallPanel>
         </hc:ScrollViewer>
 
-        
+
         <StackPanel Orientation="Horizontal" Grid.Column="2">
-            <Button fa:Awesome.Content="Rocket" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="40" Background="#01FFFFFF"  Height="Auto" Width="Auto"  Effect="{StaticResource EffectShadow5}" Click="AutoStart_BtnClick" Margin="0,0,0,0.5">
+            <Button Content="🚀" Grid.Column="2" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF" Effect="{StaticResource EffectShadow5}" Click="AutoStart_BtnClick" Margin="0,0,0,0.5" FontFamily="Segoe UI Emoji" Height="60" Width="60">
                 <hc:Poptip.Instance>
                     <hc:Poptip FontSize="15" Foreground="Black" FontFamily="微软雅黑" Content="{StaticResource MainWindow_Tip_AutoStart}" Placement="Right"/>
                 </hc:Poptip.Instance>
             </Button>
 
-            <Button fa:Awesome.Content="Book" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="40" Background="#01FFFFFF"  Height="Auto" Width="Auto"  Effect="{StaticResource EffectShadow5}" Click="ComicTransBtn_Click" Margin="20,0,0,0.5">
+            <Button Content="📖" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF" Effect="{StaticResource EffectShadow5}" Click="ComicTransBtn_Click" Margin="20,0,0,0.5" FontFamily="Segoe UI Emoji" Width="60" Height="60">
                 <hc:Poptip.Instance>
                     <hc:Poptip FontSize="15" Foreground="Black" FontFamily="微软雅黑" Content="{StaticResource MainWindow_Tip_ComicTrans}" Placement="Right"/>
                 </hc:Poptip.Instance>
             </Button>
 
         </StackPanel>
-        
-        
-        <Button fa:Awesome.Content="Cog" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="40" Background="#01FFFFFF"  Height="Auto" Width="Auto"  Effect="{StaticResource EffectShadow5}" Click="SettingsBtn_Click" Margin="0,0,0,0.5">
+
+
+        <Button Content="⚙" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF"  Height="60" Width="60"  Effect="{StaticResource EffectShadow5}" Click="SettingsBtn_Click" Margin="0,0,0,0.5" FontFamily="Segoe UI Emoji">
             <hc:Poptip.Instance>
                 <hc:Poptip FontSize="15" Foreground="Black" FontFamily="微软雅黑" Content="{StaticResource MainWindow_Tip_Settings}" Placement="Left"/>
             </hc:Poptip.Instance>
         </Button>
 
         <hc:Drawer Name="AddNewGameDrawer" ShowMode="Press" MaskCanClose="True" Dock="Top">
-            
-        <StackPanel Orientation="Vertical" Background="{DynamicResource TranslateWindowBackground}">
-            <Border Padding="30" Effect="{StaticResource EffectShadow3}">
-                <hc:ButtonGroup Orientation="Horizontal">
+
+            <StackPanel Orientation="Vertical" Background="{DynamicResource TranslateWindowBackground}">
+                <Border Padding="30" Effect="{StaticResource EffectShadow3}">
+                    <hc:ButtonGroup Orientation="Horizontal">
                         <Button Background="{DynamicResource BoxBtnColor}" Content="{StaticResource BtnHookGuide}" Click="HookGuideBtn_Click" Height="50"></Button>
                         <Button Background="{DynamicResource BoxBtnColor}" Content="{StaticResource BtnOCRGuide}" Click="OCRGuideBtn_Click" Height="50"></Button>
                         <Button Background="{DynamicResource BoxBtnColor}" Content="{StaticResource BtnClipboardGuide}" Click="ClipboardGuideBtn_Click" Height="50"></Button>
                     </hc:ButtonGroup>
-            </Border>
-        </StackPanel>
+                </Border>
+            </StackPanel>
 
         </hc:Drawer>
 
@@ -100,12 +99,12 @@
 
                     <StackPanel Grid.Row="1">
                         <Border Padding="30">
-                        <hc:ButtonGroup Orientation="Vertical">
-                            <Button Content="{StaticResource MainWindow_Drawer_Start}" Height="50" Margin="5" Foreground="White" Background="{DynamicResource SuccessBrush}" Click="StartBtn_Click"/>
-                            <Button Content="{StaticResource MainWindow_Drawer_LEStart}" Height="50" Margin="5" Foreground="White" Background="{DynamicResource InfoBrush}" Click="LEStartBtn_Click"/>
-                            <Button Content="{StaticResource MainWindow_Drawer_DeleteGame}" Height="50" Margin="5" Foreground="White" Background="{DynamicResource DangerBrush}" Click="DeleteGameBtn_Click"/>
+                            <hc:ButtonGroup Orientation="Vertical">
+                                <Button Content="{StaticResource MainWindow_Drawer_Start}" Height="50" Margin="5" Foreground="White" Background="{DynamicResource SuccessBrush}" Click="StartBtn_Click"/>
+                                <Button Content="{StaticResource MainWindow_Drawer_LEStart}" Height="50" Margin="5" Foreground="White" Background="{DynamicResource InfoBrush}" Click="LEStartBtn_Click"/>
+                                <Button Content="{StaticResource MainWindow_Drawer_DeleteGame}" Height="50" Margin="5" Foreground="White" Background="{DynamicResource DangerBrush}" Click="DeleteGameBtn_Click"/>
                                 <Button Content="{StaticResource MainWindow_Drawer_UpdateName}" Height="50" Margin="5" Foreground="White" Background="{DynamicResource WarningBrush}" Click="UpdateNameBtn_Click"/>
-                        </hc:ButtonGroup>
+                            </hc:ButtonGroup>
                         </Border>
 
                     </StackPanel>

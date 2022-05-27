@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using DictionaryHelperLibrary;
-using FontAwesome.WPF;
 using HandyControl.Controls;
 using KeyboardMouseHookLibrary;
 using MecabHelperLibrary;
@@ -626,11 +625,11 @@ namespace MisakaTranslator_WPF
             {
                 if (Common.textHooker.Pause)
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
+                    PauseButton.Content = "";
                 }
                 else
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
+                    PauseButton.Content = "";
                 }
                 Common.textHooker.Pause = !Common.textHooker.Pause;
             }
@@ -638,11 +637,11 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
+                    PauseButton.Content = "";
                 }
                 else
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
+                    PauseButton.Content = "";
                 }
                 IsNotPausedFlag = !IsNotPausedFlag;
             }
@@ -653,11 +652,11 @@ namespace MisakaTranslator_WPF
         {
             if(_isShowSource)
             {
-                ShowSourceButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Eye);
+                ShowSourceButton.Content = "";
             }
             else
             {
-                ShowSourceButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.EyeSlash);
+                ShowSourceButton.Content = "";
             }
             _isShowSource = !_isShowSource;
         }
@@ -759,13 +758,13 @@ namespace MisakaTranslator_WPF
             {
                 BackWinChrome.Opacity = 0;
                 _isLocked = true;
-                LockButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.UnlockAlt);
+                LockButton.Content = "";
             }
             else
             {
-                BackWinChrome.Opacity = Common.appSettings.TF_Opacity / 100;
+                BackWinChrome.Opacity = Math.Max(Common.appSettings.TF_Opacity / 100, 0.01);
                 _isLocked = false;
-                LockButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Lock);
+                LockButton.Content = "";
             }
         }
 
