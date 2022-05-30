@@ -3,11 +3,18 @@
 
   <PropertyGroup>
     <VersionPrefix>2.11.0.0</VersionPrefix>
-    <TargetFramework>net48</TargetFramework>
+    <PlatformMajorVersion>10</PlatformMajorVersion>
+    <PlatformMinorVersion>0</PlatformMinorVersion>
+    <PlatformBuildVersion>22000</PlatformBuildVersion>
+    <PlatformMinVersion>10.0.17763.0</PlatformMinVersion>
+    <DotNetVersion>48</DotNetVersion>
     <GlobalProjectOutputPath>$(SolutionDir)Output\</GlobalProjectOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
+    <TargetPlatformVersion>$(PlatformMajorVersion).$(PlatformMinorVersion).$(PlatformBuildVersion).0</TargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>$(PlatformMinVersion)</WindowsTargetPlatformMinVersion>
+
     <AppxPackageDir>$(GlobalProjectOutputPath)$(MSBuildProjectName)-Bin\Publish\</AppxPackageDir>
     <GeneratedFilesDir>$(GlobalProjectOutputPath)$(MSBuildProjectName)-Obj\GeneratedFiles\</GeneratedFilesDir>
     <IntDir>$(GlobalProjectOutputPath)$(MSBuildProjectName)-Obj\$(Configuration)-$(Platform)\</IntDir>
@@ -16,6 +23,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
+    <TargetFramework>net$(DotNetVersion)-windows$(PlatformMajorVersion).$(PlatformMinorVersion).$(PlatformBuildVersion).0</TargetFramework>
+    <SupportedOSPlatformVersion>$(PlatformMinVersion)</SupportedOSPlatformVersion>
+
     <AppxPackageDir>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Bin\Publish\</AppxPackageDir>
     <BaseOutputPath>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Bin\$(Configuration)-$(Platform)\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Obj\$(Configuration)-$(Platform)\</BaseIntermediateOutputPath>
@@ -27,6 +37,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.wapproj'">
+    <TargetPlatformVersion>$(PlatformMajorVersion).$(PlatformMinorVersion).$(PlatformBuildVersion).0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>$(PlatformMinVersion)</TargetPlatformMinVersion>
+
     <AppxPackageDir>$(GlobalProjectOutputPath)$(MSBuildProjectName)-Bin\Publish\</AppxPackageDir>
     <BaseOutputPath>$(GlobalProjectOutputPath)$(MSBuildProjectName)-Bin\$(Configuration)-$(Platform)\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(GlobalProjectOutputPath)$(MSBuildProjectName)-Obj\$(Configuration)-$(Platform)\</BaseIntermediateOutputPath>
@@ -49,8 +62,10 @@
     <NuGetTargetMoniker Condition ="'$(DesignTimeBuild)' == 'true'">.NETCore,Version=v5.0</NuGetTargetMoniker>
     <RuntimeIdentifiers>win;win-x86;win-x64;win-arm;win-arm64;win10-x86;win10-x64;win10-arm;win10-arm64;win10-x86-aot;win10-x64-aot;win10-arm-aot;win10-arm64-aot</RuntimeIdentifiers>
   </PropertyGroup>
-  <PropertyGroup Label="CppPackageReference" Condition="('$(MSBuildProjectExtension)' == '.vcxproj') Or ('$(MSBuildProjectExtension)' == '.wapproj') Or ('$(MSBuildProjectExtension)' == '.csproj')">
-    <AssetTargetFallback>$(AssetTargetFallback);native;uap$(TargetPlatformVersion)</AssetTargetFallback>
+  <PropertyGroup Label="CppPackageReference">
+    <AssetTargetFallback Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">$(AssetTargetFallback);native;uap$(TargetPlatformVersion)</AssetTargetFallback>
+    <AssetTargetFallback Condition="'$(MSBuildProjectExtension)' == '.csproj'">$(AssetTargetFallback);$(TargetFramework);uap$(TargetPlatformVersion)</AssetTargetFallback>
+    <AssetTargetFallback Condition="'$(MSBuildProjectExtension)' == '.wapproj'">$(AssetTargetFallback);native;$(TargetFramework);uap$(TargetPlatformVersion)</AssetTargetFallback>
   </PropertyGroup>
 
 </Project>
