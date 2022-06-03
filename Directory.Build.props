@@ -25,6 +25,7 @@
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
     <TargetFramework>net$(DotNetVersion)-windows$(PlatformMajorVersion).$(PlatformMinorVersion).$(PlatformBuildVersion).0</TargetFramework>
     <SupportedOSPlatformVersion>$(PlatformMinVersion)</SupportedOSPlatformVersion>
+    <LangVersion>latest</LangVersion>
 
     <AppxPackageDir>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Bin\Publish\</AppxPackageDir>
     <BaseOutputPath>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Bin\$(Configuration)-$(Platform)\</BaseOutputPath>
