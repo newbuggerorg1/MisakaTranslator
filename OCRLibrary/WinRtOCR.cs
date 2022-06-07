@@ -20,16 +20,16 @@ namespace OCRLibrary
             try
             {
                 using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
-                img.Save(stream.AsStream(), ImageFormat.Png);
+                img.Save(stream.AsStream(), ImageFormat.Bmp);
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
                 var res = await rtOcr.RecognizeAsync(bitmap);
-                return Task.FromResult(res.Text).Result;
+                return res.Text;
             }
             catch (Exception ex)
             {
                 errorInfo = ex.Message;
-                return Task.FromResult<string>(null).Result;
+                return string.Empty;
             }
 
         }
@@ -40,6 +40,11 @@ namespace OCRLibrary
             {
                 Language lang = new(srcLangCode);
                 rtOcr = OcrEngine.TryCreateFromLanguage(lang);
+                if (rtOcr == null)
+                {
+                    System.Windows.MessageBox.Show($"请在Windows设置App中添加OCR组件。{System.Environment.NewLine}Please install OCR component in Windows Settings App.");
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)
@@ -48,9 +53,17 @@ namespace OCRLibrary
                 return false;
             }
         }
+
         public override void SetOCRSourceLang(string lang)
         {
-            srcLangCode = lang;
+            if (lang == "jpn")
+            {
+                srcLangCode = "ja-jp";
+            }
+            else if (lang == "eng")
+            {
+                srcLangCode = "en-us";
+            }
         }
 
         public IReadOnlyList<Language> GetSupportLang()
