@@ -56,7 +56,7 @@
     <ProjectReference Include="..\Misaka.WPF\Misaka.WPF.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="priconfig.packaging.xml" />
+    <None Include="priconfig.*.xml" />
     <Content Include="Assets\*" />
     <Content Include="ExternalDependence\**\*">
       <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
