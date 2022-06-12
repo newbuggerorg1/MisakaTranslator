@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OCRLibrary;
 
-namespace MisakaTranslator_WPF.SettingsPages.OCRPages
+namespace Misaka.WPF.SettingsPages.OCRPages
 {
     public partial class TesseractOCR5SettingsPage : Page
     {

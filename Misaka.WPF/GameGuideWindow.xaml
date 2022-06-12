@@ -1,10 +1,10 @@
-﻿<Window x:Class="MisakaTranslator_WPF.GameGuideWindow"
+﻿<Window x:Class="Misaka.WPF.GameGuideWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        xmlns:local="clr-namespace:MisakaTranslator_WPF"
+        xmlns:local="clr-namespace:Misaka.WPF"
         mc:Ignorable="d"
         Title="{StaticResource GameGuideWin_WinName}" Height="500" Width="800" Name="guide" Closing="GuideWindow_Closing">
     <Grid>

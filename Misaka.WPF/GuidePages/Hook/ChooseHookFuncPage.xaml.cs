@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TextHookLibrary;
 
-namespace MisakaTranslator_WPF.GuidePages.Hook
+namespace Misaka.WPF.GuidePages.Hook
 {
     /// <summary>
     /// ChooseHookFuncPage.xaml 的交互逻辑
@@ -44,7 +44,7 @@ namespace MisakaTranslator_WPF.GuidePages.Hook
         public void DataRecvEventHandler(object sender, HookSelectRecvEventArgs e) {
 
             //加一步判断防止卡顿，部分不可能使用的方法刷新速度过快，在几秒之内就能刷新超过100个，这时候就停止对他们的刷新,直接卸载这个方法
-            
+
             Application.Current.Dispatcher.BeginInvoke((Action)(() =>
             {
                 if (e.Index < sum)
@@ -56,8 +56,8 @@ namespace MisakaTranslator_WPF.GuidePages.Hook
                     sum++;
                 }
             }), System.Windows.Threading.DispatcherPriority.DataBind);
-            
-            
+
+
         }
 
         private void AddHookBtn_Click(object sender, RoutedEventArgs e)
@@ -197,7 +197,7 @@ namespace MisakaTranslator_WPF.GuidePages.Hook
                 Common.textHooker.HFSevent -= DataRecvEventHandler;
                 HandyControl.Controls.Growl.Warning(Application.Current.Resources["ChooseHookFuncPage_PauseHint"].ToString());
             }
-            
+
         }
 
         private void CannotfindHookBtn_Click(object sender, RoutedEventArgs e)

@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TextHookLibrary;
 
-namespace MisakaTranslator_WPF.GuidePages.Hook
+namespace Misaka.WPF.GuidePages.Hook
 {
     /// <summary>
     /// ChooseGamePage.xaml 的交互逻辑
@@ -59,7 +59,7 @@ namespace MisakaTranslator_WPF.GuidePages.Hook
                     HandyControl.Controls.MessageBox.Show(Application.Current.Resources["MainWindow_TextractorError_Hint"].ToString());
                     return;
                 }
-                
+
                 Common.GameID = -1;
                 string filepath = ProcessHelper.FindProcessPath(GamePid);
                 if (filepath != "") {
@@ -78,7 +78,7 @@ namespace MisakaTranslator_WPF.GuidePages.Hook
             else {
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseGamePage_NextErrorHint"].ToString());
             }
-            
+
         }
     }
 }

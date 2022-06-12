@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TranslatorLibrary;
 
-namespace MisakaTranslator_WPF.SettingsPages.TranslatorPages
+namespace Misaka.WPF.SettingsPages.TranslatorPages
 {
     /// <summary>
     /// KingsoftFAITTransSettingsPage.xaml 的交互逻辑

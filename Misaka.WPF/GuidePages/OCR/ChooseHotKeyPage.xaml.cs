@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MisakaTranslator_WPF.GuidePages.OCR
+namespace Misaka.WPF.GuidePages.OCR
 {
     /// <summary>
     /// ChooseHotKeyPage.xaml 的交互逻辑
@@ -105,7 +105,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
         private void HotKeySourceCombox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
             if (HotKeySourceCombox.SelectedIndex == 0)
             {
                 ChooseHotkeyBtn.Visibility = Visibility.Visible;

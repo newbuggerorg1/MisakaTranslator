@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TransOptimizationLibrary;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     /// <summary>
     /// AddOptWindow.xaml 的交互逻辑

@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppEnvironmentLibrary;
 
-namespace MisakaTranslator_WPF.SettingsPages
+namespace Misaka.WPF.SettingsPages
 {
     /// <summary>
     /// ArtificialTransSettingsPage.xaml 的交互逻辑

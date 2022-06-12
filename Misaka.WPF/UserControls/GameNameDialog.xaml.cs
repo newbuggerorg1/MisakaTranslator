@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using HandyControl.Controls;
 using SQLHelperLibrary;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     /// <summary>
     /// GameNameDialog.xaml 的交互逻辑

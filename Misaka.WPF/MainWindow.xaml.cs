@@ -15,7 +15,7 @@ using OCRLibrary;
 using SQLHelperLibrary;
 using TextHookLibrary;
 
-namespace MisakaTranslator_WPF {
+namespace Misaka.WPF {
     public partial class MainWindow {
         private List<GameInfo> gameInfoList;
         private int gid; //当前选中的顺序，并非游戏ID

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using TextHookLibrary;
 using TextRepairLibrary;
 
-namespace MisakaTranslator_WPF.GuidePages.Hook
+namespace Misaka.WPF.GuidePages.Hook
 {
     /// <summary>
     /// ChooseTextRepairFuncPage.xaml 的交互逻辑

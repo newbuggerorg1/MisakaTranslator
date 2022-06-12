@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TTSHelperLibrary;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     /// <summary>
     /// DictResWindow.xaml 的交互逻辑
@@ -38,7 +38,7 @@ namespace MisakaTranslator_WPF
             else {
                 _textSpeechHelper = tsh;
             }
-            
+
 
             if (Common.appSettings.ttsVoice == "")
             {
@@ -60,7 +60,7 @@ namespace MisakaTranslator_WPF
             string ret = _dict.SearchInDict(sourceWord);
 
             SourceWord.Text = sourceWord;
-            
+
             Kana.Text = kana;
 
             this.Topmost = true;

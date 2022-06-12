@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     /// <summary>
     /// ArtificialTransAddWindow.xaml 的交互逻辑

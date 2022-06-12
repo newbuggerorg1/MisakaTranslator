@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:MisakaTranslator_WPF.lang"
+                    xmlns:local="clr-namespace:Misaka.WPF.lang"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <sys:String x:Key="Language_Changed">语言配置已修改！重启软件后生效！</sys:String>
@@ -37,7 +37,7 @@
     <sys:String x:Key="MainWindow_GlobalOCRError_Hint">全局OCR热键注册失败！</sys:String>
     <sys:String x:Key="MainWindow_StartError_Hint">未找到游戏进程！</sys:String>
     <sys:String x:Key="MainWindow_TextractorError_Hint">Textractor不存在或启动失败</sys:String>
-    
+
 
     <sys:String x:Key="SettingsMenu_WinName">MisakaTranslator本体设置</sys:String>
     <sys:String x:Key="SettingsMenu_About">MisakaTranslator</sys:String>
@@ -150,7 +150,7 @@
     <sys:String x:Key="LESettingsPage_Introduce">LE转区工具可以解决一些游戏出现乱码的问题，您需要获取Locale Emulator软件本体并在下方设置其目录，保证文件夹下有LEProc.exe文件。</sys:String>
     <sys:String x:Key="LESettingsPage_LEbox">Locale Emulator本体路径</sys:String>
     <sys:String x:Key="LESettingsPage_ChooseFilePathHint">请选择Locale Emulator本体所在文件夹</sys:String>
-    
+
     <sys:String x:Key="AboutPage_BtnHelp">使用说明和反馈</sys:String>
     <sys:String x:Key="AboutPage_BtnGithub">本项目GitHub主页</sys:String>
 
@@ -178,9 +178,9 @@
     <sys:String x:Key="ChooseGamePage_AutoHookTag_Begin">【智能处理】共找到</sys:String>
     <sys:String x:Key="ChooseGamePage_AutoHookTag_End">个同名进程</sys:String>
     <sys:String x:Key="ChooseGamePage_NextErrorHint">请先选择一个进程再进行下一步操作！</sys:String>
-    
+
     <sys:String x:Key="Drawer_BtnExit">关闭</sys:String>
-    
+
     <sys:String x:Key="ChooseHookFuncPage_Introduce">进行游戏并使游戏中文本发生变化，在下方找到完全包含游戏文本内容的对应项并确定。卡顿时可在本页面获取焦点情况下按Esc进行强制暂停。</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_BtnAddHook">添加指定特殊码Hook</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_BtnConfirm">确认方法</sys:String>
@@ -293,7 +293,7 @@
     <sys:String x:Key="ChooseHookFuncPage_MBOX_hookcodeConfirm_right">如果您确认这个特殊码可以得到文本，请选择是；如果此特殊码不是您想要的结果，您可以选择否来重新注入一个自定义特殊码；如果您不需要自定义特殊码，请选择取消来进入下一个界面。</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_BtnCannotfindHook">找不到正确的Hook方法？</sys:String>
 
-    
+
 
     <sys:String x:Key="App_Global_ErrorHint_left">MisakaTranslator发现了全局无法解决的异常，即将强制退出。关于本次异常的详细信息已经存储在logs目录下的</sys:String>
     <sys:String x:Key="App_Global_ErrorHint_right">文件中，为了更好地维护本软件，我们希望您能将此文件发送给作者以修复这个问题。</sys:String>

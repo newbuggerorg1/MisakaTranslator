@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MisakaTranslator_WPF.GuidePages.OCR
+namespace Misaka.WPF.GuidePages.OCR
 {
     /// <summary>
     /// ChooseHandleFuncPage.xaml 的交互逻辑
@@ -42,10 +42,10 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
         private void RenewAreaBtn_Click(object sender, RoutedEventArgs e)
         {
             System.Drawing.Bitmap img = Common.ocr.GetOCRAreaCap();
-            
+
             SrcImg.Source = ImageProcFunc.ImageToBitmapImage(img);
 
-            DstImg.Source = ImageProcFunc.ImageToBitmapImage(ImageProcFunc.Auto_Thresholding(img, 
+            DstImg.Source = ImageProcFunc.ImageToBitmapImage(ImageProcFunc.Auto_Thresholding(img,
                 ImageProcFunc.lstHandleFun[ImageProcFunclist[HandleFuncCombox.SelectedIndex]]));
 
             GC.Collect();
@@ -53,7 +53,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
         private async void OCRTestBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (Common.appSettings.OCRsource == "TesseractOCR")
             {
                 if (Common.ocr.OCR_Init("", "") != false)

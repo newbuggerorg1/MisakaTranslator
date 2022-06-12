@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 using OCRLibrary;
 using TranslatorLibrary;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     /// <summary>
     /// ScreenCaptureWindow.xaml 的交互逻辑

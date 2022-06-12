@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MisakaTranslator_WPF.GuidePages
+namespace Misaka.WPF.GuidePages
 {
     /// <summary>
     /// CompletationPage.xaml 的交互逻辑

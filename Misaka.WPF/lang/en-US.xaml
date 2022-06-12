@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:MisakaTranslator_WPF.lang"
+                    xmlns:local="clr-namespace:Misaka.WPF.lang"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    
+
     <sys:String x:Key="MessageBox_Error">Error</sys:String>
     <sys:String x:Key="MessageBox_Result">Result</sys:String>
     <sys:String x:Key="MessageBox_Ask">Ask</sys:String>
@@ -46,11 +46,11 @@
     <sys:String x:Key="SettingsMenu_OCRSettings_Baidu">Baidu OCR API</sys:String>
     <sys:String x:Key="SettingsMenu_OCRSettings_BaiduFanyi">BaiduFanyi OCR API</sys:String>
     <sys:String x:Key="SettingsMenu_OCRSettings_Tesseract5">Tesseract5 OCR</sys:String>
-    
-    
+
+
     <sys:String x:Key="Language_Changed">Language is set. Restart translator to take effect.</sys:String>
 
-    
+
     <sys:String x:Key="SettingsMenu_TranslatorSettings">Translation Settings</sys:String>
     <sys:String x:Key="SettingsMenu_TranslatorSettings_General">General</sys:String>
     <sys:String x:Key="SettingsMenu_TranslatorSettings_Baidu">百度翻译 Baidu Translate</sys:String>
@@ -293,7 +293,7 @@
     <sys:String x:Key="ChooseHookFuncPage_MBOX_hookcodeConfirm_left">MisakaTranslator has detected that you have input custom H-code behavior. The last H-code recorded is</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_MBOX_hookcodeConfirm_right">If you confirm that this H-code can get text, please select "Yes"; if it can't, select "No" to re-inject a custom H-code; if you do not need a custom H-code, please select "Cancel" to enter the next interface.</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_BtnCannotfindHook">Can not find correct Hook?</sys:String>
-    
+
     <sys:String x:Key="App_Global_ErrorHint_left">MisakaTranslator encountered an exception that cannot be resolved. It is about to exit. Details about this exception have been stored in the "</sys:String>
     <sys:String x:Key="App_Global_ErrorHint_right">" file in the "logs" Directory. To better the Translator, sending these files to the developer on GitHub to troubleshoot is appreciated.</sys:String>
 

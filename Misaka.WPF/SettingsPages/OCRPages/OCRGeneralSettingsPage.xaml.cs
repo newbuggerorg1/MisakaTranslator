@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OCRLibrary;
 
-namespace MisakaTranslator_WPF.SettingsPages
+namespace Misaka.WPF.SettingsPages
 {
     /// <summary>
     /// OCRGeneralSettingsPage.xaml 的交互逻辑

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MisakaTranslator_WPF.SettingsPages
+namespace Misaka.WPF.SettingsPages
 {
     /// <summary>
     /// HookSettingsPage.xaml 的交互逻辑

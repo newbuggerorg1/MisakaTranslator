@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TextHookLibrary;
 
-namespace MisakaTranslator_WPF.GuidePages.Hook
+namespace Misaka.WPF.GuidePages.Hook
 {
     /// <summary>
     /// ReChooseHookFuncPage.xaml 的交互逻辑
@@ -62,7 +62,7 @@ namespace MisakaTranslator_WPF.GuidePages.Hook
             {
                 //先关闭对本窗口的输出
                 Common.textHooker.HFRSevent -= DataRecvEventHandler;
-                
+
                 Common.textHooker.MisakaCodeList.Add(lstData[HookFunListView.SelectedIndex].MisakaHookCode);
 
                 //Common.textHooker.DetachUnrelatedHookWhenDataRecv = Convert.ToBoolean(Common.appSettings.AutoDetach);
@@ -80,7 +80,7 @@ namespace MisakaTranslator_WPF.GuidePages.Hook
                 args.XamlPath = "GuidePages/CompletationPage.xaml";
                 this.RaiseEvent(args);
             }
-                
+
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MisakaTranslator_WPF.SettingsPages
+namespace Misaka.WPF.SettingsPages
 {
     /// <summary>
     /// LESettingsPage.xaml 的交互逻辑

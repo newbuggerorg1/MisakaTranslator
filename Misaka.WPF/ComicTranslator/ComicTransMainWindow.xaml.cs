@@ -22,7 +22,7 @@ using OCRLibrary;
 using System.ComponentModel;
 using AppEnvironmentLibrary;
 
-namespace MisakaTranslator_WPF.ComicTranslator
+namespace Misaka.WPF.ComicTranslator
 {
     /// <summary>
     /// ComicTransMainWindow.xaml 的交互逻辑

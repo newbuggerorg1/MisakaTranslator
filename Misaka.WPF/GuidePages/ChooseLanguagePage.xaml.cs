@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TranslatorLibrary;
 
-namespace MisakaTranslator_WPF.GuidePages
+namespace Misaka.WPF.GuidePages
 {
     /// <summary>
     /// ChooseLanguagePage.xaml 的交互逻辑

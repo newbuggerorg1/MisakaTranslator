@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TTSHelperLibrary;
 
-namespace MisakaTranslator_WPF.SettingsPages
+namespace Misaka.WPF.SettingsPages
 {
     /// <summary>
     /// TTSSettingsPage.xaml 的交互逻辑

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MisakaTranslator_WPF.GuidePages
+namespace Misaka.WPF.GuidePages
 {
     public class PageChangeRoutedEventArgs : RoutedEventArgs
     {
@@ -30,8 +30,8 @@ namespace MisakaTranslator_WPF.GuidePages
         //声明和注册路由事件
         public static readonly RoutedEvent PageChangeRoutedEvent =
             EventManager.RegisterRoutedEvent("PageChange", RoutingStrategy.Bubble, typeof(EventHandler<PageChangeRoutedEventArgs>), typeof(PageChange));
-        
+
     }
 
-    
+
 }

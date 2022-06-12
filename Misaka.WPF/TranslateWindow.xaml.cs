@@ -20,7 +20,7 @@ using TransOptimizationLibrary;
 using TTSHelperLibrary;
 using ArtificialTransHelperLibrary;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     /// <summary>
     /// TranslateWindow.xaml 的交互逻辑
@@ -509,10 +509,10 @@ namespace MisakaTranslator_WPF
         /// <param name="isRenew">是否是重新获取翻译</param>
         private async Task TranslateApiSubmitASync(string repairedText, int tranResultIndex, bool isRenew = false)
         {
-            //4.翻译前预处理 
+            //4.翻译前预处理
             string beforeString = _beforeTransHandle.AutoHandle(repairedText);
 
-            //5.提交翻译 
+            //5.提交翻译
             string transRes = string.Empty;
             if (tranResultIndex == 1)
             {
@@ -545,10 +545,10 @@ namespace MisakaTranslator_WPF
                 }
             }
 
-            //6.翻译后处理 
+            //6.翻译后处理
             string afterString = _afterTransHandle.AutoHandle(transRes);
 
-            //7.翻译结果显示到窗口上 
+            //7.翻译结果显示到窗口上
             switch (tranResultIndex)
             {
                 case 1:
@@ -576,8 +576,8 @@ namespace MisakaTranslator_WPF
                         _gameTextHistory.Dequeue();
                     }
                     _gameTextHistory.Enqueue(repairedText + "\n" + afterString);
-                
-                    //9.翻译原句和结果记录到数据库 
+
+                    //9.翻译原句和结果记录到数据库
                     if (Common.appSettings.ATon)
                     {
                         bool addRes = _artificialTransHelper.AddTrans(repairedText, afterString);

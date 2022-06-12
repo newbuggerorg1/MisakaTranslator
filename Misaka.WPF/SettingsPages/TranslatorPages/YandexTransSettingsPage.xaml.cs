@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using TranslatorLibrary;
 
-namespace MisakaTranslator_WPF.SettingsPages.TranslatorPages
+namespace Misaka.WPF.SettingsPages.TranslatorPages
 {
     /// <summary>
     /// YandexTransSettingsPage.xaml 的交互逻辑

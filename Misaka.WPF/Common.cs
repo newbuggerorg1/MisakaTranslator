@@ -16,7 +16,7 @@ using SQLHelperLibrary;
 using TextHookLibrary;
 using TextRepairLibrary;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     public class Common
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Config.Net;
 
-namespace MisakaTranslator_WPF
+namespace Misaka.WPF
 {
     public interface IAppSettings
     {

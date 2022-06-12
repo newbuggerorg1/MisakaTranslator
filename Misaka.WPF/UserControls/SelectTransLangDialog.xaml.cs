@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TranslatorLibrary;
 
-namespace MisakaTranslator_WPF.UserControls
+namespace Misaka.WPF.UserControls
 {
     /// <summary>
     /// SelectTransLangDialog.xaml 的交互逻辑

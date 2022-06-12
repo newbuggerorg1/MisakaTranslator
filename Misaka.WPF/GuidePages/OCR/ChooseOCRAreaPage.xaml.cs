@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MisakaTranslator_WPF.GuidePages.OCR
+namespace Misaka.WPF.GuidePages.OCR
 {
     /// <summary>
     /// ChooseOCRAreaPage.xaml 的交互逻辑
@@ -109,7 +109,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
             GC.Collect();
         }
-        
+
         private void ChooseAreaBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!isAllWin && SelectedHwnd == 0)
@@ -118,7 +118,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 return;
             }
             BitmapImage img;
-            
+
             if (isAllWin)
             {
                 img = ImageProcFunc.ImageToBitmapImage(ScreenCapture.GetAllWindow());

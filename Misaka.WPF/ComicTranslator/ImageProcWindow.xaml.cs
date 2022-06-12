@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MisakaTranslator_WPF.ComicTranslator
+namespace Misaka.WPF.ComicTranslator
 {
     /// <summary>
     /// ImageProcWindow.xaml 的交互逻辑

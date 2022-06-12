@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DictionaryHelperLibrary;
 
-namespace MisakaTranslator_WPF.SettingsPages.DictionaryPages
+namespace Misaka.WPF.SettingsPages.DictionaryPages
 {
     /// <summary>
     /// XxgJpZhDictPage.xaml 的交互逻辑
