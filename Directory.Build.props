@@ -14,10 +14,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
-    <VersionPrefix>2.11.0.0</VersionPrefix>
-    <TargetFramework>net48</TargetFramework>
-    <LangVersion>latest</LangVersion>
-
     <AppxPackageDir>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Bin\Publish\</AppxPackageDir>
     <BaseOutputPath>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Bin\$(Configuration)-$(Platform)\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(GlobalProjectOutputPath)$(MSBuildProjectName.Split("_")[0])-Obj\$(Configuration)-$(Platform)\</BaseIntermediateOutputPath>
