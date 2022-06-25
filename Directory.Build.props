@@ -42,6 +42,7 @@
   </ItemGroup>
   <PropertyGroup Label="CppPackageReference">
     <AssetTargetFallback>$(AssetTargetFallback);native;net481;uap10.0.22000.0</AssetTargetFallback>
+    <NoWarn>$(NoWarn);NU1701</NoWarn>
   </PropertyGroup>
   <PropertyGroup Label="CppPackageReference" Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
     <TargetFrameworkMoniker>native,Version=v0.0</TargetFrameworkMoniker>
