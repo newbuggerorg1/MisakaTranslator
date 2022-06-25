@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AppEnvironmentLibrary;
 using Microsoft.Data.Sqlite;
+using Misaka.AppEnv;
 
 namespace SQLHelperLibrary
 {
@@ -25,7 +25,7 @@ namespace SQLHelperLibrary
         /// <summary>
         /// 专用于游戏库的初始化
         /// </summary>
-        public SQLHelper() : this($"{AppEnvironment.LocalFolder}\\MisakaGameLibrary.sqlite") { }
+        public SQLHelper() : this($"{PackageInfo.LocalFolder}\\MisakaGameLibrary.sqlite") { }
 
         /// <summary>
         /// 执行一条非查询语句,失败会返回-1，可通过getLastError获取失败原因

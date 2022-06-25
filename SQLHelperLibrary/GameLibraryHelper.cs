@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AppEnvironmentLibrary;
+using Misaka.AppEnv;
 
 namespace SQLHelperLibrary
 {
@@ -106,7 +106,7 @@ namespace SQLHelperLibrary
         public static int GetGameID(string gamePath)
         {
 
-            if (File.Exists(AppEnvironment.LocalFolder + "\\MisakaGameLibrary.sqlite") == false)
+            if (File.Exists(PackageInfo.LocalFolder + "\\MisakaGameLibrary.sqlite") == false)
             {
                 if (CreateNewGameList() == false)
                 {
@@ -142,7 +142,7 @@ namespace SQLHelperLibrary
         /// </summary>
         public static List<GameInfo> GetAllGameLibrary()
         {
-            if (File.Exists($"{AppEnvironment.LocalFolder}\\MisakaGameLibrary.sqlite") == false)
+            if (File.Exists($"{PackageInfo.LocalFolder}\\MisakaGameLibrary.sqlite") == false)
             {
                 if (CreateNewGameList() == false)
                 {
@@ -202,7 +202,7 @@ namespace SQLHelperLibrary
         /// <param name="gameID"></param>
         /// <returns></returns>
         public static GameInfo GetGameInfoByID(int gameID) {
-            if (File.Exists(AppEnvironment.LocalFolder + "\\MisakaGameLibrary.sqlite") == false)
+            if (File.Exists(PackageInfo.LocalFolder + "\\MisakaGameLibrary.sqlite") == false)
             {
                 if (CreateNewGameList() == false)
                 {

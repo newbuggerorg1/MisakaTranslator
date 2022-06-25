@@ -23,11 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppEnvironmentLibrary\AppEnvironmentLibrary.csproj" />
     <ProjectReference Include="..\ArtificialTransHelperLibrary\ArtificialTransHelperLibrary.csproj" />
     <ProjectReference Include="..\DictionaryHelperLibrary\DictionaryHelperLibrary.csproj" />
     <ProjectReference Include="..\KeyboardMouseHookLibrary\KeyboardMouseHookLibrary.csproj" />
     <ProjectReference Include="..\MecabHelperLibrary\MecabHelperLibrary.csproj" />
+    <ProjectReference Include="..\Misaka.AppEnv\Misaka.AppEnv.vcxproj" />
     <ProjectReference Include="..\OCRLibrary\OCRLibrary.csproj" />
     <ProjectReference Include="..\SQLHelperLibrary\SQLHelperLibrary.csproj" />
     <ProjectReference Include="..\TextHookLibrary\TextHookLibrary.csproj" />

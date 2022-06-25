@@ -20,7 +20,6 @@ using System.Windows.Shapes;
 using TranslatorLibrary;
 using OCRLibrary;
 using System.ComponentModel;
-using AppEnvironmentLibrary;
 
 namespace Misaka.WPF.ComicTranslator
 {
@@ -155,9 +154,9 @@ namespace Misaka.WPF.ComicTranslator
                 ipw.ShowDialog();
                 bmp.Dispose();
 
-                if (File.Exists(AppEnvironment.TemporaryFolder + "\\comicTemp.png"))
+                if (File.Exists(AppEnv.PackageInfo.TemporaryFolder + "\\comicTemp.png"))
                 {
-                    Bitmap bm = new Bitmap(AppEnvironment.TemporaryFolder + "\\comicTemp.png");
+                    Bitmap bm = new Bitmap(AppEnv.PackageInfo.TemporaryFolder + "\\comicTemp.png");
                     bm = ImageProcFunc.ColorToGrayscale(bm);
                     sourceTextBox.Text = (await ocr.OCRProcessAsync(bm))?.Replace("\f", "");
                     bm.Dispose();
@@ -249,7 +248,7 @@ namespace Misaka.WPF.ComicTranslator
 
         private void InputJpnBtn_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(AppEnvironment.PackageFolder + "\\lib\\BaiduJpnInput.exe");
+            Process.Start(AppEnv.PackageInfo.InstalledFolder + "\\lib\\BaiduJpnInput.exe");
             sourceTextBox.Focus();
         }
 

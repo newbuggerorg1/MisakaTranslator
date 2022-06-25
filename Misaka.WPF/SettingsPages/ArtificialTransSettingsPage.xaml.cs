@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AppEnvironmentLibrary;
 
 namespace Misaka.WPF.SettingsPages
 {
@@ -31,8 +30,8 @@ namespace Misaka.WPF.SettingsPages
             ATonCheckBox.IsChecked = Common.appSettings.ATon;
             PathBox.Text = Common.appSettings.ArtificialPatchPath;
 
-            if (Directory.Exists(AppEnvironment.LocalFolder + "\\ArtificialTranslation")) {
-                strNames = Directory.GetFiles(AppEnvironment.LocalFolder + "\\ArtificialTranslation");
+            if (Directory.Exists(AppEnv.PackageInfo.LocalFolder + "\\ArtificialTranslation")) {
+                strNames = Directory.GetFiles(AppEnv.PackageInfo.LocalFolder + "\\ArtificialTranslation");
 
                 List<string> fileList = new List<string>();
 

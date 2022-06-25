@@ -1,5 +1,4 @@
-﻿using AppEnvironmentLibrary;
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -12,9 +11,9 @@ namespace Misaka.WPF
     {
         public App()
         {
-            if (AppEnvironment.RunWithId)
+            if (AppEnv.PackageInfo.RunWithId)
             {
-                Environment.CurrentDirectory = AppEnvironment.PackageFolder;
+                Environment.CurrentDirectory = AppEnv.PackageInfo.InstalledFolder;
             }
             //注册开始和退出事件
             this.Startup += App_Startup;
@@ -96,11 +95,11 @@ namespace Misaka.WPF
         /// <param name="errorMessage">错误消息</param>
         private static void PrintErrorMessageToFile(string fileName, Exception e, int exceptionThread, string errorMessage = null)
         {
-            if (!Directory.Exists($"{AppEnvironment.TemporaryFolder}\\logs"))
+            if (!Directory.Exists($"{AppEnv.PackageInfo.TemporaryFolder}\\logs"))
             {
-                Directory.CreateDirectory($"{AppEnvironment.TemporaryFolder}\\logs");
+                Directory.CreateDirectory($"{AppEnv.PackageInfo.TemporaryFolder}\\logs");
             }
-            FileStream fs = new FileStream($"{AppEnvironment.TemporaryFolder}\\logs\\{fileName}.txt", FileMode.Create);
+            FileStream fs = new FileStream($"{AppEnv.PackageInfo.TemporaryFolder}\\logs\\{fileName}.txt", FileMode.Create);
 
             StreamWriter sw = new StreamWriter(fs);
 
