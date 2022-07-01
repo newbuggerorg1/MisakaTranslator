@@ -33,7 +33,7 @@
     <MinimalCoreWin>true</MinimalCoreWin>
     <ProjectGuid>{796cda3a-9f31-4164-b054-77c521cb88e0}</ProjectGuid>
     <ProjectName>Misaka.AppEnv</ProjectName>
-    <RootNamespace>$(ProjectName)</RootNamespace>
+    <RootNamespace>Misaka.AppEnv</RootNamespace>
     <DefaultLanguage>en</DefaultLanguage>
     <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
@@ -87,22 +87,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Module.def" />
+    <ClCompile Include="$(GeneratedFilesDir)\module.g.cpp">
+      <DependentUpon>Module.def</DependentUpon>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PackageInfo.h">
+      <DependentUpon>PackageInfo.idl</DependentUpon>
+    </ClInclude>
+    <ClCompile Include="PackageInfo.cpp">
+      <DependentUpon>PackageInfo.idl</DependentUpon>
+    </ClCompile>
+    <Midl Include="PackageInfo.idl" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="Percompilation.h" />
-    <ClInclude Include="PackageInfo.h" />
     <ClCompile Include="Percompilation.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
       <DependentUpon>Percompilation.h</DependentUpon>
     </ClCompile>
-    <ClCompile Include="PackageInfo.cpp">
-      <DependentUpon>PackageInfo.h</DependentUpon>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SettingsBase.cpp">
+      <DependentUpon>SettingsBase.idl</DependentUpon>
     </ClCompile>
-    <ClCompile Include="$(GeneratedFilesDir)\module.g.cpp">
-      <DependentUpon>Module.def</DependentUpon>
+    <ClInclude Include="SettingsBase.h">
+      <DependentUpon>SettingsBase.idl</DependentUpon>
+    </ClInclude>
+    <Midl Include="SettingsBase.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SettingsGeneral.cpp">
+      <DependentUpon>SettingsGeneral.idl</DependentUpon>
     </ClCompile>
-    <Midl Include="PackageInfo.idl">
-      <DependentUpon>PackageInfo.h</DependentUpon>
-    </Midl>
-    <None Include="Module.def" />
+    <ClInclude Include="SettingsGeneral.h">
+      <DependentUpon>SettingsGeneral.idl</DependentUpon>
+    </ClInclude>
+    <Midl Include="SettingsGeneral.idl" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.CppWinRT">
