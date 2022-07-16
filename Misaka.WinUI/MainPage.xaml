@@ -1,0 +1,43 @@
+﻿<Page x:Class="Misaka.WinUI.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Misaka.WinUI"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d">
+
+    <muxc:NavigationView x:Name="NavView" Background="{ThemeResource NavigationViewTopPaneBackground}" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" PaneDisplayMode="Top" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[2], ElementName=NavView, Mode=OneTime}">
+        <muxc:NavigationView.Content>
+            <Frame x:Name="ContentFrame" IsTabStop="True">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition  />
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </muxc:NavigationView.Content>
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem x:Uid="/MainPage/GameLibraryButton">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x1F579;" Margin="-5" />
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem x:Uid="/MainPage/MangaLibraryButton">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x1F4D9;" Margin="-5" />
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+            <muxc:NavigationViewItem x:Uid="/MainPage/SettingsButton" Tag="SettingsPage">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x2699;" Margin="-5" />
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+        </muxc:NavigationView.MenuItems>
+        <muxc:NavigationView.Resources>
+            <AcrylicBrush x:Key="NavigationViewTopPaneBackground"
+                       BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemChromeAltHighColor}" TintOpacity="0.8" FallbackColor="{ThemeResource SystemChromeMediumColor}" />
+            <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent" />
+        </muxc:NavigationView.Resources>
+    </muxc:NavigationView>
+</Page>
