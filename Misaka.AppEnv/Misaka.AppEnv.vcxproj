@@ -118,6 +118,15 @@
     <Midl Include="SettingsBase.idl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SettingsCodepage.cpp">
+      <DependentUpon>SettingsCodepage.idl</DependentUpon>
+    </ClCompile>
+    <ClInclude Include="SettingsCodepage.h">
+      <DependentUpon>SettingsCodepage.idl</DependentUpon>
+    </ClInclude>
+    <Midl Include="SettingsCodepage.idl" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="SettingsGeneral.cpp">
       <DependentUpon>SettingsGeneral.idl</DependentUpon>
     </ClCompile>

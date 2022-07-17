@@ -1,0 +1,12 @@
+import "SettingsBase.idl";
+
+namespace Misaka.AppEnv
+{
+    //[bindable]
+    [default_interface]
+    runtimeclass SettingsCodepage : SettingsBase
+    {
+        SettingsCodepage();
+        String LocaleEmulatorPath { get; set; };
+    }
+}
