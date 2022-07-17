@@ -10,9 +10,9 @@ namespace winrt::Misaka::AppEnv::implementation
     public:
         SettingsGeneral();
         bool MinimizeToNotificationArea();
-        void MinimizeToNotificationArea(bool value);
+        void MinimizeToNotificationArea(bool const& value);
         bool PushNotification();
-        void PushNotification(bool value);
+        void PushNotification(bool const& value);
     };
 }
 

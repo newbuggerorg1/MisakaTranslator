@@ -10,7 +10,7 @@ namespace winrt::Misaka::AppEnv::implementation
     public:
         SettingsCodepage();
         hstring LocaleEmulatorPath();
-        void LocaleEmulatorPath(hstring value);
+        void LocaleEmulatorPath(hstring const& value);
     };
 }
 

@@ -13,7 +13,7 @@ namespace winrt::Misaka::AppEnv::implementation
         return this->GetValue(L"LocaleEmulatorPath", hstring());
     }
 
-    void SettingsCodepage::LocaleEmulatorPath(hstring value)
+    void SettingsCodepage::LocaleEmulatorPath(hstring const& value)
     {
         this->SetValue(L"LocaleEmulatorPath", value);
     }

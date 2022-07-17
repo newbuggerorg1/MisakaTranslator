@@ -92,7 +92,7 @@
       <DependentUpon>Module.def</DependentUpon>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Label="PackageInfo">
     <ClInclude Include="PackageInfo.h">
       <DependentUpon>PackageInfo.idl</DependentUpon>
     </ClInclude>
@@ -101,14 +101,14 @@
     </ClCompile>
     <Midl Include="PackageInfo.idl" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Label="Percompilation">
     <ClInclude Include="Percompilation.h" />
     <ClCompile Include="Percompilation.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
       <DependentUpon>Percompilation.h</DependentUpon>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Label="SettingsBase">
     <ClCompile Include="SettingsBase.cpp">
       <DependentUpon>SettingsBase.idl</DependentUpon>
     </ClCompile>
@@ -117,7 +117,7 @@
     </ClInclude>
     <Midl Include="SettingsBase.idl" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Label="SettingsCodepage">
     <ClCompile Include="SettingsCodepage.cpp">
       <DependentUpon>SettingsCodepage.idl</DependentUpon>
     </ClCompile>
@@ -126,7 +126,16 @@
     </ClInclude>
     <Midl Include="SettingsCodepage.idl" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Label="SettingsExtractor">
+    <ClCompile Include="SettingsExtractor.cpp">
+      <DependentUpon>SettingsExtractor.idl</DependentUpon>
+    </ClCompile>
+    <ClInclude Include="SettingsExtractor.h">
+      <DependentUpon>SettingsExtractor.idl</DependentUpon>
+    </ClInclude>
+    <Midl Include="SettingsExtractor.idl" />
+  </ItemGroup>
+  <ItemGroup Label="SettingsGeneral">
     <ClCompile Include="SettingsGeneral.cpp">
       <DependentUpon>SettingsGeneral.idl</DependentUpon>
     </ClCompile>

@@ -14,7 +14,7 @@ namespace winrt::Misaka::AppEnv::implementation
         else { return this->GetValue(L"MinimizeToNotificationArea", false); }
     }
 
-    void SettingsGeneral::MinimizeToNotificationArea(bool value)
+    void SettingsGeneral::MinimizeToNotificationArea(bool const& value)
     {
         this->SetValue(L"MinimizeToNotificationArea", value);
     }
@@ -25,7 +25,7 @@ namespace winrt::Misaka::AppEnv::implementation
         else { return this->GetValue(L"PushNotification", false); }
     }
 
-    void SettingsGeneral::PushNotification(bool value)
+    void SettingsGeneral::PushNotification(bool const& value)
     {
         this->SetValue(L"PushNotification", value);
     }

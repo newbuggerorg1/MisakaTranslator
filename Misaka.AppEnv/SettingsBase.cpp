@@ -39,7 +39,7 @@ namespace winrt::Misaka::AppEnv::implementation
             categoryName = category;
             settings = ParsedJson().GetNamedObject(categoryName);
         }
-        catch (hresult_error const& ex)
+        catch (hresult_error const&)
         {
             settings = Windows::Data::Json::JsonObject();
         }
