@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net481</TargetFramework>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\AppEnvironmentLibrary\AppEnvironmentLibrary.csproj" />
+    <ProjectReference Include="..\Misaka.AppEnv\Misaka.AppEnv.vcxproj" />
     <ProjectReference Include="..\SQLHelperLibrary\SQLHelperLibrary.csproj" />
   </ItemGroup>
 

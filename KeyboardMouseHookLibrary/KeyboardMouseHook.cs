@@ -24,7 +24,7 @@ namespace KeyboardMouseHookLibrary
     public class KeyboardMouseHook
     {
         Process processMonitor;
-        
+
         public event MouseButtonEventHandler OnMouseActivity;
         public event KeyboardEventHandler onKeyboardActivity;
 
@@ -52,11 +52,6 @@ namespace KeyboardMouseHookLibrary
         /// <param name="keyCode">要捕获动作的键值，当捕获鼠标时，1代表左键，2代表右键</param>
         /// <returns></returns>
         public bool Start(bool isMouse,int keyCode) {
-
-            string CurrentPath = Environment.CurrentDirectory;
-
-            Environment.CurrentDirectory = Environment.CurrentDirectory + "\\lib";
-
             processMonitor = new Process();
             processMonitor.StartInfo.FileName = "KeyboardMouseMonitor.exe";
             //加额外参数
@@ -67,24 +62,22 @@ namespace KeyboardMouseHookLibrary
             {
                 processMonitor.StartInfo.Arguments = "2 " + keyCode;
             }
-            
+
             processMonitor.StartInfo.CreateNoWindow = true;
             processMonitor.StartInfo.UseShellExecute = false;
             processMonitor.StartInfo.RedirectStandardInput = true;
             processMonitor.StartInfo.RedirectStandardOutput = true;
             processMonitor.OutputDataReceived += new DataReceivedEventHandler(OutputHandler);
-            
+
 
             try
             {
                 bool res = processMonitor.Start();
                 processMonitor.BeginOutputReadLine();
-                Environment.CurrentDirectory = CurrentPath;//打开后即可恢复原目录
                 return res;
             }
             catch (System.ComponentModel.Win32Exception ex)
             {
-                Environment.CurrentDirectory = CurrentPath;//恢复原目录
                 return false;
             }
         }
@@ -123,7 +116,7 @@ namespace KeyboardMouseHookLibrary
                     }
                 }
 
-                
+
             }
 
         }

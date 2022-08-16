@@ -20,13 +20,13 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|AnyCPU">
+    <ProjectConfiguration Include="Debug|ARM64">
       <Configuration>Debug</Configuration>
-      <Platform>AnyCPU</Platform>
+      <Platform>ARM64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|AnyCPU">
+    <ProjectConfiguration Include="Release|ARM64">
       <Configuration>Release</Configuration>
-      <Platform>AnyCPU</Platform>
+      <Platform>ARM64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup>
@@ -35,16 +35,19 @@
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
   <PropertyGroup>
     <ProjectGuid>0e03de26-892b-4235-b86d-1f23d9e3bc48</ProjectGuid>
+    <TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
-    <EntryPointProjectUniqueName>..\MisakaTranslator-WPF\MisakaTranslator-WPF.csproj</EntryPointProjectUniqueName>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AppxBundle>Never</AppxBundle>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
+    <EntryPointProjectUniqueName>..\Misaka.WPF\Misaka.WPF.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -53,32 +56,15 @@
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\MisakaTranslator-WPF\MisakaTranslator-WPF.csproj" />
+    <ProjectReference Include="..\KeyboardMouseMonitor\KeyboardMouseMonitor.vcxproj" />
+    <ProjectReference Include="..\Misaka.WPF\Misaka.WPF.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="priconfig.packaging.xml" />
+    <None Include="priconfig.*.xml" />
     <Content Include="Assets\*" />
     <Content Include="ExternalDependence\**\*">
       <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
     </Content>
-    <Content Condition="('$(Platform)' != 'x64') And exists('..\Output\KeyboardMouseMonitor-Bin\$(Configuration)-Win32\KeyboardMouseMonitor.exe')" Include="..\Output\KeyboardMouseMonitor-Bin\$(Configuration)-Win32\KeyboardMouseMonitor.exe">
-      <Link>lib\%(FileName)%(Extension)</Link>
-    </Content>
-    <Content Condition="('$(Platform)' == 'x64') And exists('..\Output\KeyboardMouseMonitor-Bin\$(Configuration)-x64\KeyboardMouseMonitor.exe')" Include="..\Output\KeyboardMouseMonitor-Bin\$(Configuration)-$(Platform)\KeyboardMouseMonitor.exe">
-      <Link>lib\%(FileName)%(Extension)</Link>
-    </Content>
-    <!-- 
-    由于System.Data.SQLite设施问题，在.NET SDK Publish及Appx Packaging模式下SQLite.Interop.dll会被自动裁剪
-    <Content Include="..\Output\MisakaTranslator-WPF-Bin\$(Configuration)-AnyCPU\x64\SQLite.Interop.dll">
-      <Link>x64\%(FileName)%(Extension)</Link>
-    </Content>
-    <Content Include="..\Output\MisakaTranslator-WPF-Bin\$(Configuration)-AnyCPU\x86\SQLite.Interop.dll">
-      <Link>x86\%(FileName)%(Extension)</Link>
-    </Content>
-    -->
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
   </ItemGroup>
   <!--
     Put all output files to the AppX root folder.
@@ -91,6 +77,20 @@
       <_FilteredNonWapProjProjectOutput Include="@(_TemporaryFilteredWapProjOutput)">
         <SourceProject />
       </_FilteredNonWapProjProjectOutput>
+    </ItemGroup>
+  </Target>
+  <!--
+    Disallow generating VCLibs dependencies in AppxManifest automatically.
+    Reference: Microsoft/Terminal project and MouriNaruto's blog
+  -->
+  <Target Name="_StripAllDependenciesFromPackageFirstManifest" BeforeTargets="_GenerateCurrentProjectAppxManifest">
+    <ItemGroup>
+      <FrameworkSdkReference Remove="@(FrameworkSdkReference)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="_StripAllDependenciesFromPackageSecondManifest" BeforeTargets="_GenerateDesktopBridgeAppxManifest" DependsOnTargets="_ResolveVCLibDependencies">
+    <ItemGroup>
+      <FrameworkSdkPackage Remove="@(FrameworkSdkPackage)" />
     </ItemGroup>
   </Target>
 </Project>

@@ -2,6 +2,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net481</TargetFramework>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -11,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppEnvironmentLibrary\AppEnvironmentLibrary.csproj" />
+    <ProjectReference Include="..\Misaka.AppEnv\Misaka.AppEnv.vcxproj" />
   </ItemGroup>
 
 </Project>
