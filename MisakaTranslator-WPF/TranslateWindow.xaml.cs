@@ -112,7 +112,10 @@ namespace MisakaTranslator_WPF
                 MouseKeyboardHook_Init();
             }
 
-
+            if (Environment.OSVersion.Version.Build < 21327)
+            {
+                MoveWindowButton.Content = "\uE759";
+            }
         }
 
         /// <summary>
@@ -625,11 +628,11 @@ namespace MisakaTranslator_WPF
             {
                 if (Common.textHooker.Pause)
                 {
-                    PauseButton.Content = "";
+                    PauseButton.Content = "\uE103";
                 }
                 else
                 {
-                    PauseButton.Content = "";
+                    PauseButton.Content = "\uE102";
                 }
                 Common.textHooker.Pause = !Common.textHooker.Pause;
             }
@@ -637,11 +640,11 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
-                    PauseButton.Content = "";
+                    PauseButton.Content = "\uE102";
                 }
                 else
                 {
-                    PauseButton.Content = "";
+                    PauseButton.Content = "\uE103";
                 }
                 IsNotPausedFlag = !IsNotPausedFlag;
             }
@@ -650,15 +653,22 @@ namespace MisakaTranslator_WPF
 
         private void ShowSource_Item_Click(object sender, RoutedEventArgs e)
         {
+            _isShowSource = !_isShowSource;
             if(_isShowSource)
             {
-                ShowSourceButton.Content = "";
+                ShowSourceButton.Content = "\uE18B";
             }
             else
             {
-                ShowSourceButton.Content = "";
+                if (Environment.OSVersion.Version.Build < 21327)
+                {
+                    ShowSourceButton.Content = "\uE25B";
+                }
+                else
+                {
+                    ShowSourceButton.Content = "\uED1A";
+                }
             }
-            _isShowSource = !_isShowSource;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -758,13 +768,13 @@ namespace MisakaTranslator_WPF
             {
                 BackWinChrome.Opacity = 0;
                 _isLocked = true;
-                LockButton.Content = "";
+                LockButton.Content = "\uE72E";
             }
             else
             {
                 BackWinChrome.Opacity = Math.Max(Common.appSettings.TF_Opacity / 100, 0.01);
                 _isLocked = false;
-                LockButton.Content = "";
+                LockButton.Content = "\uE785";
             }
         }
 

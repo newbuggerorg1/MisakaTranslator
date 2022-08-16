@@ -20,7 +20,7 @@
             <Menu HorizontalAlignment="Right">
                 <MenuItem>
                     <MenuItem.Header>
-                        <Label Content="" FontSize="16" Background="#00000000" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"/>
+                        <Label Content="&#xF2B7;" FontSize="16" Background="#00000000" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets"/>
                     </MenuItem.Header>
                     <MenuItem Header="简体中文" Click="Language_MenuItem_Click" Tag="zh-cn"/>
                     <MenuItem Header="English" Click="Language_MenuItem_Click" Tag="en-us"/>
@@ -44,13 +44,13 @@
 
 
         <StackPanel Orientation="Horizontal" Grid.Column="2">
-            <Button Content="🚀" Grid.Column="2" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF" Effect="{StaticResource EffectShadow5}" Click="AutoStart_BtnClick" Margin="0,0,0,0.5" FontFamily="Segoe UI Emoji" Height="60" Width="60">
+            <Button Content="&#x1F680;" Grid.Column="2" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF" Effect="{StaticResource EffectShadow5}" Click="AutoStart_BtnClick" Margin="0,0,0,0.5" FontFamily="Segoe UI Emoji" Height="60" Width="60">
                 <hc:Poptip.Instance>
                     <hc:Poptip FontSize="15" Foreground="Black" FontFamily="微软雅黑" Content="{StaticResource MainWindow_Tip_AutoStart}" Placement="Right"/>
                 </hc:Poptip.Instance>
             </Button>
 
-            <Button Content="📖" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF" Effect="{StaticResource EffectShadow5}" Click="ComicTransBtn_Click" Margin="20,0,0,0.5" FontFamily="Segoe UI Emoji" Width="60" Height="60">
+            <Button Content="&#x1F4D6;" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF" Effect="{StaticResource EffectShadow5}" Click="ComicTransBtn_Click" Margin="20,0,0,0.5" FontFamily="Segoe UI Emoji" Width="60" Height="60">
                 <hc:Poptip.Instance>
                     <hc:Poptip FontSize="15" Foreground="Black" FontFamily="微软雅黑" Content="{StaticResource MainWindow_Tip_ComicTrans}" Placement="Right"/>
                 </hc:Poptip.Instance>
@@ -59,7 +59,7 @@
         </StackPanel>
 
 
-        <Button Content="⚙" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF"  Height="60" Width="60"  Effect="{StaticResource EffectShadow5}" Click="SettingsBtn_Click" Margin="0,0,0,0.5" FontFamily="Segoe UI Emoji">
+        <Button Content="&#x2699;" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{DynamicResource MainBtnColor}" FontSize="30" Background="#01FFFFFF"  Height="60" Width="60"  Effect="{StaticResource EffectShadow5}" Click="SettingsBtn_Click" Margin="0,0,0,0.5" FontFamily="Segoe UI Emoji">
             <hc:Poptip.Instance>
                 <hc:Poptip FontSize="15" Foreground="Black" FontFamily="微软雅黑" Content="{StaticResource MainWindow_Tip_Settings}" Placement="Left"/>
             </hc:Poptip.Instance>
