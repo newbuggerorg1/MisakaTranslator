@@ -28,7 +28,6 @@
     <CharacterSet>Unicode</CharacterSet>
     <SupportLTL>true</SupportLTL>
     <CleanImport>true</CleanImport>
-    <WindowsTargetPlatformMinVersion>6.0.6000.0</WindowsTargetPlatformMinVersion>
     <WholeProgramOptimization Condition="'$(Configuration)'=='Release'">true</WholeProgramOptimization>
     <LinkIncremental Condition="'$(Configuration)'=='Debug'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)'=='Release'">false</LinkIncremental>
@@ -76,16 +75,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
+  <PropertyGroup>
+    <SDKPlatform>$(Platform)</SDKPlatform>
+    <SDKPlatform Condition="'$(Platform)'=='Win32'">x86</SDKPlatform>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.CPP.x64">
-      <Version>10.0.22000.196</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.SDK.CPP.x86">
-      <Version>10.0.22000.196</Version>
-    </PackageReference>
-    <PackageReference Include="VC-LTL">
-      <Version>5.0.5</Version>
-    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.CPP.$(SDKPlatform)" Version="$(PlatformMajorVersion).$(PlatformMinorVersion).$(PlatformBuildVersion).*" />
+    <PackageReference Include="VC-LTL" Version="5.0.5" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

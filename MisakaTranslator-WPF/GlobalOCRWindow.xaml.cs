@@ -115,6 +115,28 @@ namespace MisakaTranslator_WPF
                 else
                     HandyControl.Controls.Growl.ErrorGlobal($"百度翻译OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
             }
+            else if (Common.appSettings.OCRsource == "WinRtOCR")
+            {
+                ocr = new WinRtOCR();
+                if (ocr.OCR_Init("", "") != false)
+                {
+                    ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
+                    res = await ocr.OCRProcessAsync(img);
+
+                    if (res != null)
+                    {
+                        sourceText.Text = res;
+                    }
+                    else
+                    {
+                        HandyControl.Controls.Growl.WarningGlobal($"WinRtOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                    }
+                }
+                else
+                {
+                    HandyControl.Controls.Growl.ErrorGlobal($"WinRtOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                }
+            }
 
             if (res == null)
             {
