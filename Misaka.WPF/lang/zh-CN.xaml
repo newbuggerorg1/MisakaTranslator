@@ -37,7 +37,7 @@
     <sys:String x:Key="MainWindow_GlobalOCRError_Hint">全局OCR热键注册失败！</sys:String>
     <sys:String x:Key="MainWindow_StartError_Hint">未找到游戏进程！</sys:String>
     <sys:String x:Key="MainWindow_TextractorError_Hint">Textractor不存在或启动失败</sys:String>
-
+    
 
     <sys:String x:Key="SettingsMenu_WinName">MisakaTranslator本体设置</sys:String>
     <sys:String x:Key="SettingsMenu_About">MisakaTranslator</sys:String>
@@ -54,6 +54,7 @@
     <sys:String x:Key="SettingsMenu_TranslatorSettings_Baidu">百度翻译API</sys:String>
     <sys:String x:Key="SettingsMenu_TranslatorSettings_TencentFYJ">腾讯翻译君</sys:String>
     <sys:String x:Key="SettingsMenu_TranslatorSettings_TencentOld">腾讯云</sys:String>
+    <sys:String x:Key="SettingsMenu_TranslatorSettings_YoudaoZhiyun">有道智云</sys:String>
     <sys:String x:Key="SettingsMenu_TranslatorSettings_Jbeijing">Jbeijing</sys:String>
     <sys:String x:Key="SettingsMenu_TranslatorSettings_KingsoftFAIT">金山快译</sys:String>
     <sys:String x:Key="SettingsMenu_TranslatorSettings_Dreye">译典通</sys:String>
@@ -105,6 +106,10 @@
     <sys:String x:Key="YandexTransSettingsPage_Introduce">Yandex翻译需联网使用，服务器在国外网速较慢。翻译质量一般。注册需要验证信用卡。</sys:String>
     <sys:String x:Key="YandexTransSettingsPage_apiKey">Yandex API 密钥</sys:String>
 
+    <sys:String x:Key="YoudaoZhiyunTransSettingsPage_Introduce">有道智云翻译API支持多种语言互译，对日语、汉语的Galgame互译支持较好，需要联网使用；您需要先申请该API并创建一个密钥，获取appId和appSecret后填入下方相应位置并进行测试认证；如果认证出现错误，请根据错误码至有道智云翻译API官方文档获取解决办法；有道智云翻译API可能会产生某些费用，您可以使用额度查询按钮进入控制台确认。</sys:String>
+    <sys:String x:Key="YoudaoZhiyunTransSettingsPage_appId">有道智云API appId</sys:String>
+    <sys:String x:Key="YoudaoZhiyunTransSettingsPage_appSecret">有道智云API appSecret</sys:String>
+
     <sys:String x:Key="JbeijingTransSettingsPage_Introduce">JBeijing翻译API支持日语译汉语，不需要联网使用；您需要先下载Jbeijing翻译软件本体，在下方对应路径框中确认，保证文件夹下有JBJCT.dll文件；JBeijing翻译API翻译质量不如在线翻译，不过翻译速度比在线翻译快一些。</sys:String>
     <sys:String x:Key="JbeijingTransSettingsPage_Path">JBeijing翻译本体路径</sys:String>
     <sys:String x:Key="JbeijingTransSettingsPage_ChoosePath">选择路径</sys:String>
@@ -150,7 +155,7 @@
     <sys:String x:Key="LESettingsPage_Introduce">LE转区工具可以解决一些游戏出现乱码的问题，您需要获取Locale Emulator软件本体并在下方设置其目录，保证文件夹下有LEProc.exe文件。</sys:String>
     <sys:String x:Key="LESettingsPage_LEbox">Locale Emulator本体路径</sys:String>
     <sys:String x:Key="LESettingsPage_ChooseFilePathHint">请选择Locale Emulator本体所在文件夹</sys:String>
-
+    
     <sys:String x:Key="AboutPage_BtnHelp">使用说明和反馈</sys:String>
     <sys:String x:Key="AboutPage_BtnGithub">本项目GitHub主页</sys:String>
 
@@ -178,9 +183,9 @@
     <sys:String x:Key="ChooseGamePage_AutoHookTag_Begin">【智能处理】共找到</sys:String>
     <sys:String x:Key="ChooseGamePage_AutoHookTag_End">个同名进程</sys:String>
     <sys:String x:Key="ChooseGamePage_NextErrorHint">请先选择一个进程再进行下一步操作！</sys:String>
-
+    
     <sys:String x:Key="Drawer_BtnExit">关闭</sys:String>
-
+    
     <sys:String x:Key="ChooseHookFuncPage_Introduce">进行游戏并使游戏中文本发生变化，在下方找到完全包含游戏文本内容的对应项并确定。卡顿时可在本页面获取焦点情况下按Esc进行强制暂停。</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_BtnAddHook">添加指定特殊码Hook</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_BtnConfirm">确认方法</sys:String>
@@ -293,7 +298,7 @@
     <sys:String x:Key="ChooseHookFuncPage_MBOX_hookcodeConfirm_right">如果您确认这个特殊码可以得到文本，请选择是；如果此特殊码不是您想要的结果，您可以选择否来重新注入一个自定义特殊码；如果您不需要自定义特殊码，请选择取消来进入下一个界面。</sys:String>
     <sys:String x:Key="ChooseHookFuncPage_BtnCannotfindHook">找不到正确的Hook方法？</sys:String>
 
-
+    
 
     <sys:String x:Key="App_Global_ErrorHint_left">MisakaTranslator发现了全局无法解决的异常，即将强制退出。关于本次异常的详细信息已经存储在logs目录下的</sys:String>
     <sys:String x:Key="App_Global_ErrorHint_right">文件中，为了更好地维护本软件，我们希望您能将此文件发送给作者以修复这个问题。</sys:String>

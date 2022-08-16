@@ -219,6 +219,10 @@ namespace Misaka.WPF
                     YandexTranslator yt = new YandexTranslator();
                     yt.TranslatorInit(Common.appSettings.YandexApiKey);
                     return yt;
+                case "YoudaoZhiyun":
+                    YoudaoZhiyun ydzy = new YoudaoZhiyun();
+                    ydzy.TranslatorInit(Common.appSettings.YDZYAppId, Common.appSettings.YDZYAppSecret);
+                    return ydzy;
                 case "YoudaoTranslator":
                     YoudaoTranslator yd = new YoudaoTranslator();
                     yd.TranslatorInit();
