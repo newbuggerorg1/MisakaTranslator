@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using DictionaryHelperLibrary;
-using FontAwesome.WPF;
 using HandyControl.Controls;
 using KeyboardMouseHookLibrary;
 using MecabHelperLibrary;
@@ -113,7 +112,10 @@ namespace MisakaTranslator_WPF
                 MouseKeyboardHook_Init();
             }
 
-
+            if (Environment.OSVersion.Version.Build < 21327)
+            {
+                MoveWindowButton.Content = "\uE759";
+            }
         }
 
         /// <summary>
@@ -626,11 +628,11 @@ namespace MisakaTranslator_WPF
             {
                 if (Common.textHooker.Pause)
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
+                    PauseButton.Content = "\uE103";
                 }
                 else
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
+                    PauseButton.Content = "\uE102";
                 }
                 Common.textHooker.Pause = !Common.textHooker.Pause;
             }
@@ -638,11 +640,11 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
+                    PauseButton.Content = "\uE102";
                 }
                 else
                 {
-                    PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
+                    PauseButton.Content = "\uE103";
                 }
                 IsNotPausedFlag = !IsNotPausedFlag;
             }
@@ -651,15 +653,22 @@ namespace MisakaTranslator_WPF
 
         private void ShowSource_Item_Click(object sender, RoutedEventArgs e)
         {
+            _isShowSource = !_isShowSource;
             if(_isShowSource)
             {
-                ShowSourceButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Eye);
+                ShowSourceButton.Content = "\uE18B";
             }
             else
             {
-                ShowSourceButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.EyeSlash);
+                if (Environment.OSVersion.Version.Build < 21327)
+                {
+                    ShowSourceButton.Content = "\uE25B";
+                }
+                else
+                {
+                    ShowSourceButton.Content = "\uED1A";
+                }
             }
-            _isShowSource = !_isShowSource;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -759,13 +768,13 @@ namespace MisakaTranslator_WPF
             {
                 BackWinChrome.Opacity = 0;
                 _isLocked = true;
-                LockButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.UnlockAlt);
+                LockButton.Content = "\uE72E";
             }
             else
             {
-                BackWinChrome.Opacity = Common.appSettings.TF_Opacity / 100;
+                BackWinChrome.Opacity = Math.Max(Common.appSettings.TF_Opacity / 100, 0.01);
                 _isLocked = false;
-                LockButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Lock);
+                LockButton.Content = "\uE785";
             }
         }
 
