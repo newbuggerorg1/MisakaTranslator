@@ -70,4 +70,9 @@
         />
     </dependentAssembly>
   </dependency>
+  
+  <!-- Activate custom Windows Runtime Libraries -->
+  <file name="Misaka.AppEnv.dll" hashalg="SHA1">
+    <activatableClass name="Misaka.AppEnv.PackageInfo" threadingModel="both" xmlns="urn:schemas-microsoft-com:winrt.v1"></activatableClass>
+  </file>
 </assembly>
