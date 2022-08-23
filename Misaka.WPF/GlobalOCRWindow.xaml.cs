@@ -33,29 +33,7 @@ namespace Misaka.WPF
         {
             OCREngine ocr;
             string res = null;
-            if (Common.appSettings.OCRsource == "TesseractOCR")
-            {
-                ocr = new TesseractOCR();
-                if (ocr.OCR_Init("", "") != false)
-                {
-                    ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
-                    res = await ocr.OCRProcessAsync(img);
-
-                    if (res != null)
-                    {
-                        sourceText.Text = res;
-                    }
-                    else
-                    {
-                        HandyControl.Controls.Growl.WarningGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
-                    }
-                }
-                else
-                {
-                    HandyControl.Controls.Growl.ErrorGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
-                }
-            }
-            else if (Common.appSettings.OCRsource == "Tesseract5")
+            if (Common.appSettings.OCRsource == "Tesseract5")
             {
                 ocr = new Tesseract5OCR();
                 if (ocr.OCR_Init(Common.appSettings.Tesseract5OCR_Path, Common.appSettings.Tesseract5OCR_Args))

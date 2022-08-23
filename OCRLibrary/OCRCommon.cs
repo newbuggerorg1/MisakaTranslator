@@ -12,7 +12,6 @@ namespace OCRLibrary
         {
             "BaiduOCR",
             "BaiduFanyiOCR",
-            "TesseractOCR",
             "Tesseract5",
             "WinRtOCR"
         };
@@ -26,11 +25,9 @@ namespace OCRLibrary
             switch (ocr)
             {
                 case "BaiduOCR":
-                    return new BaiduGeneralOCR(); ;
+                    return new BaiduGeneralOCR();
                 case "BaiduFanyiOCR":
                     return new BaiduFanyiOCR();
-                case "TesseractOCR":
-                    return new TesseractOCR(); ;
                 case "Tesseract5":
                     return new Tesseract5OCR();
                 case "WinRtOCR":

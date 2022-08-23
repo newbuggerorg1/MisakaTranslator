@@ -1,6 +1,7 @@
 # MisakaTranslator 御坂翻译器
 
-    This a special branch where the 'MisakaTranslator' is designed for the new version of 'Windows', also here is a experimental plot for new features.
+    This a special branch where the 'MisakaTranslator' is designed for the new version of 'Windows', 
+    also here is a experimental plot for new features.
 
     这是为适配新版Windows而特别设立的分支，并且是新功能的试验田。
 
@@ -12,7 +13,8 @@ MisakaTranslator一直以来支持Windows 7，但是Windows 7已经发布十余�
 
 ## Roadmap
 
-    If the following features can execute properly in 'Windows 7', we may cherry-pick these back to original branch.
+    If the following features can execute properly in 'Windows 7', 
+    we may cherry-pick these back to original branch.
 
     如果新功能兼容Windows 7，可能会迁移回已有分支。
 
@@ -30,7 +32,9 @@ MisakaTranslator一直以来支持Windows 7，但是Windows 7已经发布十余�
 - [ ] 🏃 Migrate settings ini files to json
 - [ ] 🏃 Rebuild a modern UI
 - [ ] Split 3rd-party components
-  - [ ] Textractor, TesseractOCR
+  - [ ] Textractor
+- [ ] Remove obsolete components
+  - [x] Tesseract4
 - [ ] Support games form Steam
 - [ ] Extract texts by Speech Recognition (like Live captions)
 - [ ] ..., including some suggestions in issues (Welcome to contribute, including Pull Request)
