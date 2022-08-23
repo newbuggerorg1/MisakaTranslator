@@ -248,7 +248,7 @@ namespace Misaka.WPF.ComicTranslator
 
         private void InputJpnBtn_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(AppEnv.PackageInfo.InstalledFolder + "\\lib\\BaiduJpnInput.exe");
+            Process.Start(@$"{Environment.GetFolderPath(Environment.SpecialFolder.CommonProgramFiles)}\microsoft shared\ink\TabTip.exe");
             sourceTextBox.Focus();
         }
 
