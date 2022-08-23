@@ -31,7 +31,8 @@ MisakaTranslator一直以来支持Windows 7，但是Windows 7已经发布十余�
   - [ ] Active Code Page, On-Screen Handwriting Keyboard...
 - [ ] 🏃 Migrate settings ini files to json
 - [ ] 🏃 Rebuild a modern UI
-- [ ] Split 3rd-party components
+- [ ] 🏃 Split 3rd-party components
+  - [ ] 🏃 Mecab
   - [ ] Textractor
 - [ ] Remove obsolete components
   - [x] Tesseract4
