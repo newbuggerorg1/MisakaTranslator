@@ -61,6 +61,17 @@ namespace Misaka.WPF
 
         private IntPtr winHandle;//窗口句柄，用于设置活动窗口，以达到全屏状态下总在最前的目的
 
+        private bool quickHistory;
+        private bool isHistoryOpen;
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, System.Windows.Forms.Keys vk);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
         public TranslateWindow()
         {
             InitializeComponent();
@@ -677,6 +688,11 @@ namespace Misaka.WPF
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if(quickHistory)
+            {
+                UnregisterHotKey(new WindowInteropHelper(this).Handle, 0);
+            }
+
             Common.appSettings.TF_LocX = Convert.ToString((int)this.Left);
             Common.appSettings.TF_LocY = Convert.ToString((int)this.Top);
             Common.appSettings.TF_SizeW = Convert.ToString((int)this.ActualWidth);
@@ -736,6 +752,8 @@ namespace Misaka.WPF
             };
             dtimer.Stop();
             window.Topmost = true;
+            window.Loaded += (sender, e) => { isHistoryOpen = true; };
+            window.Closing += (sender, e) => { isHistoryOpen = false; };
             window.ShowDialog();
             dtimer.Start();
         }
@@ -795,6 +813,13 @@ namespace Misaka.WPF
             dtimer.Interval = TimeSpan.FromMilliseconds(10);
             dtimer.Tick += dtimer_Tick;
             dtimer.Start();
+         
+            quickHistory = RegisterHotKey(winHandle, 0, 2, System.Windows.Forms.Keys.H);
+            if (quickHistory)
+            {
+                HwndSource hwndSource = HwndSource.FromHwnd(winHandle);
+                hwndSource.AddHook(WndProc);
+            }
         }
 
         void dtimer_Tick(object sender, EventArgs e)
@@ -811,6 +836,15 @@ namespace Misaka.WPF
             ArtificialTransAddWindow win = new ArtificialTransAddWindow(_currentsrcText,FirstTransText.Text,SecondTransText.Text);
             win.ShowDialog();
             dtimer.Start();
+        }
+
+        IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == 0x312 && !isHistoryOpen)
+            {
+                History_Item_Click(null, null);
+            }
+            return IntPtr.Zero;
         }
     }
 }
