@@ -61,6 +61,9 @@ namespace Misaka.WPF
 
         private IntPtr winHandle;//窗口句柄，用于设置活动窗口，以达到全屏状态下总在最前的目的
 
+        private System.Windows.Media.Effects.DropShadowEffect DropShadow = new System.Windows.Media.Effects.DropShadowEffect();
+        
+
         public TranslateWindow()
         {
             InitializeComponent();
@@ -73,6 +76,7 @@ namespace Misaka.WPF
             this.Topmost = true;
             UI_Init();
             IsOCRingFlag = false;
+
 
 
             _mecabHelper = new MecabHelper();
@@ -180,6 +184,10 @@ namespace Misaka.WPF
                 this.Width = int.Parse(Common.appSettings.TF_SizeW);
                 this.Height = int.Parse(Common.appSettings.TF_SizeH);
             }
+
+            DropShadow.Opacity = 1;
+            DropShadow.ShadowDepth = 0;
+            DropShadow.BlurRadius = 6;
         }
 
         /// <summary>
@@ -443,12 +451,32 @@ namespace Misaka.WPF
                             textBlock.FontFamily = fontFamily;
                         }
                         textBlock.Text = mwi[i].Word;
-                        textBlock.Tag = mwi[i].Kana;
+
+                        if (Common.appSettings.TF_Hirakana)
+                        {
+                            textBlock.Tag = mwi[i].HiraKana;
+                        }
+                        else
+                        {
+                            textBlock.Tag = mwi[i].Kana;
+                        }
+                        //选择平假名或者片假名
+                        
+
                         textBlock.Margin = new Thickness(0, 0, 0, 0);
                         textBlock.FontSize = SourceTextFontSize;
                         textBlock.Background = Brushes.Transparent;
                         textBlock.MouseLeftButtonDown += DictArea_MouseLeftButtonDown;
                         //根据不同词性跟字体上色
+
+                       
+                        if (Common.appSettings.TF_DropShadow)
+                        {
+                            textBlock.Effect = DropShadow;
+                            //加入原文的阴影
+                        }
+
+
                         switch (mwi[i].PartOfSpeech)
                         {
                             case "名詞":
@@ -475,12 +503,35 @@ namespace Misaka.WPF
                             FontFamily fontFamily = new FontFamily(SourceTextFont);
                             superScript.FontFamily = fontFamily;
                         }
-                        superScript.Text = mwi[i].Kana;
+
+                        if (Common.appSettings.TF_Hirakana)
+                        {
+                            superScript.Text = mwi[i].HiraKana;
+                        }
+                        else
+                        {
+                            superScript.Text = mwi[i].Kana;
+                        }
+                        //选择平假名或者片假名
+
                         superScript.Margin = new Thickness(0, 0, 0, 2);
                         superScript.HorizontalAlignment = HorizontalAlignment.Center;
+
+                        if (Common.appSettings.TF_DropShadow)
+                        {
+                            superScript.Effect = DropShadow;
+                            //加入注音的阴影
+                        }
+                        
                         if ((double)SourceTextFontSize - 6.5 > 0)
                         {
                             superScript.FontSize = (double)SourceTextFontSize - 6.5;
+                            if (Common.appSettings.TF_SuperBold)
+                            {
+                                superScript.FontWeight = FontWeights.Bold;
+                                //注音加粗
+                            }
+                            
                         }
                         else
                         {
@@ -562,12 +613,30 @@ namespace Misaka.WPF
                     Application.Current.Dispatcher.Invoke(() =>
                       {
                           FirstTransText.Text = afterString;
+                          if (Common.appSettings.TF_DropShadow)
+                          {
+                              FirstTransText.Effect = DropShadow;
+                          }
+                          else
+                          {
+                              SecondTransText.Effect = null;
+                          }
+                          //添加第一翻译源的阴影
                       });
                     break;
                 case 2:
                     Application.Current.Dispatcher.Invoke(() =>
                       {
                           SecondTransText.Text = afterString;
+                          if (Common.appSettings.TF_DropShadow)
+                          {
+                              SecondTransText.Effect = DropShadow;
+                          }
+                          else
+                          {
+                              SecondTransText.Effect = null;
+                          }
+                          //添加第二翻译源的阴影
                       });
                     break;
             }
