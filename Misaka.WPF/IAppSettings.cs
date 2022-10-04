@@ -407,6 +407,9 @@ namespace Misaka.WPF
 
         [Option(DefaultValue = true)]
         bool GrowlEnabled { get; set; }
+
+        [Option(Alias = "Mecab.dicPath", DefaultValue = "")]
+        string Mecab_dicPath { get; set; }
     }
 
     public interface IRepeatRepairSettings
