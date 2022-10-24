@@ -32,6 +32,7 @@
     <ProjectGuid>{5746bc9e-cbb7-4956-b733-3df01d5216ab}</ProjectGuid>
     <ProjectName>Misaka.WinUI</ProjectName>
     <RootNamespace>Misaka.WinUI</RootNamespace>
+    <DefaultLanguage>en</DefaultLanguage>
     <AppContainerApplication>false</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
     <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
@@ -99,7 +100,7 @@
     <Midl Include="AboutPage.idl">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Midl>
-    <PRIResource Include="AboutPage.lang-zh-Hans.resw">
+    <PRIResource Include="AboutPage.lang-zh-Hans.resjson">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </PRIResource>
   </ItemGroup>
@@ -120,6 +121,9 @@
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
+    <PRIResource Include="App.lang-en.resjson">
+      <DependentUpon>App.xaml</DependentUpon>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />
@@ -132,10 +136,10 @@
     <Midl Include="MainPage.idl">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Midl>
-    <PRIResource Include="MainPage.lang-en.resw">
+    <PRIResource Include="MainPage.lang-en.resjson">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </PRIResource>
-    <PRIResource Include="MainPage.lang-zh-Hans.resw">
+    <PRIResource Include="MainPage.lang-zh-Hans.resjson">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </PRIResource>
   </ItemGroup>
@@ -157,7 +161,7 @@
     <Midl Include="SettingsPage.idl">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Midl>
-    <PRIResource Include="SettingsPage.lang-zh-Hans.resw">
+    <PRIResource Include="SettingsPage.lang-zh-Hans.resjson">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </PRIResource>
   </ItemGroup>

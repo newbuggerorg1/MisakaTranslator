@@ -4,34 +4,4 @@
       xmlns:local="using:Misaka.WinUI"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
-
-    <NavigationView x:Name="NavView" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" PaneDisplayMode="Top" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[2], ElementName=NavView, Mode=OneTime}">
-        <NavigationView.MenuItems>
-            <NavigationViewItem x:Uid="/MainPage/GameLibraryButton">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x1F579;" Margin="-5" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem x:Uid="/MainPage/MangaLibraryButton">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x1F4D9;" Margin="-5" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem x:Uid="/MainPage/SettingsButton" Tag="SettingsPage">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x2699;" Margin="-5" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-        </NavigationView.MenuItems>
-        <NavigationView.Content>
-            <Frame x:Name="ContentFrame" IsTabStop="True">
-                <Frame.ContentTransitions>
-                    <TransitionCollection>
-                        <NavigationThemeTransition  />
-                    </TransitionCollection>
-                </Frame.ContentTransitions>
-            </Frame>
-        </NavigationView.Content>
-    </NavigationView>
-</Page>
+      mc:Ignorable="d"/>

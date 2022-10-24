@@ -12,17 +12,13 @@ namespace winrt::Misaka::WinUI::implementation
         InitializeComponent();
     }
 
-    void SettingsPage::NavViewItem_PointerEntered(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::Input::PointerRoutedEventArgs const&)
-    {
-        NavView().IsPaneOpen(true);
-    }
-
     void SettingsPage::NavView_SelectionChanged(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args)
     {
         if (args.SelectedItemContainer())
         {
             Windows::UI::Xaml::Interop::TypeName pageTypeName;
-            pageTypeName.Name = std::format(L"Misaka.WinUI.{0}", unbox_value<hstring>(args.SelectedItemContainer().Tag()));
+            hstring tag = unbox_value<hstring>(args.SelectedItemContainer().Tag());
+            pageTypeName.Name = std::format(L"Misaka.WinUI.{0}", tag);
             pageTypeName.Kind = Windows::UI::Xaml::Interop::TypeKind::Metadata;
             Windows::UI::Xaml::Media::Animation::SlideNavigationTransitionInfo pageTransitions;
             pageTransitions.Effect(Windows::UI::Xaml::Media::Animation::SlideNavigationTransitionEffect::FromBottom);

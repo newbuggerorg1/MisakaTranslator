@@ -6,47 +6,48 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <NavigationView x:Name="NavView" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="True" IsSettingsVisible="False" PaneDisplayMode="Auto" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[0], ElementName=NavView, Mode=OneTime}">
-        <NavigationView.MenuItems>
-            <NavigationViewItem x:Uid="/SettingsPage/HomeItem" Icon="Home" Tag="AboutPage" />
-            <NavigationViewItem x:Uid="/SettingsPage/LayerItem" Tag="SamplePage1">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81E;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem x:Uid="/SettingsPage/GameEnvironmentItem" Tag="SamplePage1">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF49A;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem x:Uid="/SettingsPage/ExtractorItem" Icon="Trim" Tag="SamplePage1" />
-            <NavigationViewItem x:Uid="/SettingsPage/OpticalCharacterRecognitionItem" Tag="SamplePage1">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE960;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem x:Uid="/SettingsPage/MachineTranslateItem" Icon="Character" Tag="SamplePage1" />
-            <NavigationViewItem x:Uid="/SettingsPage/DictionaryItem" Tag="SamplePage1">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE82D;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem x:Uid="/SettingsPage/TextToSpeechItem" Tag="SamplePage1">
-                <NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1F;" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem x:Uid="/SettingsPage/ManualTranslateItem" Icon="OtherUser" Tag="SamplePage1" />
-        </NavigationView.MenuItems>
-        <NavigationView.Content>
-            <Frame x:Name="ContentFrame" IsTabStop="True">
-                <Frame.ContentTransitions>
-                    <TransitionCollection>
-                        <NavigationThemeTransition  />
-                    </TransitionCollection>
-                </Frame.ContentTransitions>
-            </Frame>
-        </NavigationView.Content>
-    </NavigationView>
+    <Page.Content>
+        <NavigationView x:Name="SettingsNavigation" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="True" IsSettingsVisible="False" PaneDisplayMode="Auto" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[0], ElementName=SettingsNavigation, Mode=OneTime}">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/HomeItem" Icon="Home" Tag="AboutPage" />
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/LayerItem" Tag="SamplePage1">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81E;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/GameEnvironmentItem" Tag="SamplePage1">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF49A;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/ExtractorItem" Icon="Trim" Tag="SamplePage1" />
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/OpticalCharacterRecognitionItem" Tag="SamplePage1">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE960;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/MachineTranslateItem" Icon="Character" Tag="SamplePage1" />
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/DictionaryItem" Tag="SamplePage1">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE82D;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/TextToSpeechItem" Tag="SamplePage1">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1F;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/ManualTranslateItem" Icon="OtherUser" Tag="SamplePage1" />
+            </NavigationView.MenuItems>
+            <NavigationView.Content>
+                <Frame x:Name="ContentFrame" IsTabStop="True">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition />
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+            </NavigationView.Content>
+        </NavigationView>
+    </Page.Content>
 </Page>

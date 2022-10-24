@@ -8,7 +8,6 @@ namespace winrt::Misaka::WinUI::implementation
     {
     public:
         SettingsPage();
-        void NavViewItem_PointerEntered(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::Input::PointerRoutedEventArgs const&);
         void NavView_SelectionChanged(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args);
     };
 }

@@ -1,7 +1,11 @@
 ﻿#include "pch.h"
 #include "App.h"
 #include "App.g.cpp"
-#include "MainPage.h"
+
+//#include "MainPage.h"
+#include "SettingsPage.h"
+
+#include <winrt/Misaka.AppEnv.h>
 
 namespace winrt::Misaka::WinUI::implementation
 {
@@ -19,9 +23,15 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     winrt::init_apartment(winrt::apartment_type::single_threaded);
 
     winrt::Misaka::WinUI::App app = winrt::make<winrt::Misaka::WinUI::implementation::App>();
-    winrt::Misaka::WinUI::MainPage mainPage = winrt::make<winrt::Misaka::WinUI::implementation::MainPage>();
+    //winrt::Misaka::WinUI::MainPage mainPage = winrt::make<winrt::Misaka::WinUI::implementation::MainPage>();
+    winrt::Misaka::WinUI::SettingsPage mainPage = winrt::make<winrt::Misaka::WinUI::implementation::SettingsPage>();
 
-    HWND mainWindow = CreateWindowExW(WS_EX_CLIENTEDGE, L"Mile.Xaml.ContentWindow", nullptr, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, winrt::get_abi(mainPage));
+    auto appRes = winrt::Windows::ApplicationModel::Resources::ResourceLoader::GetForCurrentView(L"App");
+    winrt::hstring windowName = appRes.GetString(L"MainWindow/Title");
+    winrt::hstring executionMode = winrt::Misaka::AppEnv::PackageInfo::RunWithId() ? appRes.GetString(L"MainWindow/ExecutionMode/Centennial") : appRes.GetString(L"MainWindow/ExecutionMode/Classic");
+    std::wstring title = std::format(L"{0} ({1})", windowName, executionMode);
+
+    HWND mainWindow = CreateWindowExW(WS_EX_LEFT, L"Mile.Xaml.ContentWindow", title.c_str(), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, winrt::get_abi(mainPage));
     if (!mainWindow)
     {
         return -1;
