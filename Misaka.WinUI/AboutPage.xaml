@@ -5,7 +5,6 @@
     xmlns:local="using:Misaka.WinUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
     <Grid>
@@ -45,19 +44,9 @@
             </CommandBar>
         </Border>
         <Border BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="1" CornerRadius="8" Grid.Row="1" Margin="8,4,8,8">
-            <muxc:WebView2 x:Name="HtmlViewer">
-                <muxc:WebView2.Background>
-                    <ImageBrush ImageSource="ms-appx:///Assets/AboutPage.Background.Image.jpg" Stretch="UniformToFill"/>
-                </muxc:WebView2.Background>
-            </muxc:WebView2>
+                <Border.Child>
+                    <Image Source="ms-appx:///Assets/AboutPage.Background.Image.jpg" />
+                </Border.Child>
         </Border>
-        <muxc:TeachingTip x:Name="CheckUpdateTip" x:Uid="/AboutPage/CheckUpdateTip" IsLightDismissEnabled="True" PreferredPlacement="BottomRight" Target="{Binding ElementName=ReleasesButton,Mode=OneTime}">
-            <muxc:TeachingTip.Content>
-                <CheckBox x:Uid="/AboutPage/AutoUpdateCheckBox"/>
-            </muxc:TeachingTip.Content>
-            <muxc:TeachingTip.IconSource>
-                <muxc:SymbolIconSource Symbol="PostUpdate" />
-            </muxc:TeachingTip.IconSource>
-        </muxc:TeachingTip>
     </Grid>
 </Page>

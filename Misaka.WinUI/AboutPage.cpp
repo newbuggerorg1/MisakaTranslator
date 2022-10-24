@@ -8,23 +8,15 @@ namespace winrt::Misaka::WinUI::implementation
 {
     AboutPage::AboutPage()
     {
-        SetEnvironmentVariableW(L"WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", L"--enable-features=OverlayScrollbar,OverlayScrollbarWinStyle,OverlayScrollbarWinStyleAnimation");
         InitializeComponent();
     }
 
-    void AboutPage::AppBarButton_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const&)
+    void AboutPage::OpenLink_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e)
     {
-        this->HtmlViewer().Source(Windows::Foundation::Uri(std::format(L"https://github.com/hanmin0822/MisakaTranslator/{0}", unbox_value<hstring>(unbox_value<Windows::UI::Xaml::Controls::AppBarButton>(sender).Tag()))));
-    }
+        UNREFERENCED_PARAMETER(e);
 
-    void AboutPage::CheckUpdateButton_Click(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::RoutedEventArgs const&)
-    {
-        CheckUpdateTip().IsOpen(true);
-    }
-
-    void AboutPage::MenuFlyoutItem_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const&)
-    {
-        Windows::Foundation::Uri uri(std::format(L"https://github.com/hanmin0822/MisakaTranslator/{0}", unbox_value<hstring>(unbox_value<Windows::UI::Xaml::Controls::MenuFlyoutItem>(sender).Tag())));
+        hstring tag = unbox_value<hstring>(unbox_value<Windows::UI::Xaml::FrameworkElement>(sender).Tag());
+        Windows::Foundation::Uri uri(std::format(L"https://github.com/hanmin0822/MisakaTranslator/{0}", tag));
         Windows::System::Launcher::LaunchUriAsync(uri);
     }
 }

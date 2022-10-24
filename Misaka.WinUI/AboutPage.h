@@ -8,9 +8,7 @@ namespace winrt::Misaka::WinUI::implementation
     {
     public:
         AboutPage();
-        void AppBarButton_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const&);
-        void CheckUpdateButton_Click(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::RoutedEventArgs const&);
-        void MenuFlyoutItem_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const&);
+        void OpenLink_Click(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& e);
     };
 }
 

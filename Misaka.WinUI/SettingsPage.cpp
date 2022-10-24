@@ -17,7 +17,7 @@ namespace winrt::Misaka::WinUI::implementation
         NavView().IsPaneOpen(true);
     }
 
-    void SettingsPage::NavView_SelectionChanged(Windows::Foundation::IInspectable const&, Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args)
+    void SettingsPage::NavView_SelectionChanged(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args)
     {
         if (args.SelectedItemContainer())
         {

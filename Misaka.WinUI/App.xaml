@@ -1,10 +1,9 @@
-﻿<Application
+﻿<islands:Application
     x:Class="Misaka.WinUI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Misaka.WinUI"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+    xmlns:islands="using:Mile.Xaml">
     <Application.Resources>
-        <muxc:XamlControlsResources ControlsResourcesVersion="Version2" />
     </Application.Resources>
-</Application>
+</islands:Application>

@@ -5,11 +5,41 @@
     xmlns:local="using:Misaka.WinUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
-    <muxc:NavigationView x:Name="NavView" Background="{ThemeResource NavigationViewExpandedPaneBackground}" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="True" IsSettingsVisible="False" PaneDisplayMode="Auto" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[0], ElementName=NavView, Mode=OneTime}">
-        <muxc:NavigationView.Content>
+    <NavigationView x:Name="NavView" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="True" IsSettingsVisible="False" PaneDisplayMode="Auto" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[0], ElementName=NavView, Mode=OneTime}">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="/SettingsPage/HomeItem" Icon="Home" Tag="AboutPage" />
+            <NavigationViewItem x:Uid="/SettingsPage/LayerItem" Tag="SamplePage1">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81E;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="/SettingsPage/GameEnvironmentItem" Tag="SamplePage1">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF49A;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="/SettingsPage/ExtractorItem" Icon="Trim" Tag="SamplePage1" />
+            <NavigationViewItem x:Uid="/SettingsPage/OpticalCharacterRecognitionItem" Tag="SamplePage1">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE960;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="/SettingsPage/MachineTranslateItem" Icon="Character" Tag="SamplePage1" />
+            <NavigationViewItem x:Uid="/SettingsPage/DictionaryItem" Tag="SamplePage1">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE82D;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="/SettingsPage/TextToSpeechItem" Tag="SamplePage1">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1F;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="/SettingsPage/ManualTranslateItem" Icon="OtherUser" Tag="SamplePage1" />
+        </NavigationView.MenuItems>
+        <NavigationView.Content>
             <Frame x:Name="ContentFrame" IsTabStop="True">
                 <Frame.ContentTransitions>
                     <TransitionCollection>
@@ -17,42 +47,6 @@
                     </TransitionCollection>
                 </Frame.ContentTransitions>
             </Frame>
-        </muxc:NavigationView.Content>
-        <muxc:NavigationView.MenuItems>
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/HomeItem" Icon="Home" Tag="AboutPage" />
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/LayerItem" Tag="SamplePage1">
-                <muxc:NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81E;" />
-                </muxc:NavigationViewItem.Icon>
-            </muxc:NavigationViewItem>
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/GameEnvironmentItem" Tag="SamplePage1">
-                <muxc:NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF49A;" />
-                </muxc:NavigationViewItem.Icon>
-            </muxc:NavigationViewItem>
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/ExtractorItem" Icon="Trim" Tag="SamplePage1" />
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/OpticalCharacterRecognitionItem" Tag="SamplePage1">
-                <muxc:NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE960;" />
-                </muxc:NavigationViewItem.Icon>
-            </muxc:NavigationViewItem>
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/MachineTranslateItem" Icon="Character" Tag="SamplePage1" />
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/DictionaryItem" Tag="SamplePage1">
-                <muxc:NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE82D;" />
-                </muxc:NavigationViewItem.Icon>
-            </muxc:NavigationViewItem>
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/TextToSpeechItem" Tag="SamplePage1">
-                <muxc:NavigationViewItem.Icon>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1F;" />
-                </muxc:NavigationViewItem.Icon>
-            </muxc:NavigationViewItem>
-            <muxc:NavigationViewItem x:Uid="/SettingsPage/ManualTranslateItem" Icon="OtherUser" Tag="SamplePage1" />
-        </muxc:NavigationView.MenuItems>
-        <muxc:NavigationView.Resources>
-            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground" BackgroundSource="Backdrop" TintColor="{ThemeResource SystemChromeAltHighColor}" TintOpacity="0.8" FallbackColor="{ThemeResource SystemChromeMediumColor}" />
-            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" BackgroundSource="HostBackdrop" TintColor="{ThemeResource SystemChromeAltHighColor}" TintOpacity="0.8" FallbackColor="{ThemeResource SystemChromeMediumColor}" />
-            <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="{StaticResource CardStrokeColorDefault}" />
-        </muxc:NavigationView.Resources>
-    </muxc:NavigationView>
+        </NavigationView.Content>
+    </NavigationView>
 </Page>

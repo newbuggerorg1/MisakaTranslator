@@ -2,10 +2,14 @@
 
 #include <format>
 
-#include <windows.h>
+#include <Windows.h>
 #include <unknwn.h>
 #include <restrictederrorinfo.h>
 #include <hstring.h>
+
+#ifdef GetCurrentTime
+#undef GetCurrentTime
+#endif
 
 #include <winrt/Windows.ApplicationModel.Activation.h>
 #include <winrt/Windows.Foundation.h>
@@ -18,6 +22,5 @@
 #include <winrt/Windows.UI.Xaml.Markup.h>
 #include <winrt/Windows.UI.Xaml.Navigation.h>
 #include <winrt/Windows.UI.Xaml.Media.Animation.h>
-#include <winrt/Microsoft.UI.Xaml.Controls.h>
-#include <winrt/Microsoft.UI.Xaml.XamlTypeInfo.h>
-#include <winrt/Microsoft.Web.WebView2.Core.h>
+
+#include <winrt/Mile.Xaml.h>

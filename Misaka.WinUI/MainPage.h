@@ -8,7 +8,7 @@ namespace winrt::Misaka::WinUI::implementation
     {
     public:
         MainPage();
-        void NavView_SelectionChanged(Windows::Foundation::IInspectable const&, Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args);
+        void NavView_SelectionChanged(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args);
     };
 }
 
