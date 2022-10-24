@@ -12,41 +12,49 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Left" Grid.Row="0" Margin="8,8,8,4">
-            <CommandBar DefaultLabelPosition="Right" HorizontalAlignment="Left" IsDynamicOverflowEnabled="True">
-                <AppBarButton x:Uid="/AboutPage/SourceCodeButton" Click="AppBarButton_Click" Tag="">
-                    <AppBarButton.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE943;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarButton x:Uid="/AboutPage/IssuesButton" Click="AppBarButton_Click" Tag="issues">
-                    <AppBarButton.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED15;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarButton x:Uid="/AboutPage/WikiButton" Click="AppBarButton_Click" Icon="Help" Tag="wiki" />
-                <AppBarButton x:Uid="/AboutPage/ReleasesButton" x:Name="ReleasesButton">
-                    <AppBarButton.Flyout>
-                        <MenuFlyout>
-                            <MenuFlyoutItem x:Uid="/AboutPage/CheckUpdateButton" Click="CheckUpdateButton_Click" Icon="Refresh" />
-                            <MenuFlyoutItem x:Uid="/AboutPage/ReleaseHistoryButton" Click="MenuFlyoutItem_Click" Tag="releases">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81C;" />
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                            <MenuFlyoutItem x:Uid="/AboutPage/NightlyBuildButton" Click="MenuFlyoutItem_Click" Icon="Trim" Tag="actions/workflows/build.yml" />
-                        </MenuFlyout>
-                    </AppBarButton.Flyout>
-                    <AppBarButton.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7B8;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
+        <Grid.Children>
+            <CommandBar DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed">
+                <CommandBar.Content>
+                    <SplitButton Height="40" Background="Transparent">
+                        <SplitButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <StackPanel.Children>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7B8;" FontSize="16"/>
+                                    <TextBlock x:Uid="/AboutPage/CheckUpdateButton" FontSize="12" VerticalAlignment="Center"/>
+                                </StackPanel.Children>
+                            </StackPanel>
+                        </SplitButton.Content>
+                        <SplitButton.Flyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem x:Uid="/AboutPage/ReleaseHistoryButton" Click="OpenLink_Click" Tag="releases">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81C;" />
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem x:Uid="/AboutPage/NightlyBuildButton" Click="OpenLink_Click" Icon="Trim" Tag="actions/workflows/build.yml" />
+                            </MenuFlyout>
+                        </SplitButton.Flyout>
+                    </SplitButton>
+                </CommandBar.Content>
+                <CommandBar.PrimaryCommands>
+                    <AppBarButton x:Uid="/AboutPage/SourceCodeButton" Click="OpenLink_Click" Tag="">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE943;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton x:Uid="/AboutPage/IssuesButton" Click="OpenLink_Click" Tag="issues">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED15;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton x:Uid="/AboutPage/WikiButton" Click="OpenLink_Click" Icon="Help" Tag="wiki" />
+                </CommandBar.PrimaryCommands>
             </CommandBar>
-        </Border>
-        <Border BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="1" CornerRadius="8" Grid.Row="1" Margin="8,4,8,8">
+            <Border BorderBrush="{ThemeResource SystemChromeMediumColor}" BorderThickness="1" CornerRadius="8" Grid.Row="1" Margin="8,4,8,8">
                 <Border.Child>
                     <Image Source="ms-appx:///Assets/AboutPage.Background.Image.jpg" />
                 </Border.Child>
-        </Border>
+            </Border>
+        </Grid.Children>
     </Grid>
 </Page>
