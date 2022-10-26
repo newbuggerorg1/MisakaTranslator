@@ -1,5 +1,0 @@
-[http]
-	sslVerify = false
-
-[merge]
-	ff = false
