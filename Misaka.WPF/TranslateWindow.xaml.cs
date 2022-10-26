@@ -78,8 +78,7 @@ namespace Misaka.WPF
             IsOCRingFlag = false;
 
 
-
-            _mecabHelper = new MecabHelper();
+            _mecabHelper = new MecabHelper(Common.appSettings.Mecab_dicPath);
 
             _textSpeechHelper = new TextSpeechHelper();
             if (Common.appSettings.ttsVoice == "")
@@ -435,14 +434,16 @@ namespace Misaka.WPF
                 // 使用BeginInvoke，在更新原文时可以去获取翻译
                 Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    //3.分词
-                    var mwi = _mecabHelper.SentenceHandle(repairedText);
-                    //分词后结果显示
-                    for (int i = 0; i < mwi.Count; i++)
+                    if(Common.appSettings.Mecab_dicPath != string.Empty)
                     {
-                        StackPanel stackPanel = new StackPanel();
-                        stackPanel.Orientation = Orientation.Vertical;
-                        stackPanel.Margin = new Thickness(10, 0, 0, 10);
+                        //3.分词
+                        var mwi = _mecabHelper.SentenceHandle(repairedText);
+                        //分词后结果显示
+                        for (int i = 0; i < mwi.Count; i++)
+                        {
+                            StackPanel stackPanel = new StackPanel();
+                            stackPanel.Orientation = Orientation.Vertical;
+                            stackPanel.Margin = new Thickness(10, 0, 0, 10);
 
                         TextBlock textBlock = new TextBlock();
                         if (!string.IsNullOrEmpty(SourceTextFont))
@@ -542,18 +543,39 @@ namespace Misaka.WPF
                         stackPanel.Children.Add(superScript);
 
 
-                        //是否打开假名标注
-                        if (Common.appSettings.TF_isKanaShow)
-                        {
-                            stackPanel.Children.Add(textBlock);
-                            SourceTextPanel.Children.Add(stackPanel);
+                            //是否打开假名标注
+                            if (Common.appSettings.TF_isKanaShow)
+                            {
+                                stackPanel.Children.Add(textBlock);
+                                SourceTextPanel.Children.Add(stackPanel);
+                            }
+                            else
+                            {
+                                textBlock.Margin = new Thickness(10, 0, 0, 10);
+                                SourceTextPanel.Children.Add(textBlock);
+                            }
                         }
-                        else
+                    }
+                    else
+                    {
+                        TextBlock textBlock = new TextBlock();
+                        if (Common.appSettings.TF_DropShadow)
                         {
-                            textBlock.Margin = new Thickness(10, 0, 0, 10);
-                            SourceTextPanel.Children.Add(textBlock);
+                            textBlock.Effect = DropShadow;
                         }
-
+                        if (!string.IsNullOrEmpty(SourceTextFont))
+                        {
+                            FontFamily fontFamily = new FontFamily(SourceTextFont);
+                            textBlock.FontFamily = fontFamily;
+                        }
+                        textBlock.TextWrapping = TextWrapping.Wrap;
+                        textBlock.Text = repairedText;
+                        textBlock.Foreground = Brushes.White;
+                        textBlock.Margin = new Thickness(0, 0, 0, 0);
+                        textBlock.FontSize = SourceTextFontSize;
+                        textBlock.Background = Brushes.Transparent;
+                        textBlock.MouseLeftButtonDown += DictArea_MouseLeftButtonDown;
+                        SourceTextPanel.Children.Add(textBlock);
                     }
                 }));
             }

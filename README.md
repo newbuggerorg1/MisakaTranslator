@@ -25,12 +25,15 @@ MisakaTranslator一直以来支持Windows 7，但是Windows 7已经发布十余�
 - [x] 💪 Support x64 and arm64 (Need more test)
 - [x] 💪 Support Windows built-in OCR
 - [ ] 🏃 Use more built-in components of the new Windows and .Net
-  - [x] Sqlite, Json, Font Icons
-  - [ ] Active Code Page, On-Screen Handwriting Keyboard...
+  - [x] Sqlite, Json, Font Icons, On-Screen Handwriting Keyboard
+  - [ ] Active Code Page...
 - [ ] 🏃 Migrate settings ini files to json
 - [ ] 🏃 Rebuild a modern UI
-- [ ] Split 3rd-party components
-  - [ ] Textractor, TesseractOCR
+- [ ] 🏃 Split 3rd-party components
+  - [x] Mecab
+  - [ ] Textractor
+- [ ] Remove obsolete components
+  - [x] Tesseract4
 - [ ] Support games form Steam
 - [ ] Extract texts by Speech Recognition (like Live captions)
 - [ ] ..., including some suggestions in issues (Welcome to contribute, including Pull Request)

@@ -54,26 +54,7 @@ namespace Misaka.WPF.GuidePages.OCR
         private async void OCRTestBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            if (Common.appSettings.OCRsource == "TesseractOCR")
-            {
-                if (Common.ocr.OCR_Init("", "") != false)
-                {
-                    string res = await Common.ocr.OCRProcessAsync();
-
-                    if (res != null)
-                    {
-                        HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
-                    }
-                    else {
-                        HandyControl.Controls.Growl.Error($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
-                    }
-                }
-                else
-                {
-                    HandyControl.Controls.Growl.Error($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
-                }
-            }
-            else if (Common.appSettings.OCRsource == "BaiduOCR")
+            if (Common.appSettings.OCRsource == "BaiduOCR")
             {
                 if (Common.ocr.OCR_Init(Common.appSettings.BDOCR_APIKEY, Common.appSettings.BDOCR_SecretKey))
                 {

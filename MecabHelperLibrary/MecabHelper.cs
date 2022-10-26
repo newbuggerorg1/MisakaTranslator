@@ -48,18 +48,23 @@ namespace MecabHelperLibrary
 
     public class MecabHelper:IDisposable
     {
-        private MeCabParam Parameter;
         private MeCabTagger Tagger;
 
-        public MecabHelper() {
-            Parameter = new MeCabParam();
-            //Parameter.UserDic.Append("");
-            Tagger = MeCabTagger.Create(Parameter);
+        public MecabHelper(string dicPath) {
+            if (dicPath != string.Empty)
+            {
+                Tagger = MeCabTagger.Create(
+                    new MeCabParam()
+                    {
+                        DicDir = dicPath
+                    }
+                );
+            }
         }
 
         public void Dispose()
         {
-            Tagger.Dispose();
+            Tagger?.Dispose();
         }
 
 
