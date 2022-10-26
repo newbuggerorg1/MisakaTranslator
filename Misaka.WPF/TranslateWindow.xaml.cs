@@ -514,6 +514,7 @@ namespace Misaka.WPF
                             FontFamily fontFamily = new FontFamily(SourceTextFont);
                             textBlock.FontFamily = fontFamily;
                         }
+                        textBlock.TextWrapping = TextWrapping.Wrap;
                         textBlock.Text = repairedText;
                         textBlock.Foreground = Brushes.White;
                         textBlock.Margin = new Thickness(0, 0, 0, 0);
