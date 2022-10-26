@@ -397,6 +397,12 @@ namespace Misaka.WPF
             get;
             set;
         }
+        [Option(Alias = "TranslateFromSetting.isColorful", DefaultValue = true)]
+        bool TF_Colorful
+        {
+            get;
+            set;
+        }
 
         [Option(Alias = "ArtificialTrans.patchPath", DefaultValue = "")]
         string ArtificialPatchPath

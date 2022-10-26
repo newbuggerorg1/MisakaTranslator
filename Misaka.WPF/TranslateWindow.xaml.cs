@@ -477,26 +477,31 @@ namespace Misaka.WPF
                             //加入原文的阴影
                         }
 
-
-                        switch (mwi[i].PartOfSpeech)
+                        if (Common.appSettings.TF_Colorful)
                         {
-                            case "名詞":
-                                textBlock.Foreground = Brushes.AliceBlue;
-                                break;
-                            case "助詞":
-                                textBlock.Foreground = Brushes.LightGreen;
-                                break;
-                            case "動詞":
-                                textBlock.Foreground = Brushes.Red;
-                                break;
-                            case "連体詞":
-                                textBlock.Foreground = Brushes.Orange;
-                                break;
-                            default:
-                                textBlock.Foreground = Brushes.White;
-                                break;
+                            switch (mwi[i].PartOfSpeech)
+                            {
+                                case "名詞":
+                                    textBlock.Foreground = Brushes.AliceBlue;
+                                    break;
+                                case "助詞":
+                                    textBlock.Foreground = Brushes.LightGreen;
+                                    break;
+                                case "動詞":
+                                    textBlock.Foreground = Brushes.Red;
+                                    break;
+                                case "連体詞":
+                                    textBlock.Foreground = Brushes.Orange;
+                                    break;
+                                default:
+                                    textBlock.Foreground = Brushes.White;
+                                    break;
+                            }
                         }
-
+                        else
+                        {
+                            textBlock.Foreground = Brushes.White;
+                        }         
 
                         TextBlock superScript = new TextBlock();//假名或注释等的上标标签
                         if (!string.IsNullOrEmpty(SourceTextFont))
@@ -641,7 +646,7 @@ namespace Misaka.WPF
                           }
                           else
                           {
-                              SecondTransText.Effect = null;
+                              FirstTransText.Effect = null;
                           }
                           //添加第一翻译源的阴影
                       });
