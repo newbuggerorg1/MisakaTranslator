@@ -30,8 +30,8 @@
     <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{5746bc9e-cbb7-4956-b733-3df01d5216ab}</ProjectGuid>
-    <ProjectName>Misaka.WinUI</ProjectName>
-    <RootNamespace>Misaka.WinUI</RootNamespace>
+    <ProjectName>Misaka.Islands</ProjectName>
+    <RootNamespace>Misaka.Islands</RootNamespace>
     <DefaultLanguage>en</DefaultLanguage>
     <AppContainerApplication>false</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>

@@ -4,7 +4,7 @@
 
 using namespace winrt;
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     MainPage::MainPage()
     {

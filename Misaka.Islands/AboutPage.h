@@ -2,7 +2,7 @@
 
 #include "AboutPage.g.h"
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     struct AboutPage : AboutPageT<AboutPage>
     {
@@ -12,7 +12,7 @@ namespace winrt::Misaka::WinUI::implementation
     };
 }
 
-namespace winrt::Misaka::WinUI::factory_implementation
+namespace winrt::Misaka::Islands::factory_implementation
 {
     struct AboutPage : AboutPageT<AboutPage, implementation::AboutPage> {};
 }

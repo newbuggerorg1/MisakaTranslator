@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "App.g.h"
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     template <typename D, typename... I>
     struct App_baseWithProvider : public App_base<D, ::winrt::Windows::UI::Xaml::Markup::IXamlMetadataProvider>
@@ -42,7 +42,7 @@ namespace winrt::Misaka::WinUI::implementation
     };
 }
 
-namespace winrt::Misaka::WinUI::factory_implementation
+namespace winrt::Misaka::Islands::factory_implementation
 {
     class App : public AppT<App, implementation::App> {};
 }

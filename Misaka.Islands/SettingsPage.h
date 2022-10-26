@@ -2,7 +2,7 @@
 
 #include "SettingsPage.g.h"
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     struct SettingsPage : SettingsPageT<SettingsPage>
     {
@@ -12,7 +12,7 @@ namespace winrt::Misaka::WinUI::implementation
     };
 }
 
-namespace winrt::Misaka::WinUI::factory_implementation
+namespace winrt::Misaka::Islands::factory_implementation
 {
     struct SettingsPage : SettingsPageT<SettingsPage, implementation::SettingsPage> {};
 }

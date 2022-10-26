@@ -70,7 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Misaka.AppEnv", "Misaka.AppEnv\Misaka.AppEnv.vcxproj", "{796CDA3A-9F31-4164-B054-77C521CB88E0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Misaka.WinUI", "Misaka.WinUI\Misaka.WinUI.vcxproj", "{5746BC9E-CBB7-4956-B733-3DF01D5216AB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Misaka.Islands", "Misaka.Islands\Misaka.Islands.vcxproj", "{5746BC9E-CBB7-4956-B733-3DF01D5216AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -47,7 +47,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
-    <EntryPointProjectUniqueName>..\Misaka.WinUI\Misaka.WinUI.vcxproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\Misaka.Islands\Misaka.Islands.vcxproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -57,7 +57,7 @@
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
     <ProjectReference Include="..\KeyboardMouseMonitor\KeyboardMouseMonitor.vcxproj" />
-    <ProjectReference Include="..\Misaka.WinUI\Misaka.WinUI.vcxproj" />
+    <ProjectReference Include="..\Misaka.Islands\Misaka.Islands.vcxproj" />
     <ProjectReference Include="..\Misaka.WPF\Misaka.WPF.csproj" />
   </ItemGroup>
   <ItemGroup>

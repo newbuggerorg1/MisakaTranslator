@@ -2,7 +2,7 @@
 
 #include "MainPage.g.h"
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     struct MainPage : MainPageT<MainPage>
     {
@@ -11,7 +11,7 @@ namespace winrt::Misaka::WinUI::implementation
     };
 }
 
-namespace winrt::Misaka::WinUI::factory_implementation
+namespace winrt::Misaka::Islands::factory_implementation
 {
     struct MainPage : MainPageT<MainPage, implementation::MainPage> {};
 }

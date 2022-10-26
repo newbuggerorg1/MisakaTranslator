@@ -5,7 +5,7 @@
 #endif
 #include <winrt/Misaka.AppEnv.h>
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     SettingsPage::SettingsPage()
     {
@@ -18,7 +18,7 @@ namespace winrt::Misaka::WinUI::implementation
         {
             Windows::UI::Xaml::Interop::TypeName pageTypeName;
             hstring tag = unbox_value<hstring>(args.SelectedItemContainer().Tag());
-            pageTypeName.Name = std::format(L"Misaka.WinUI.{0}", tag);
+            pageTypeName.Name = std::format(L"Misaka.Islands.{0}", tag);
             pageTypeName.Kind = Windows::UI::Xaml::Interop::TypeKind::Metadata;
             Windows::UI::Xaml::Media::Animation::SlideNavigationTransitionInfo pageTransitions;
             pageTransitions.Effect(Windows::UI::Xaml::Media::Animation::SlideNavigationTransitionEffect::FromBottom);

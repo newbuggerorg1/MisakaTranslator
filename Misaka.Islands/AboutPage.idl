@@ -1,4 +1,4 @@
-namespace Misaka.WinUI
+namespace Misaka.Islands
 {
     [default_interface]
     runtimeclass AboutPage : Windows.UI.Xaml.Controls.Page

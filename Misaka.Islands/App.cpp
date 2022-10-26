@@ -7,7 +7,7 @@
 
 #include <winrt/Misaka.AppEnv.h>
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     App::App()
     {
@@ -22,9 +22,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
     winrt::init_apartment(winrt::apartment_type::single_threaded);
 
-    winrt::Misaka::WinUI::App app = winrt::make<winrt::Misaka::WinUI::implementation::App>();
+    winrt::Misaka::Islands::App app = winrt::make<winrt::Misaka::Islands::implementation::App>();
     //winrt::Misaka::WinUI::MainPage mainPage = winrt::make<winrt::Misaka::WinUI::implementation::MainPage>();
-    winrt::Misaka::WinUI::SettingsPage mainPage = winrt::make<winrt::Misaka::WinUI::implementation::SettingsPage>();
+    winrt::Misaka::Islands::SettingsPage mainPage = winrt::make<winrt::Misaka::Islands::implementation::SettingsPage>();
 
     auto appRes = winrt::Windows::ApplicationModel::Resources::ResourceLoader::GetForCurrentView(L"App");
     winrt::hstring windowName = appRes.GetString(L"MainWindow/Title");

@@ -4,7 +4,7 @@
 #include "AboutPage.g.cpp"
 #endif
 
-namespace winrt::Misaka::WinUI::implementation
+namespace winrt::Misaka::Islands::implementation
 {
     AboutPage::AboutPage()
     {
