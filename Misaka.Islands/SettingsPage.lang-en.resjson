@@ -1,0 +1,11 @@
+﻿{
+    "DictionaryItem/Content": "Dictionary",
+    "ExtractorItem/Content": "Text Extractor",
+    "GameEnvironmentItem/Content": "Locale Environment",
+    "HomeItem/Content": "About",
+    "LayerItem/Content": "User Interface",
+    "MachineTranslateItem/Content": "Machine Translation",
+    "ManualTranslateItem/Content": "Manual Translation",
+    "OpticalCharacterRecognitionItem/Content": "Optical Character Recognition",
+    "TextToSpeechItem/Content": "Text to Speech"
+}
