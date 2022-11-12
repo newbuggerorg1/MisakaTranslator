@@ -176,7 +176,7 @@
       <Version>2.0.220608.4</Version>
     </PackageReference>
     <PackageReference Include="Mile.Xaml">
-      <Version>1.0.361</Version>
+      <Version>1.1.425</Version>
     </PackageReference>
     <PackageReference Include="VC-LTL">
       <Version>5.0.5</Version>

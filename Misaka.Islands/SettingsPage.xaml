@@ -7,9 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Content>
-        <NavigationView x:Name="SettingsNavigation" IsBackEnabled="False" IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="True" IsSettingsVisible="False" PaneDisplayMode="Auto" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[0], ElementName=SettingsNavigation, Mode=OneTime}">
+        <NavigationView x:Name="SettingsNavigation" x:Uid="ms-resource:///SettingsPage/NavigationView" IsBackEnabled="True" IsBackButtonVisible="Visible" IsPaneToggleButtonVisible="True" IsSettingsVisible="False" PaneDisplayMode="Auto" SelectionChanged="NavView_SelectionChanged" SelectedItem="{Binding MenuItems[0], ElementName=SettingsNavigation, Mode=OneTime}" ExpandedModeThresholdWidth="99999">
+            <NavigationView.Resources>
+                <ResourceDictionary>
+                    <Thickness x:Key="NavigationViewHeaderMargin">12,0,0,0</Thickness>
+                    <Thickness x:Key="NavigationViewMinimalHeaderMargin">96,0,0,0</Thickness>
+                    <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="Transparent" />
+                    <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground" BackgroundSource="Backdrop" TintColor="{ThemeResource SystemChromeMediumLowColor}" TintOpacity="0.8"/>
+                    <Visibility x:Key="MenuItemsHostTopSeparatorVisibility">Visible</Visibility>
+                </ResourceDictionary>
+            </NavigationView.Resources>
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox QueryIcon="Find" AutomationProperties.Name="Search" />
+            </NavigationView.AutoSuggestBox>
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/HomeItem" Icon="Home" Tag="AboutPage" />
+                <NavigationViewItem x:Uid="ms-resource:///SettingsPage/AboutItem" Icon="Home" Tag="About" />
                 <NavigationViewItem x:Uid="ms-resource:///SettingsPage/LayerItem" Tag="SamplePage1">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81E;" />

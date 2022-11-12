@@ -8,7 +8,7 @@ namespace winrt::Misaka::Islands::implementation
     {
     public:
         SettingsPage();
-        void NavView_SelectionChanged(Windows::Foundation::IInspectable const&, Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args);
+        void NavView_SelectionChanged(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs const& args);
     };
 }
 

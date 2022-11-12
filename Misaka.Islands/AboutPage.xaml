@@ -13,9 +13,9 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid.Children>
-                <CommandBar DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed">
+                <CommandBar DefaultLabelPosition="Right" Margin="8,4">
                     <CommandBar.Content>
-                        <SplitButton Height="40" Background="Transparent">
+                        <SplitButton Style="{StaticResource SplitButtonCommandBarStyle}">
                             <SplitButton.Content>
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <StackPanel.Children>
