@@ -66,7 +66,7 @@ namespace MisakaTranslator_WPF.ComicTranslator
             _translator2 = TranslateWindow.TranslatorAuto(Common.appSettings.SecondTranslator);
 
             ocr = OCRCommon.OCRAuto(Common.appSettings.OCRsource);
-            ocr.SetOCRSourceLang("jpn");
+            ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
             if (Common.appSettings.OCRsource == "BaiduOCR")
             {
                 if (ocr.OCR_Init(Common.appSettings.BDOCR_APIKEY, Common.appSettings.BDOCR_SecretKey) == false)
@@ -95,7 +95,13 @@ namespace MisakaTranslator_WPF.ComicTranslator
                     HandyControl.Controls.Growl.ErrorGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
-
+            else if (Common.appSettings.OCRsource == "WinRtOCR")
+            {
+                if (ocr.OCR_Init("", "") == false)
+                {
+                    HandyControl.Controls.Growl.ErrorGlobal($"WinRtOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                }
+            }
 
             scale = Common.GetScale();
             DrawingAttributes drawingAttributes = new DrawingAttributes
