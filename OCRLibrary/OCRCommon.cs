@@ -13,7 +13,8 @@ namespace OCRLibrary
             "BaiduOCR",
             "BaiduFanyiOCR",
             "TesseractOCR",
-            "Tesseract5"
+            "Tesseract5",
+            "WinRtOCR"
         };
 
         public static List<string> GetOCRList()
@@ -32,6 +33,8 @@ namespace OCRLibrary
                     return new TesseractOCR(); ;
                 case "Tesseract5":
                     return new Tesseract5OCR();
+                case "WinRtOCR":
+                    return new WinRtOCR();
                 default:
                     return null;
             }
