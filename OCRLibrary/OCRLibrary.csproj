@@ -63,6 +63,7 @@
     <Compile Include="TesseractOCR.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22000.196" />
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
