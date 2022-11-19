@@ -6,5 +6,5 @@ set RPCPATH=.github\.external\%MSKNAME%
 set MSKPATH=%EXTPATH%\%MSKNAME%
 
 mkdir -f %MSKPATH% && git clone https://github.com/newbuggerorg1/MisakaTranslator %MSKPATH%
-cd %MSKPATH% && git checkout --force %COMMIT% && cd ..
+cd %MSKPATH% && git checkout --force %COMMIT% && cd ..  && cd ..
 cp -rfT %RPCPATH%\ %MSKPATH%\
