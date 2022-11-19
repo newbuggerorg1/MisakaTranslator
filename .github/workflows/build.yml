@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - uses: microsoft/setup-msbuild@v1.1
-    - run: msbuild -v:m -r
+    - run: chmod +x checkout.sh && bash checkout.sh && msbuild -v:m -r
     - uses: actions/upload-artifact@main
       with:
         path: Output\MisakaTranslator-WPF-Bin
