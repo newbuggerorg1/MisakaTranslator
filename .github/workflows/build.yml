@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - uses: microsoft/setup-msbuild@v1.1
-    - run: chmod +x checkout.sh && bash checkout.sh && cd .building/ && msbuild -v:m -r
+    - run: .github\workflows\checkout.bat && cd .building\ && msbuild -v:m -r
     - uses: actions/upload-artifact@main
       with:
         path: .building\Output\MisakaTranslator-WPF-Bin
