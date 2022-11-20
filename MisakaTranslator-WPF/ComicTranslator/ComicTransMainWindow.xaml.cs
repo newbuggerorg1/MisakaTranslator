@@ -102,6 +102,13 @@ namespace MisakaTranslator_WPF.ComicTranslator
                     HandyControl.Controls.Growl.ErrorGlobal($"WinRtOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
+            else if (Common.appSettings.OCRsource == "DangoOCR")
+            {
+                if (ocr.OCR_Init("", "") == false)
+                {
+                    HandyControl.Controls.Growl.ErrorGlobal($"DangoOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                }
+            }
 
             scale = Common.GetScale();
             DrawingAttributes drawingAttributes = new DrawingAttributes
