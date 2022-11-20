@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace OCRLibrary
@@ -16,11 +19,18 @@ namespace OCRLibrary
         {
             try
             {
-                var string filename = await Environment.CurrentDirectory + "\\jpgs\\" + DateTime.ToFileTime().ToString() + ".jpg";
+                var string filename = Environment.CurrentDirectory + "\\jpgs\\" + DateTime.ToFileTime().ToString() + ".jpg";
                 img.Save(filename, ImageFormat.Jpg);
 
-                var res = await dangoOcr.RecognizeAsync(bitmap);
-                return Task.FromResult(res.Text).Result;
+                var dic = new Dictionary<string, string>() {
+                    { "ImagePath" , filename },
+                    { "Language" , srcLangCode }
+                };
+                var data = await JsonSerializer.SerializeAsync(dic);
+
+                using var hc = new HttpClient();
+                var resp = await hc.PostAsync("http://localhost:10090/dango_ocr", data);
+                return Task.FromResult(resp.Content.ReadAsStringAsync()).Result;
             }
             catch (Exception ex)
             {
@@ -53,11 +63,11 @@ namespace OCRLibrary
         {
             if (lang == "jpn")
             {
-                srcLangCode = "ja-jp";
+                srcLangCode = "JAP";
             }
             else if (lang == "eng")
             {
-                srcLangCode = "en-us";
+                srcLangCode = "ENG";
             }
         }
 
