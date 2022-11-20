@@ -16,7 +16,9 @@ namespace OCRLibrary
         {
             try
             {
-                img.Save(Environment.CurrentDirectory + "\\jpgs\\" + DateTime.ToFileTime().ToString() + ".jpg", ImageFormat.Jpg);
+                var string filename = await Environment.CurrentDirectory + "\\jpgs\\" + DateTime.ToFileTime().ToString() + ".jpg";
+                img.Save(filename, ImageFormat.Jpg);
+
                 var res = await dangoOcr.RecognizeAsync(bitmap);
                 return Task.FromResult(res.Text).Result;
             }
