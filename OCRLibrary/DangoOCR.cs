@@ -20,8 +20,7 @@ namespace OCRLibrary
             try
             {
                 var filedir = Environment.CurrentDirectory;
-                using var datatime = new DateTime();
-                var filetime = dateTime.ToFileTime().ToString();
+                var filetime = DateTime.ToFileTime().ToString();
                 var filename = filedir + "\\jpgs\\" + filetime + ".jpg";
                 img.Save(filename, ImageFormat.Jpeg);
 
@@ -31,9 +30,9 @@ namespace OCRLibrary
                 };
                 var data = new FormUrlEncodedContent(dic);
 
-                using var hc = new HttpClient();
+                var hc = new HttpClient();
                 var resp = await hc.PostAsync("http://localhost:10090/dango_ocr", data);
-                return Task.FromResult(resp.Content.ReadAsStringAsync()).Result;
+                return Task.FromResult(resp.Content.ReadAsString()).Result;
             }
             catch (Exception ex)
             {
