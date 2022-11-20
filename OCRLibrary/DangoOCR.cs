@@ -20,9 +20,10 @@ namespace OCRLibrary
             try
             {
                 var filedir = Environment.CurrentDirectory;
-                var filetime = DateTime.ToFileTime().ToString();
+                using var datatime = new DateTime();
+                var filetime = dateTime.ToFileTime().ToString();
                 var filename = filedir + "\\jpgs\\" + filetime + ".jpg";
-                img.Save(filename, ImageFormat.Jpg);
+                img.Save(filename, ImageFormat.Jpeg);
 
                 var dic = new Dictionary<string, string>() {
                     { "ImagePath" , filename },
@@ -56,11 +57,6 @@ namespace OCRLibrary
             {
                 srcLangCode = "ENG";
             }
-        }
-
-        public IReadOnlyList<Language> GetSupportLang()
-        {
-            return OcrEngine.AvailableRecognizerLanguages;
         }
     }
 }
