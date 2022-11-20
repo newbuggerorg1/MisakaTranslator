@@ -5,8 +5,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
+using Windows.Globalization;
 
 namespace OCRLibrary
 {
@@ -28,7 +28,7 @@ namespace OCRLibrary
                     { "ImagePath" , filename },
                     { "Language" , srcLangCode }
                 };
-                var data = await JsonSerializer.SerializeAsync(dic);
+                var data = new FormUrlEncodedContent(dic);
 
                 using var hc = new HttpClient();
                 var resp = await hc.PostAsync("http://localhost:10090/dango_ocr", data);
