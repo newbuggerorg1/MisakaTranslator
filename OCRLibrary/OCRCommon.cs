@@ -14,7 +14,8 @@ namespace OCRLibrary
             "BaiduFanyiOCR",
             "TesseractOCR",
             "Tesseract5",
-            "WinRtOCR"
+            "WinRtOCR",
+            "DangoOCR"
         };
 
         public static List<string> GetOCRList()
@@ -35,6 +36,8 @@ namespace OCRLibrary
                     return new Tesseract5OCR();
                 case "WinRtOCR":
                     return new WinRtOCR();
+                case "DangoOCR":
+                    return new DangoOCR();
                 default:
                     return null;
             }
