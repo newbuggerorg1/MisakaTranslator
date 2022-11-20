@@ -19,13 +19,11 @@ namespace OCRLibrary
         {
             try
             {
-                /* using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
+                using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
                 img.Save(stream.AsStream(), ImageFormat.Bmp);
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
                 var res = await rtOcr.RecognizeAsync(bitmap);
-                return res.Text; */
-                var res = await rtOcr.RecognizeAsync(img);
                 return Task.FromResult(res.Text);
             }
             catch (Exception ex)
