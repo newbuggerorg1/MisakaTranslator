@@ -41,22 +41,7 @@ namespace OCRLibrary
 
         public override bool OCR_Init(string param1 = "", string param2 = "")
         {
-            try
-            {
-                Language lang = new(srcLangCode);
-                dangoOcr = OcrEngine.TryCreateFromLanguage(lang);
-                if (dangoOcr == null)
-                {
-                    System.Windows.MessageBox.Show($"请在Windows设置App中添加OCR组件。{System.Environment.NewLine}Please install OCR component in Windows Settings App.");
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                errorInfo = ex.Message;
-                return false;
-            }
+            return true;
         }
 
         public override void SetOCRSourceLang(string lang)
