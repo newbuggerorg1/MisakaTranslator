@@ -137,6 +137,28 @@ namespace MisakaTranslator_WPF
                     HandyControl.Controls.Growl.ErrorGlobal($"WinRtOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
+            else if (Common.appSettings.OCRsource == "DangoOCR")
+            {
+                ocr = new DangoOCR();
+                if (ocr.OCR_Init("", "") != false)
+                {
+                    ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
+                    res = await ocr.OCRProcessAsync(img);
+
+                    if (res != null)
+                    {
+                        sourceText.Text = res;
+                    }
+                    else
+                    {
+                        HandyControl.Controls.Growl.WarningGlobal($"DangoOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                    }
+                }
+                else
+                {
+                    HandyControl.Controls.Growl.ErrorGlobal($"DangoOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                }
+            }
 
             if (res == null)
             {
