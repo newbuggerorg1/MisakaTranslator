@@ -24,7 +24,7 @@ namespace OCRLibrary
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
                 var res = await rtOcr.RecognizeAsync(bitmap);
-                return Task.FromResult(res.Text);
+                return Task.FromResult(res.Text).Result;
             }
             catch (Exception ex)
             {
