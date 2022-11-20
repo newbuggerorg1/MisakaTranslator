@@ -17,11 +17,13 @@ namespace OCRLibrary
         {
             try
             {
-                using (var page = TessOCR.Process(img))
-                {
-                    string res = page.GetText();
-                    return Task.FromResult(res);
-                }
+                /* using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
+                img.Save(stream.AsStream(), ImageFormat.Png);
+                var decoder = await BitmapDecoder.CreateAsync(stream);
+                var bitmap = await decoder.GetSoftwareBitmapAsync();
+                var res = await TessOCR.Process(bitmap); */
+                var res = await TessOCR.Process(img);
+                return Task.FromResult(res.GetText()).Result;
             }
             catch (Exception ex)
             {
