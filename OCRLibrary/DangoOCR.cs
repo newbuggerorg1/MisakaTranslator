@@ -20,8 +20,8 @@ namespace OCRLibrary
             try
             {
                 var filedir = Environment.CurrentDirectory;
-                var filetime = new DateTime.ToFileTime();
-                var filename = filedir + "\\jpgs\\" + filetime.ToString() + ".jpg";
+                var filetime = DateTime.Now.ToFileTime().ToString();
+                var filename = filedir + "\\jpgs\\" + filetime + ".jpg";
                 img.Save(filename, ImageFormat.Jpeg);
 
                 var dic = new Dictionary<string, string>() {
