@@ -4,8 +4,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Threading.Tasks;
-using Windows.Globalization;
-using Windows.Graphics.Imaging;
 
 namespace OCRLibrary
 {
@@ -18,10 +16,7 @@ namespace OCRLibrary
         {
             try
             {
-                using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
-                img.Save(stream.AsStream(), ImageFormat.Bmp);
-                var decoder = await BitmapDecoder.CreateAsync(stream);
-                var bitmap = await decoder.GetSoftwareBitmapAsync();
+                img.Save(Environment.CurrentDirectory + "\\jpgs\\" + DateTime.ToFileTime().ToString() + ".jpg", ImageFormat.Jpg);
                 var res = await dangoOcr.RecognizeAsync(bitmap);
                 return Task.FromResult(res.Text).Result;
             }
