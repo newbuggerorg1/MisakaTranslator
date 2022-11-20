@@ -22,8 +22,8 @@ namespace OCRLibrary
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
                 var res = await TessOCR.Process(bitmap); */
-                var res = await TessOCR.Process(img);
-                return Task.FromResult(res.GetText()).Result;
+                var res = TessOCR.Process(img);
+                return Task.FromResult(res.GetText());
             }
             catch (Exception ex)
             {
