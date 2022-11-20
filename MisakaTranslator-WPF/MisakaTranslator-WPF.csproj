@@ -505,6 +505,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
     <PackageReference Include="Config.Net">
       <Version>4.19.0</Version>
     </PackageReference>
