@@ -13,16 +13,11 @@ namespace OCRLibrary
         public string srcLangCode;//OCR识别语言 jpn=日语 eng=英语
         private TesseractEngine TessOCR;
 
-        public override async Task<string> OCRProcessAsync(Bitmap img)
+        public override Task<string> OCRProcessAsync(Bitmap img)
         {
             try
             {
-                /* using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
-                img.Save(stream.AsStream(), ImageFormat.Png);
-                var decoder = await BitmapDecoder.CreateAsync(stream);
-                var bitmap = await decoder.GetSoftwareBitmapAsync();
-                var res = await TessOCR.Process(bitmap); */
-                var res = await TessOCR.Process(img);
+                var res = TessOCR.Process(img);
                 return Task.FromResult(res.GetText());
             }
             catch (Exception ex)
