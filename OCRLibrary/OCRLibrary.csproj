@@ -63,6 +63,7 @@
     <Compile Include="Tesseract5OCR.cs" />
     <Compile Include="TesseractOCR.cs" />
     <Compile Include="WinRtOCR.cs" />
+    <Compile Include="DangoOCR.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.22000.196" />
