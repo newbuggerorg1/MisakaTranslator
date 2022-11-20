@@ -17,7 +17,7 @@ namespace OCRLibrary
         {
             try
             {
-                var res = await TessOCR.Process(img);
+                var res = TessOCR.Process(img);
                 return Task.FromResult(res.GetText()).Result;
             }
             catch (Exception ex)
