@@ -23,8 +23,13 @@ namespace OCRLibrary
                 img.Save(stream.AsStream(), ImageFormat.Bmp);
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
-                var res = await rtOcr.RecognizeAsync(bitmap);
-                return Task.FromResult(res.Text).Result;
+                var recog = await rtOcr.RecognizeAsync(bitmap);
+                var chara = recog.Text;
+                if (chara == "")
+                {
+                    chara = "null";
+                }
+                return Task.FromResult(chara).Result;
             }
             catch (Exception ex)
             {
