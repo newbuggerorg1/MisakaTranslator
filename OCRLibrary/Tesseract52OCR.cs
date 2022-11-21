@@ -21,16 +21,16 @@ namespace OCRLibrary
                 var filedir = Environment.CurrentDirectory;
                 var filetime = DateTime.Now.ToFileTime().ToString();
                 var filename = filedir + "\\bmps\\" + filetime + ".bmp";
-                img.Save(filename, ImageFormat.Bmp);
+                img.Save(filename, System.Drawing.Imaging.ImageFormat.Bmp);
                 
                 var fileimg = TesseractOCR.Pix.Image.LoadFromFile(filename);
                 var chara = TesseractOCREngine.Process(fileimg);
-                return Task.FromResult(chara.Text).Result;
+                return Task.FromResult(chara.Text);
             }
             catch (Exception ex)
             {
                 errorInfo = ex.Message;
-                return Task.FromResult<string>(null).Result;
+                return Task.FromResult<string>(null);
             }
             
         }
