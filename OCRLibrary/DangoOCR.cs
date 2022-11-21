@@ -30,13 +30,15 @@ namespace OCRLibrary
                     { "ImagePath" , filename },
                     { "Language" , srcLangCode }
                 });
-                var data = new FormUrlEncodedContent(jstr);
+                var content = new StringContent(jstr, Encoding.UTF8, "application/json");
 
                 var hc = new HttpClient();
-                var resp = await hc.PostAsync("http://192.168.244.16:6666/ocr/api", data);
-                var content = await resp.Content.ReadAsStringAsync();
+                hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var resp = await hc.PostAsync("http://192.168.244.16:6666/ocr/api", content);
+                var data = await resp.Content.ReadAsStringAsync();
                 // var char = new ;
-                return Task.FromResult(content).Result;
+                return Task.FromResult(data).Result;
             }
             catch (Exception ex)
             {
