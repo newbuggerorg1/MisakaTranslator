@@ -14,7 +14,7 @@ namespace OCRLibrary
         private Language srcLangCode;  //OCR识别语言 jpn=日语 eng=英语
         private Engine TesseractOCREngine;
 
-        public override async Task<string> OCRProcessAsync(Bitmap img)
+        public override Task<string> OCRProcessAsync(Bitmap img)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace OCRLibrary
                 var filename = filedir + "\\bmps\\" + filetime + ".bmp";
                 img.Save(filename, ImageFormat.Bmp);
                 
-                var fileimg = Pix.Image.LoadFromFile(filename);
+                var fileimg = TesseractOCR.Pix.Image.LoadFromFile(filename);
                 var chara = TesseractOCREngine.Process(fileimg);
                 return Task.FromResult(chara.Text).Result;
             }
