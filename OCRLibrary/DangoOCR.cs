@@ -24,7 +24,7 @@ namespace OCRLibrary
             {
                 var filedir = Environment.CurrentDirectory;
                 var filetime = DateTime.Now.ToFileTime().ToString();
-                var filename = string.Join(filedir, "\\jpgs\\", filetime, ".jpg");
+                var filename = filedir + "\\jpgs\\" + filetime + ".jpg";
                 img.Save(filename, ImageFormat.Jpeg);
 
                 var jstr = JsonConvert.SerializeObject(new Dictionary<string, string>()
