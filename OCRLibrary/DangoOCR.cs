@@ -22,14 +22,15 @@ namespace OCRLibrary
             {
                 var filedir = Environment.CurrentDirectory;
                 var filetime = DateTime.Now.ToFileTime().ToString();
-                var filename = filedir + "\\jpgs\\" + filetime + ".jpg";
+                var filename = string.Join(filedir, "\\jpgs\\", filetime, ".jpg");
                 img.Save(filename, ImageFormat.Jpeg);
 
-                var data = JsonConvert.SerializeObject(new Dictionary<string, string>()
+                var jstr = JsonConvert.SerializeObject(new Dictionary<string, string>()
                 {
                     { "ImagePath" , filename },
                     { "Language" , srcLangCode }
                 });
+                var data = new FormUrlEncodedContent(jstr);
 
                 var hc = new HttpClient();
                 var resp = await hc.PostAsync("http://192.168.244.16:6666/ocr/api", data);
