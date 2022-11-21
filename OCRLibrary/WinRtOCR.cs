@@ -15,12 +15,13 @@ namespace OCRLibrary
         public string srcLangCode;
         private OcrEngine rtOcr;
 
-        public override async Task<string> OCRProcessAsync(Bitmap img)
+        public override Task<string> OCRProcessAsync(Bitmap img)
         {
             try
             {
-                using var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
+                var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
                 img.Save(stream.AsStream(), ImageFormat.Bmp);
+
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
                 var recog = await rtOcr.RecognizeAsync(bitmap);
@@ -29,12 +30,12 @@ namespace OCRLibrary
                 {
                     chara = "null";
                 }
-                return Task.FromResult(chara).Result;
+                return Task.FromResult(chara);
             }
             catch (Exception ex)
             {
                 errorInfo = ex.Message;
-                return string.Empty;
+                return Task.FromResult(string.Empty);
             }
 
         }
