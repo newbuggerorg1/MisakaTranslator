@@ -37,7 +37,6 @@ namespace OCRLibrary
                 errorInfo = ex.Message;
                 return Task.FromResult(string.Empty);
             }
-            
         }
 
         public override bool OCR_Init(string param1 = "", string param2 = "")
