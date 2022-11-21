@@ -4,21 +4,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tesseract;
+using Windows.Globalization;
+using TesseractOCR;
 
 namespace OCRLibrary
 {
-    public class TesseractOCR : OCREngine
+    public class Tesseract52OCR : OCREngine
     {
-        public string srcLangCode;//OCR识别语言 jpn=日语 eng=英语
-        private TesseractEngine TessOCR;
+        public Language srcLangCode;  //OCR识别语言 jpn=日语 eng=英语
+        private TesseractOCR.Engine TesseractOCREngine;
 
         public override async Task<string> OCRProcessAsync(Bitmap img)
         {
             try
             {
-                var res = TessOCR.Process(img);
-                return Task.FromResult(res.GetText()).Result;
+                var chara = TesseractOCREngine.Process(img);
+                return Task.FromResult(chara.Text).Result;
             }
             catch (Exception ex)
             {
@@ -32,7 +33,7 @@ namespace OCRLibrary
         {
             try
             {
-                TessOCR = new TesseractEngine(Environment.CurrentDirectory + "\\tessdata", srcLangCode, EngineMode.Default);
+                TesseractOCREngine = new TesseractOCR.Engine(Environment.CurrentDirectory + "\\tessdata", srcLangCode, EngineMode.Default);
                 return true;
             }
             catch(Exception ex)
@@ -43,7 +44,14 @@ namespace OCRLibrary
         }
         public override void SetOCRSourceLang(string lang)
         {
-            srcLangCode = lang;
+            if (lang == "jpn")
+            {
+                srcLangCode = Language.English;
+            }
+            else if (lang == "eng")
+            {
+                srcLangCode = Language.Japanese;
+            }
         }
     }
 }
