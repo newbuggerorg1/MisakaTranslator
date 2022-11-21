@@ -18,7 +18,7 @@ namespace OCRLibrary
         public string srcLangCode;
         // private OcrEngine dangoOcr;
 
-        public override Task<string> OCRProcessAsync(Bitmap img)
+        public override async Task<string> OCRProcessAsync(Bitmap img)
         {
             try
             {
@@ -37,8 +37,8 @@ namespace OCRLibrary
                 var hc = new HttpClient();
                 hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var resp = hc.PostAsync("http://localhost:6666/ocr/api", req);
-                var content = resp.Content.ReadAsStringAsync();
+                var resp = await hc.PostAsync("http://localhost:6666/ocr/api", req);
+                var content = await resp.Content.ReadAsStringAsync();
                 var jc = JsonConvert.DeserializeObject<JsonSuccess>(content);
                 var chara = "null";
                 for (int i = 0; i < jc.Data.Count; i++)
