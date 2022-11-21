@@ -18,7 +18,13 @@ namespace OCRLibrary
         {
             try
             {
-                var chara = TesseractOCREngine.Process(img);
+                var filedir = Environment.CurrentDirectory;
+                var filetime = DateTime.Now.ToFileTime().ToString();
+                var filename = filedir + "\\bmps\\" + filetime + ".bmp";
+                img.Save(filename, ImageFormat.Bmp);
+                
+                var fileimg = Pix.Image.LoadFromFile(filename);
+                var chara = TesseractOCREngine.Process(fileimg);
                 return Task.FromResult(chara.Text).Result;
             }
             catch (Exception ex)
