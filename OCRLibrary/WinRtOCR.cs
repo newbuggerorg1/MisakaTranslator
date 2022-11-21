@@ -30,12 +30,12 @@ namespace OCRLibrary
                 {
                     chara = "null";
                 }
-                return Task.FromResult(chara);
+                return Task.FromResult(chara).Result;
             }
             catch (Exception ex)
             {
                 errorInfo = ex.Message;
-                return Task.FromResult(string.Empty);
+                return Task.FromResult(string.Empty).Result;
             }
         }
 
