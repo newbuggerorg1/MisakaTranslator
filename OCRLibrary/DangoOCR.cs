@@ -45,7 +45,7 @@ namespace OCRLibrary
                 {
                     chara += jc.Data[i].Words + " ";
                 }
-                return Task.FromResult(content).Result;
+                return Task.FromResult(chara + ";;;" + jc.RequestId).Result;
             }
             catch (Exception ex)
             {
