@@ -35,7 +35,7 @@ namespace OCRLibrary
             catch (Exception ex)
             {
                 errorInfo = ex.Message;
-                return Task.FromResult<string>(null);
+                return Task.FromResult(string.Empty);
             }
             
         }
