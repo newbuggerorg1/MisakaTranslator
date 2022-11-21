@@ -15,7 +15,7 @@ namespace OCRLibrary
         public string srcLangCode;
         private OcrEngine rtOcr;
 
-        public override Task<string> OCRProcessAsync(Bitmap img)
+        public override async Task<string> OCRProcessAsync(Bitmap img)
         {
             try
             {
