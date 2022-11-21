@@ -24,12 +24,13 @@ namespace OCRLibrary
                 img.Save(filename, System.Drawing.Imaging.ImageFormat.Bmp);
                 
                 var fileimg = TesseractOCR.Pix.Image.LoadFromFile(filename);
-                var chara = TesseractOCREngine.Process(fileimg);
+                var recog = TesseractOCREngine.Process(fileimg);
+                var chara = recog.Text;
                 if (chara == "")
                 {
                     chara = "null";
                 }
-                return Task.FromResult(chara.Text);
+                return Task.FromResult(chara);
             }
             catch (Exception ex)
             {
