@@ -45,7 +45,7 @@ namespace OCRLibrary
                 {
                     if (chara == "null")
                     {
-                        chara = ""
+                        chara = "";
                     }
                     chara += jc.Data[i].Words + " ";
                 }
