@@ -14,3 +14,8 @@ jobs:
     - uses: actions/upload-artifact@main
       with:
         path: MisakaTranslator-WPF/bin
+    - uses: actions/upload-artifact@main
+      with:
+        path: |
+          MisakaTranslator-WPF/bin/OCRLibrary.dll
+          MisakaTranslator-WPF/bin/OCRLibrary.pdb
