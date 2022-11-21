@@ -32,15 +32,20 @@ namespace OCRLibrary
                     { "ImagePath" , filename },
                     { "Language" , srcLangCode }
                 });
-                var content = new StringContent(jstr, Encoding.UTF8, "application/json");
+                var req = new StringContent(jstr, Encoding.UTF8, "application/json");
 
                 var hc = new HttpClient();
                 hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var resp = await hc.PostAsync("http://localhost:6666/ocr/api", content);
-                var data = await resp.Content.ReadAsStringAsync();
-                // var char = new ;
-                return Task.FromResult(data).Result;
+                var resp = await hc.PostAsync("http://localhost:6666/ocr/api", req);
+                var content = await resp.Content.ReadAsStringAsync();
+                var jc = JsonConvert.DeserializeObject<JsonSuccess>(content);
+                var char = "";
+                for (int i = 0; i < jc.Data.Count; i++)
+                {
+                    char += jc.Data[i].Words + " ";
+                }
+                return Task.FromResult(char).Result;
             }
             catch (Exception ex)
             {
@@ -65,5 +70,27 @@ namespace OCRLibrary
                 srcLangCode = "ENG";
             }
         }
+    }
+
+    // https://github.com/PantsuDango/DangoOCR/blob/master/app.py#L31
+    public class JsonSuccess
+    {
+        public int Code { get; set; }
+        public string Message { get; set; }
+        public string RequestId { get; set; }
+        public List<Datam> Data { get; set; }
+    }
+    public class Datam
+    {
+        public Coordinatem Coordinate { get; set; }
+        public string Words { get; set; }
+        public float Score { get; set; }
+    }
+    public class Coordinatem
+    {
+        public string UpperLeft { get; set; }
+        public string UpperRight { get; set; }
+        public string LowerRight { get; set; }
+        public string LowerLeft { get; set; }
     }
 }
