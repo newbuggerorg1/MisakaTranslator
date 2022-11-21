@@ -53,11 +53,11 @@ namespace OCRLibrary
         {
             if (lang == "jpn")
             {
-                srcLangCode = Language.English;
+                srcLangCode = Language.Japanese;
             }
             else if (lang == "eng")
             {
-                srcLangCode = Language.Japanese;
+                srcLangCode = Language.English;
             }
         }
     }
