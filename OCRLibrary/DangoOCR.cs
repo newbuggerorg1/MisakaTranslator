@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,15 +25,16 @@ namespace OCRLibrary
                 var filename = filedir + "\\jpgs\\" + filetime + ".jpg";
                 img.Save(filename, ImageFormat.Jpeg);
 
-                var dic = new Dictionary<string, string>() {
+                var data = JsonConvert.SerializeObject(new Dictionary<string, string>()
+                {
                     { "ImagePath" , filename },
                     { "Language" , srcLangCode }
-                };
-                var data = new FormUrlEncodedContent(dic);
+                });
 
                 var hc = new HttpClient();
                 var resp = await hc.PostAsync("http://192.168.244.16:6666/ocr/api", data);
                 var content = await resp.Content.ReadAsStringAsync();
+                // var char = new ;
                 return Task.FromResult(content).Result;
             }
             catch (Exception ex)
