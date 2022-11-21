@@ -33,9 +33,9 @@ namespace MisakaTranslator_WPF
         {
             OCREngine ocr;
             string res = null;
-            if (Common.appSettings.OCRsource == "TesseractOCR")
+            if (Common.appSettings.OCRsource == "Tesseract52OCR")
             {
-                ocr = new TesseractOCR();
+                ocr = new Tesseract52OCR();
                 if (ocr.OCR_Init("", "") != false)
                 {
                     ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
@@ -47,7 +47,7 @@ namespace MisakaTranslator_WPF
                     }
                     else
                     {
-                        HandyControl.Controls.Growl.WarningGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                        HandyControl.Controls.Growl.WarningGlobal($"Tesseract52OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                     }
                 }
                 else
