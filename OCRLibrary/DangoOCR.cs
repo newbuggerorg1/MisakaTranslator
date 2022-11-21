@@ -37,7 +37,7 @@ namespace OCRLibrary
                 var hc = new HttpClient();
                 hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var resp = await hc.PostAsync("http://192.168.244.16:6666/ocr/api", content);
+                var resp = await hc.PostAsync("http://localhost:6666/ocr/api", content);
                 var data = await resp.Content.ReadAsStringAsync();
                 // var char = new ;
                 return Task.FromResult(data).Result;
