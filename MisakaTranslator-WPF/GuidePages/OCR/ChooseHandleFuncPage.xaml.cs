@@ -54,7 +54,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
         private async void OCRTestBtn_Click(object sender, RoutedEventArgs e)
         {
             
-            if (Common.appSettings.OCRsource == "TesseractOCR")
+            if (Common.appSettings.OCRsource == "Tesseract52OCR")
             {
                 if (Common.ocr.OCR_Init("", "") != false)
                 {
@@ -65,12 +65,12 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                         HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
                     }
                     else {
-                        HandyControl.Controls.Growl.Error($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
+                        HandyControl.Controls.Growl.Error($"Tesseract52OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
                     }
                 }
                 else
                 {
-                    HandyControl.Controls.Growl.Error($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
+                    HandyControl.Controls.Growl.Error($"Tesseract52OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
                 }
             }
             else if (Common.appSettings.OCRsource == "BaiduOCR")
