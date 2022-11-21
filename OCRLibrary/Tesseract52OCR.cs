@@ -25,6 +25,10 @@ namespace OCRLibrary
                 
                 var fileimg = TesseractOCR.Pix.Image.LoadFromFile(filename);
                 var chara = TesseractOCREngine.Process(fileimg);
+                if (chara == "")
+                {
+                    chara = "null"
+                }
                 return Task.FromResult(chara.Text);
             }
             catch (Exception ex)
