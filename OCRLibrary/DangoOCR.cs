@@ -40,12 +40,12 @@ namespace OCRLibrary
                 var resp = await hc.PostAsync("http://localhost:6666/ocr/api", req);
                 var content = await resp.Content.ReadAsStringAsync();
                 var jc = JsonConvert.DeserializeObject<JsonSuccess>(content);
-                var char = "";
+                var chara = "";
                 for (int i = 0; i < jc.Data.Count; i++)
                 {
-                    char += jc.Data[i].Words + " ";
+                    chara += jc.Data[i].Words + " ";
                 }
-                return Task.FromResult(char).Result;
+                return Task.FromResult(chara).Result;
             }
             catch (Exception ex)
             {
