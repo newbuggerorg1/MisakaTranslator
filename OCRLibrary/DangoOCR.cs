@@ -31,7 +31,7 @@ namespace OCRLibrary
                 var data = new FormUrlEncodedContent(dic);
 
                 var hc = new HttpClient();
-                var resp = await hc.PostAsync("http://localhost:10090/dango_ocr", data);
+                var resp = await hc.PostAsync("http://192.168.244.16:6666/ocr/api", data);
                 var content = await resp.Content.ReadAsStringAsync();
                 return Task.FromResult(content).Result;
             }
