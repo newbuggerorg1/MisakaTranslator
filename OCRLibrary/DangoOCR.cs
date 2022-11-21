@@ -18,7 +18,7 @@ namespace OCRLibrary
         public string srcLangCode;
         // private OcrEngine dangoOcr;
 
-        public override async Task<string> OCRProcessAsync(Bitmap img)
+        public override Task<string> OCRProcessAsync(Bitmap img)
         {
             try
             {
@@ -49,12 +49,12 @@ namespace OCRLibrary
                     }
                     chara += jc.Data[i].Words + " ";
                 }
-                return Task.FromResult(chara).Result;
+                return Task.FromResult(chara);
             }
             catch (Exception ex)
             {
                 errorInfo = ex.Message;
-                return string.Empty;
+                return Task.FromResult(string.Empty);
             }
         }
 
