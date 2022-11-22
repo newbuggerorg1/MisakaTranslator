@@ -1,4 +1,3 @@
-using TranslatorLibrary;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -61,6 +60,7 @@ namespace OCRLibrary
 
         private string srcLangCode;
         // private OcrEngine dangoOcr;
+        private HttpClient hc;
 
         public override async Task<string> OCRProcessAsync(Bitmap img)
         {
@@ -77,10 +77,6 @@ namespace OCRLibrary
                     { "Language" , srcLangCode }
                 });
                 var req = new StringContent(jstr, Encoding.UTF8, "application/json");
-
-                // var hc = new HttpClient();
-                // hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var hc = CommonFunction.GetHttpClient();
 
                 var resp = await hc.PostAsync("http://localhost:6666/ocr/api", req);
                 var content = await resp.Content.ReadAsStringAsync();
@@ -106,6 +102,9 @@ namespace OCRLibrary
 
         public override bool OCR_Init(string param1 = "", string param2 = "")
         {
+            hc = new HttpClient();
+            hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
             return true;
         }
 
