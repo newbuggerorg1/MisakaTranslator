@@ -54,6 +54,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TranslatorLibrary\TranslatorLibrary.csproj">
+      <Project>{bbebcf78-7bbb-4b19-99ee-87ddea4f3793}</Project>
+      <Name>TranslatorLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="AlapiTranslator.cs" />
     <Compile Include="ArtificialTranslator.cs" />
     <Compile Include="BaiduTranslator.cs" />
