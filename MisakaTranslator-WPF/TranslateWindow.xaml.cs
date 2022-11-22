@@ -120,12 +120,13 @@ namespace MisakaTranslator_WPF
 
         }
 
+        /// unused
         /// <summary>
         /// 键盘鼠标钩子初始化
         /// </summary>
         private void MouseKeyboardHook_Init()
         {
-            if (hook == null)
+            /* if (hook == null)
             {
                 hook = new KeyboardMouseHook();
                 bool r = false;
@@ -150,9 +151,7 @@ namespace MisakaTranslator_WPF
                 {
                     Growl.ErrorGlobal(Application.Current.Resources["Hook_Error_Hint"].ToString());
                 }
-            }
-
-
+            } */
         }
 
         /// <summary>
