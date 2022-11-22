@@ -31,10 +31,10 @@ namespace OCRLibrary
         }
         private class Coordinatem
         {
-            public string UpperLeft { get; set; }
-            public string UpperRight { get; set; }
-            public string LowerRight { get; set; }
-            public string LowerLeft { get; set; }
+            public List<float> UpperLeft { get; set; }
+            public List<float> UpperRight { get; set; }
+            public List<float> LowerRight { get; set; }
+            public List<float> LowerLeft { get; set; }
         }
 
         private string srcLangCode;
@@ -61,7 +61,7 @@ namespace OCRLibrary
 
                 var resp = await hc.PostAsync("http://localhost:6666/ocr/api", req);
                 var content = await resp.Content.ReadAsStringAsync();
-                /* var jc = JsonConvert.DeserializeObject<JsonSuccess>(content);
+                var jc = JsonConvert.DeserializeObject<JsonSuccess>(content);
                 var chara = "null";
                 for (int i = 0; i < jc.Data.Count; i++)
                 {
@@ -71,8 +71,8 @@ namespace OCRLibrary
                     }
                     chara += jc.Data[i].Words + " ";
                 }
-                return Task.FromResult(chara).Result; */
-                return Task.FromResult(content).Result;
+                return Task.FromResult(chara).Result;
+                // return Task.FromResult(content).Result;
             }
             catch (Exception ex)
             {
