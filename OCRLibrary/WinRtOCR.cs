@@ -13,7 +13,7 @@ namespace OCRLibrary
     public class WinRtOCR : OCREngine
     {
         private Language srcLangCode;
-        private OcrEngine rtOcr;
+        private OcrEngine rtOcrEngine;
 
         public override async Task<string> OCRProcessAsync(Bitmap img)
         {
@@ -23,7 +23,7 @@ namespace OCRLibrary
                 img.Save(stream.AsStream(), ImageFormat.Bmp);
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
-                var recog = await rtOcr.RecognizeAsync(bitmap);
+                var recog = await rtOcrEngine.RecognizeAsync(bitmap);
                 var chara = recog.Text;
                 if (chara == "")
                 {
@@ -42,7 +42,7 @@ namespace OCRLibrary
         {
             try
             {
-                rtOcr = OcrEngine.TryCreateFromLanguage(srcLangCode);
+                rtOcrEngine = OcrEngine.TryCreateFromLanguage(srcLangCode);
                 if (rtOcr == null)
                 {
                     System.Windows.MessageBox.Show($"请在Windows设置App中添加OCR组件。{System.Environment.NewLine}Please install OCR component in Windows Settings App.");
