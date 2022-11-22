@@ -15,7 +15,7 @@ namespace TranslatorLibrary;
 /// <summary>
 /// Represents the Bing Translator.
 /// </summary>
-public sealed class GMicrosoftCNTranslator : ITranslator, IDisposable
+private sealed class BingTranslator : ITranslator, IDisposable
 {
     internal const string HostUrl = "https://www.bing.com";
     private static readonly Uri _translatorPageUri = new($"{HostUrl}/translator");
@@ -29,6 +29,23 @@ public sealed class GMicrosoftCNTranslator : ITranslator, IDisposable
     private CachedObject<BingCredentials> _cachedCredentials;
     private readonly SemaphoreSlim _credentialsSemaphore = new(1, 1);
     private bool _disposed;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BingTranslator"/> class.
+    /// </summary>
+    public BingTranslator()
+        : this(_httpClient)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BingTranslator"/> class with the provided <see cref="HttpClient"/> instance.
+    /// </summary>
+    /// <param name="httpClient">An <see cref="HttpClient"/> instance.</param>
+    public BingTranslator(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
 
     /// <summary>
     /// Translates a text using Bing Translator.
