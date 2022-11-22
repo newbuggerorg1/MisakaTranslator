@@ -62,6 +62,7 @@
     <Compile Include="CommonFunction.cs" />
     <Compile Include="DreyeTranslator.cs" />
     <Compile Include="GoogleCNTranslator.cs" />
+    <Compile Include="MicrosoftCNTranslator.cs" />
     <Compile Include="ITranslator.cs" />
     <Compile Include="JBeijingTranslator.cs" />
     <Compile Include="KingsoftFastAITTranslator.cs" />
