@@ -36,6 +36,7 @@ namespace MisakaTranslator_WPF
         private ArtificialTransHelper _artificialTransHelper;
 
         private Timer ocrTimer;  // ocr timing-task
+        private string ocrLastChara;  // check the last text ocr recognized, avoiding the duplicated query
 
         private MecabHelper _mecabHelper;
         private BeforeTransHandle _beforeTransHandle;
@@ -313,13 +314,23 @@ namespace MisakaTranslator_WPF
             IsOCRingFlag = true;
 
             string srcText = null;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 // 重新OCR不需要等待
                 if (!isRenew)
                     await Task.Delay(Common.UsingOCRDelay);
 
                 srcText = await Common.ocr.OCRProcessAsync();
+
+                // avoiding the duplicated translation query
+                if (ocrLastChara == srcText)
+                {
+                    return;
+                }
+                else
+                {
+                    ocrLastChara = srcText;
+                }
 
                 if (!string.IsNullOrEmpty(srcText))
                     break;
