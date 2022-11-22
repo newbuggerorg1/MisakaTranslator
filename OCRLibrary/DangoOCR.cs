@@ -27,17 +27,13 @@ namespace OCRLibrary
                 var nheight = img.Height + cnwidth;
                 var bdcolor = Color.Black;
 
-                using (var nimg = new Bitmap(nwidth, nheight))
-                {
-                    using (var g = Graphics.FromImage(nimg))
-                    {
-                        var rec = new Rectangle(cwidth, cwidth, nwidth - cwidth, nheight - cwidth);
-                        g.DrawImage(img, rec, 0, 0, img.Width, img.Height, GraphicsUnit.Pixel);
-                        g.DrawRectangle(new Pen(bdcolor, cnwidth), 0, 0, nwidth, nheight);
-                        g.Dispose();
-                        return nimg;
-                    }
-                }
+                var nimg = new Bitmap(nwidth, nheight);
+                var g = Graphics.FromImage(nimg);
+                var rec = new Rectangle(cwidth, cwidth, nwidth - cwidth, nheight - cwidth);
+                g.DrawImage(img, rec, 0, 0, img.Width, img.Height, GraphicsUnit.Pixel);
+                g.DrawRectangle(new Pen(bdcolor, cnwidth), 0, 0, nwidth, nheight);
+                g.Dispose();
+                return nimg;
             }
         }
 
