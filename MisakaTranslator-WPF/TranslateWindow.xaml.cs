@@ -154,7 +154,12 @@ namespace MisakaTranslator_WPF
             } */
 
             /// register a timing-task for auto ocr, instead
-            using var nTimer = new Timer(TranslateEventOcr, null, 0, Common.UsingOCRDelay);
+            var nTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
+        }
+        
+        private async void registerTimingOCR(object obj)
+        {
+            await TranslateEventOcr();
         }
 
         /// <summary>
