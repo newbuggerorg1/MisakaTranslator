@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace TranslatorLibrary
 {
+    /// TODO
     public class MicrosoftCNTranslator : ITranslator
     {
         private string errorInfo;//错误信息
@@ -44,7 +45,7 @@ namespace TranslatorLibrary
 
             string microsoftTransUrl = "https://bing.com/translate_a/single?client=gtx&dt=t&sl=" + srcLang + "&tl=" + desLang + "&tk=" + tk + "&q=" + HttpUtility.UrlEncode(sourceText);
 
-            var hc = CommonFunction.GetHttpClient();
+            var hc = CommonFunction.GetHttpProxiedClient();
 
             try
             {
