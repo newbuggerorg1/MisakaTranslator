@@ -25,9 +25,9 @@ namespace TranslatorLibrary
         public async Task<string> TranslateAsync(string sourceText, string desLang, string srcLang)
         {
             if (desLang == "zh")
-                desLang = "zh-cn";
+                desLang = "zh";
             if (srcLang == "zh")
-                srcLang = "zh-cn";
+                srcLang = "zh";
 
             if (desLang == "jp")
                 desLang = "ja";
