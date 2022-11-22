@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Threading.Timer;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -152,6 +153,11 @@ namespace MisakaTranslator_WPF
                     Growl.ErrorGlobal(Application.Current.Resources["Hook_Error_Hint"].ToString());
                 }
             } */
+
+            /// register a timing-task for auto ocr, instead
+            using var nTimer = new Timer(TranslateEventOcr, null, 0, Common.UsingOCRDelay)
+            {
+            }
         }
 
         /// <summary>
