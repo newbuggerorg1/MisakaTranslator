@@ -157,9 +157,9 @@ namespace MisakaTranslator_WPF
             var nTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
         }
         
-        private async void registerTimingOCR(object obj)
+        private void registerTimingOCR(object obj)
         {
-            await TranslateEventOcr();
+            TranslateEventOcr();
         }
 
         /// <summary>
