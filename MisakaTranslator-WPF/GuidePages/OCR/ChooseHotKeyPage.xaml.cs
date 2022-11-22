@@ -83,11 +83,12 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (HotKeyTag.Text == "")
+            /* if (HotKeyTag.Text == "")
             {
-                // HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseHotKeyPage_NoKeyHint"].ToString());
+                HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseHotKeyPage_NoKeyHint"].ToString());
             }
-            else if (!int.TryParse(OCRDelayBox.Text, out int delay) || delay <= 0)
+            else */
+            if (!int.TryParse(OCRDelayBox.Text, out int delay) || delay <= 0)
             {
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseHotKeyPage_TooLessDelayHint"].ToString());
             }
