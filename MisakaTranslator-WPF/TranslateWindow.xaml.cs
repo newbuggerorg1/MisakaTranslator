@@ -36,6 +36,7 @@ namespace MisakaTranslator_WPF
         private ArtificialTransHelper _artificialTransHelper;
 
         private Timer ocrTimer;  // ocr timing-task
+        private bool ocrTimerPause;  // ocr timing-task pause flag
         private string ocrLastChara;  // check the last text ocr recognized, avoiding the duplicated query
 
         private MecabHelper _mecabHelper;
@@ -157,12 +158,16 @@ namespace MisakaTranslator_WPF
             }
 
             /// register a timing-task for auto ocr, instead
+            ocrTimerPause = true
             ocrTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
         }
         
         private void registerTimingOCR(object obj)
         {
-            TranslateEventOcr();
+            if (ocrTimerPause)
+            {
+                TranslateEventOcr();
+            }
         }
 
         /// <summary>
@@ -743,7 +748,7 @@ namespace MisakaTranslator_WPF
                 {
                     if (hook != null)
                     {
-                        ocrTimer.Start();
+                        ocrTimerPause = true;
                     }
 
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
@@ -752,7 +757,7 @@ namespace MisakaTranslator_WPF
                 {
                     if (hook != null)
                     {
-                        ocrTimer.Stop();
+                        ocrTimerPause = false;
                     }
 
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
@@ -784,7 +789,7 @@ namespace MisakaTranslator_WPF
 
             if (hook != null)
             {
-                ocrTimer.Stop();
+                ocrTimerPause = false;
                 ocrTimer.Dispose();
 
                 hook.Stop();
