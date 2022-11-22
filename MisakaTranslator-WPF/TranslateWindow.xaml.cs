@@ -129,10 +129,10 @@ namespace MisakaTranslator_WPF
         /// </summary>
         private void MouseKeyboardHook_Init()
         {
-            /* if (hook == null)
+            if (hook == null)
             {
                 hook = new KeyboardMouseHook();
-                bool r = false;
+                /* bool r = false;
 
                 if (Common.UsingHotKey.IsMouse)
                 {
@@ -153,8 +153,8 @@ namespace MisakaTranslator_WPF
                 if (!r)
                 {
                     Growl.ErrorGlobal(Application.Current.Resources["Hook_Error_Hint"].ToString());
-                }
-            } */
+                } */
+            }
 
             /// register a timing-task for auto ocr, instead
             ocrTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
@@ -741,12 +741,20 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
-                    ocrTimer.Start();
+                    if (hook != null)
+                    {
+                        ocrTimer.Start();
+                    }
+
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
                 }
                 else
                 {
-                    ocrTimer.Stop();
+                    if (hook != null)
+                    {
+                        ocrTimer.Stop();
+                    }
+
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
                 }
                 IsNotPausedFlag = !IsNotPausedFlag;
@@ -774,10 +782,11 @@ namespace MisakaTranslator_WPF
             Common.appSettings.TF_SizeW = Convert.ToString((int)this.ActualWidth);
             Common.appSettings.TF_SizeH = Convert.ToString((int)this.ActualHeight);
 
-            ocrTimer.Stop();
-            ocrTimer.Dispose();
             if (hook != null)
             {
+                ocrTimer.Stop();
+                ocrTimer.Dispose();
+
                 hook.Stop();
                 hook = null;
             }
