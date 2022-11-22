@@ -33,6 +33,7 @@ namespace TranslatorLibrary
             { "有道翻译(公共接口)" , "YoudaoTranslator" },
             // { "ALAPI免费接口" , "AlapiTranslator"},
             { "谷歌翻译(公共接口)" , "GoogleCNTranslator"},
+            { "微软翻译(公共接口)" , "MicrosoftCNTranslator"},
             { "JBeijing" , "JBeijingTranslator" },
             { "金山快译" , "KingsoftFastAITTranslator" },
             { "译典通", "Dreye"},
