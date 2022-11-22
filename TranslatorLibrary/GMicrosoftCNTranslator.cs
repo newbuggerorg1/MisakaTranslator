@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using GTranslate;
 using GTranslate.Extensions;
 using GTranslate.Results;
+using GTranslate.Translators;
 
 namespace TranslatorLibrary;
 
 /// <summary>
 /// Represents the Bing Translator.
 /// </summary>
-private sealed class BingTranslator : ITranslator, IDisposable
+private sealed class BingTranslator : Translators.ITranslator, IDisposable
 {
     internal const string HostUrl = "https://www.bing.com";
     private static readonly Uri _translatorPageUri = new($"{HostUrl}/translator");
