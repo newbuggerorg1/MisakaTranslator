@@ -158,7 +158,7 @@ namespace MisakaTranslator_WPF
             }
 
             /// register a timing-task for auto ocr, instead
-            ocrTimerPause = true
+            ocrTimerPause = true;
             ocrTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
         }
         
