@@ -12,7 +12,7 @@ namespace OCRLibrary
 {
     public class WinRtOCR : OCREngine
     {
-        public string srcLangCode;
+        private Language srcLangCode;
         private OcrEngine rtOcr;
 
         public override async Task<string> OCRProcessAsync(Bitmap img)
@@ -21,7 +21,6 @@ namespace OCRLibrary
             {
                 var stream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
                 img.Save(stream.AsStream(), ImageFormat.Bmp);
-
                 var decoder = await BitmapDecoder.CreateAsync(stream);
                 var bitmap = await decoder.GetSoftwareBitmapAsync();
                 var recog = await rtOcr.RecognizeAsync(bitmap);
@@ -43,8 +42,7 @@ namespace OCRLibrary
         {
             try
             {
-                Language lang = new(srcLangCode);
-                rtOcr = OcrEngine.TryCreateFromLanguage(lang);
+                rtOcr = OcrEngine.TryCreateFromLanguage(srcLangCode);
                 if (rtOcr == null)
                 {
                     System.Windows.MessageBox.Show($"请在Windows设置App中添加OCR组件。{System.Environment.NewLine}Please install OCR component in Windows Settings App.");
@@ -63,17 +61,12 @@ namespace OCRLibrary
         {
             if (lang == "jpn")
             {
-                srcLangCode = "ja-jp";
+                srcLangCode = new("ja-jp");
             }
             else if (lang == "eng")
             {
-                srcLangCode = "en-us";
+                srcLangCode = new("en-us");
             }
-        }
-
-        public IReadOnlyList<Language> GetSupportLang()
-        {
-            return OcrEngine.AvailableRecognizerLanguages;
         }
     }
 }
