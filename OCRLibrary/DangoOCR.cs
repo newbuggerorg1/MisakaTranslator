@@ -15,7 +15,29 @@ namespace OCRLibrary
 {
     public class DangoOCR : OCREngine
     {
-        public string srcLangCode;
+        // https://github.com/PantsuDango/DangoOCR/blob/master/app.py#L31
+        private class JsonSuccess
+        {
+            public int Code { get; set; }
+            public string Message { get; set; }
+            public string RequestId { get; set; }
+            public List<Datam> Data { get; set; }
+        }
+        private class Datam
+        {
+            public Coordinatem Coordinate { get; set; }
+            public string Words { get; set; }
+            public float Score { get; set; }
+        }
+        private class Coordinatem
+        {
+            public string UpperLeft { get; set; }
+            public string UpperRight { get; set; }
+            public string LowerRight { get; set; }
+            public string LowerLeft { get; set; }
+        }
+
+        private string srcLangCode;
         // private OcrEngine dangoOcr;
 
         public override async Task<string> OCRProcessAsync(Bitmap img)
@@ -74,27 +96,5 @@ namespace OCRLibrary
                 srcLangCode = "ENG";
             }
         }
-    }
-
-    // https://github.com/PantsuDango/DangoOCR/blob/master/app.py#L31
-    public class JsonSuccess
-    {
-        public int Code { get; set; }
-        public string Message { get; set; }
-        public string RequestId { get; set; }
-        public List<Datam> Data { get; set; }
-    }
-    public class Datam
-    {
-        public Coordinatem Coordinate { get; set; }
-        public string Words { get; set; }
-        public float Score { get; set; }
-    }
-    public class Coordinatem
-    {
-        public string UpperLeft { get; set; }
-        public string UpperRight { get; set; }
-        public string LowerRight { get; set; }
-        public string LowerLeft { get; set; }
     }
 }
