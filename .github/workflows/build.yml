@@ -19,5 +19,6 @@ jobs:
       with:
         name: artifact2
         path: |
+          MisakaTranslator-WPF/bin/debug/TranslatorLibrary.*
           MisakaTranslator-WPF/bin/debug/OCRLibrary.*
           MisakaTranslator-WPF/bin/debug/MisakaTranslator-WPF.*
