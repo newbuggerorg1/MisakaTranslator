@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
@@ -98,23 +97,37 @@ namespace TranslatorLibrary
             return -1;
         }
 
-        static HttpClient HC;
+        static HttpClient HC, HCProxied;
         /// <summary>
         /// 获得HttpClinet单例，第一次调用自动初始化
         /// </summary>
+        public static HttpClient GetHttpProxiedClient()
+        {
+            if (HCProxied == null)
+                lock (typeof(CommonFunction))
+                    if (HCProxied == null)
+                    {
+                        var px = new WebProxy() { Address = new Uri("http://127.0.0.1:1082"), UseDefaultCredentials = true };
+                        var ph = new HttpClientHandler() { Proxy = px };
+                        HCProxied = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
+
+                        var headers = HCProxied.DefaultRequestHeaders;
+                        headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
+                        headers.Connection.ParseAdd("keep-alive");
+                    }
+            return HCProxied;
+        }
         public static HttpClient GetHttpClient()
         {
             if (HC == null)
                 lock (typeof(CommonFunction))
                     if (HC == null)
                     {
-                        var px = new WebProxy() { Address = new Uri("http://127.0.0.1:1082"), UseDefaultCredentials = true };
-                        var ph = new HttpClientHandler() { Proxy = px };
-                        HC = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
+                        HC = new HttpClient() { Timeout = TimeSpan.FromSeconds(8) };
+
                         var headers = HC.DefaultRequestHeaders;
-                        headers.UserAgent.ParseAdd("MisakaTranslator");
+                        headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
                         headers.Connection.ParseAdd("keep-alive");
-                        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12; // For FX4.7
                     }
             return HC;
         }
