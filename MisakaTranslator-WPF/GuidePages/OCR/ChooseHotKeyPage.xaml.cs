@@ -85,7 +85,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
         {
             if (HotKeyTag.Text == "")
             {
-                HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseHotKeyPage_NoKeyHint"].ToString());
+                // HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseHotKeyPage_NoKeyHint"].ToString());
             }
             else if (!int.TryParse(OCRDelayBox.Text, out int delay) || delay <= 0)
             {
