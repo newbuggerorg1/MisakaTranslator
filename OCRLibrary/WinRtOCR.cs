@@ -63,13 +63,11 @@ namespace OCRLibrary
         {
             if (lang == "jpn")
             {
-                Language ln = new("ja-jp");
-                srcLangCode = ln;
+                srcLangCode = new Language("ja-jp");
             }
             else if (lang == "eng")
             {
-                Language ln = new("en-us");
-                srcLangCode = ln;
+                srcLangCode = new Language("en-us");
             }
         }
     }
