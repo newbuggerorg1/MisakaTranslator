@@ -1,18 +1,14 @@
 using System;
-using System.Buffers.Text;
 using System.Collections.Generic;
-using System.Net.Http;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Text;
-using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
-using GTranslate;
-using GTranslate.Extensions;
-using GTranslate.Results;
 using GTranslate.Translators;
 
-namespace TranslatorLibrary {
-
+namespace TranslatorLibrary
+{
     public class GMicrosoftCNTranslator : ITranslator
     {
         private BingTranslator translator;
