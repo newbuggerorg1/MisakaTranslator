@@ -260,6 +260,10 @@ namespace MisakaTranslator_WPF
                     MicrosoftCNTranslator mct = new MicrosoftCNTranslator();
                     mct.TranslatorInit();
                     return mct;
+                case "GMicrosoftCNTranslator":
+                    GMicrosoftCNTranslator mct = new GMicrosoftCNTranslator();
+                    mct.TranslatorInit();
+                    return mct;
                 case "JBeijingTranslator":
                     JBeijingTranslator bj = new JBeijingTranslator();
                     bj.TranslatorInit(Common.appSettings.JBJCTDllPath);
