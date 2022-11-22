@@ -741,12 +741,12 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
-                    ocrTimer.Change(0, Common.UsingOCRDelay);
+                    ocrTimer.Start();
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
                 }
                 else
                 {
-                    ocrTimer.Dispose();
+                    ocrTimer.Stop();
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
                 }
                 IsNotPausedFlag = !IsNotPausedFlag;
@@ -774,6 +774,7 @@ namespace MisakaTranslator_WPF
             Common.appSettings.TF_SizeW = Convert.ToString((int)this.ActualWidth);
             Common.appSettings.TF_SizeH = Convert.ToString((int)this.ActualHeight);
 
+            ocrTimer.Stop();
             ocrTimer.Dispose();
             if (hook != null)
             {
