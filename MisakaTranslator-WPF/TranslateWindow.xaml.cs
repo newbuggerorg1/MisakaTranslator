@@ -760,6 +760,7 @@ namespace MisakaTranslator_WPF
             Common.appSettings.TF_SizeW = Convert.ToString((int)this.ActualWidth);
             Common.appSettings.TF_SizeH = Convert.ToString((int)this.ActualHeight);
 
+            ocrTimer.Dispose();
             if (hook != null)
             {
                 hook.Stop();
