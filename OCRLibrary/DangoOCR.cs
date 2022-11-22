@@ -10,11 +10,36 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Globalization;
+using Windows.Graphics;
 
 namespace OCRLibrary
 {
     public class DangoOCR : OCREngine
     {
+        private class DangoOCREngine
+        {
+            public Bitmap AddImageBorder(Bitmap img)
+            {
+                var cwidth = 3;
+                var cnwidth = cwidth *2;
+                var nwidth = img.Width + cnwidth;
+                var nheight = img.Height + cnwidth;
+                var bdcolor = Color.Black;
+
+                using (var nimg = new Bitmap(nwidth, nheight))
+                {
+                    using (var g = Graphics.FromImage(nimg))
+                    {
+                        var rec = new Rectangle(cwidth, cwidth, nwidth - cwidth, nheight - cwidth);
+                        g.DrawImage(img, rec, 0, 0, img.Width, img.Height, GraphicsUnit.Pixel);
+                        g.DrawRectangle(new Pen(bdcolor, cnwidth), 0, 0, nwidth, nheight);
+                        g.Dispose();
+                        return nimg;
+                    }
+                }
+            }
+        }
+
         // https://github.com/PantsuDango/DangoOCR/blob/master/app.py#L31
         private class JsonSuccess
         {
