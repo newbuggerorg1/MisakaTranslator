@@ -34,6 +34,7 @@ namespace TranslatorLibrary
             // { "ALAPI免费接口" , "AlapiTranslator"},
             { "谷歌翻译(公共接口)" , "GoogleCNTranslator"},
             { "微软翻译(公共接口)" , "MicrosoftCNTranslator"},
+            { "微软翻译G(公共接口)" , "GMicrosoftCNTranslator"},
             { "JBeijing" , "JBeijingTranslator" },
             { "金山快译" , "KingsoftFastAITTranslator" },
             { "译典通", "Dreye"},
