@@ -35,6 +35,8 @@ namespace MisakaTranslator_WPF
 
         private ArtificialTransHelper _artificialTransHelper;
 
+        private Timer ocrTimer;  // ocr timing-task
+
         private MecabHelper _mecabHelper;
         private BeforeTransHandle _beforeTransHandle;
         private AfterTransHandle _afterTransHandle;
@@ -154,7 +156,7 @@ namespace MisakaTranslator_WPF
             } */
 
             /// register a timing-task for auto ocr, instead
-            var nTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
+            ocrTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
         }
         
         private void registerTimingOCR(object obj)
