@@ -57,7 +57,7 @@ namespace TranslatorLibrary;
 
         public void TranslatorInit(string param1 = "", string param2 = "")
         {
-            translator = new BingTranslator();
+            translator = new BingTranslator(Common.GetHttpProxiedClient());
         }
     }
 
@@ -74,7 +74,7 @@ private sealed class BingTranslator : Translators.ITranslator, IDisposable
     /// <inheritdoc/>
     public string Name => nameof(BingTranslator);
 
-    private HttpClient _httpClient = Common.GetHTTPProxiedClient();
+    private readonly HttpClient _httpClient;
     private CachedObject<BingCredentials> _cachedCredentials;
     private readonly SemaphoreSlim _credentialsSemaphore = new(1, 1);
     private bool _disposed;
@@ -83,7 +83,7 @@ private sealed class BingTranslator : Translators.ITranslator, IDisposable
     /// Initializes a new instance of the <see cref="BingTranslator"/> class.
     /// </summary>
     public BingTranslator()
-        : this(_httpClient)
+        : this(new HttpClient())
     {
     }
 
