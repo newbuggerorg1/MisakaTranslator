@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 
 namespace MisakaTranslator_WPF.GuidePages.OCR
 {
+    /// unused
+
     /// <summary>
     /// ChooseHotKeyPage.xaml 的交互逻辑
     /// </summary>
@@ -36,7 +38,8 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
             InitializeComponent();
 
             HotKeySourceCombox.ItemsSource = lstHotKeySource;
-            HotKeySourceCombox.SelectedIndex = 0;
+            // HotKeySourceCombox.SelectedIndex = 0;
+            HotKeySourceCombox.SelectedIndex = -1;
 
             HotKey = new HotKeyInfo();
         }
@@ -67,7 +70,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 }
             }
 
-            bool r = hook.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName);
+            /* bool r = hook.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName);
             if (r)
             {
                 WaitHotKeyDrawer.IsOpen = true;
@@ -75,7 +78,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
             else
             {
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["Hook_Error_Hint"].ToString());
-            }
+            } */
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
