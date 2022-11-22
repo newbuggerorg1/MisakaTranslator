@@ -38,8 +38,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
             InitializeComponent();
 
             HotKeySourceCombox.ItemsSource = lstHotKeySource;
-            // HotKeySourceCombox.SelectedIndex = 0;
-            HotKeySourceCombox.SelectedIndex = -1;
+            HotKeySourceCombox.SelectedIndex = 0;
 
             HotKey = new HotKeyInfo();
         }
@@ -60,7 +59,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
         private void HotKeySetBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (HotKeySourceCombox.SelectedIndex == 0)
+            /* if (HotKeySourceCombox.SelectedIndex == 0)
             {
                 //初始化钩子对象
                 if (hook == null)
@@ -68,7 +67,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                     hook = new GlobalHook();
                     hook.KeyDown += Hook_OnKeyBoardActivity;
                 }
-            }
+            } */
 
             /* bool r = hook.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName);
             if (r)
