@@ -729,10 +729,12 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
+                    ocrTimer.Change(0, Common.UsingOCRDelay);
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
                 }
                 else
                 {
+                    ocrTimer.Dispose();
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
                 }
                 IsNotPausedFlag = !IsNotPausedFlag;
