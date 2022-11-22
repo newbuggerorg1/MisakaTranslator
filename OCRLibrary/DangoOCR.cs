@@ -1,3 +1,4 @@
+using TranslatorLibrary;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -81,8 +82,9 @@ namespace OCRLibrary
                 });
                 var req = new StringContent(jstr, Encoding.UTF8, "application/json");
 
-                var hc = new HttpClient();
-                hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                // var hc = new HttpClient();
+                // hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var hc = CommonFunction.GetHttpClient();
 
                 var resp = await hc.PostAsync("http://localhost:6666/ocr/api", req);
                 var content = await resp.Content.ReadAsStringAsync();
