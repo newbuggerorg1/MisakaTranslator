@@ -748,7 +748,7 @@ namespace MisakaTranslator_WPF
                 {
                     if (hook != null)
                     {
-                        ocrTimerPause = true;
+                        ocrTimerPause = false;
                     }
 
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
@@ -757,7 +757,7 @@ namespace MisakaTranslator_WPF
                 {
                     if (hook != null)
                     {
-                        ocrTimerPause = false;
+                        ocrTimerPause = true;
                     }
 
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
