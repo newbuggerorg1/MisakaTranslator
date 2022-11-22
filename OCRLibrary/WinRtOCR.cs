@@ -43,7 +43,7 @@ namespace OCRLibrary
             try
             {
                 rtOcrEngine = OcrEngine.TryCreateFromLanguage(srcLangCode);
-                if (rtOcr == null)
+                if (rtOcrEngine == null)
                 {
                     System.Windows.MessageBox.Show($"请在Windows设置App中添加OCR组件。{System.Environment.NewLine}Please install OCR component in Windows Settings App.");
                     return false;
