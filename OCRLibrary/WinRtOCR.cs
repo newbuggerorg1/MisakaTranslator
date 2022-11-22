@@ -57,15 +57,19 @@ namespace OCRLibrary
             }
         }
 
+        // error CS8370: Feature 'target-typed object creation' is not available in C# 7.3.
+        // Please use language version 9.0 or greater.
         public override void SetOCRSourceLang(string lang)
         {
             if (lang == "jpn")
             {
-                srcLangCode = new("ja-jp");
+                var ln = new("ja-jp");
+                srcLangCode = ln;
             }
             else if (lang == "eng")
             {
-                srcLangCode = new("en-us");
+                var ln = new("en-us");
+                srcLangCode = ln;
             }
         }
     }
