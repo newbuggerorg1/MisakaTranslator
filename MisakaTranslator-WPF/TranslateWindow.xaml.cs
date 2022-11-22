@@ -325,6 +325,7 @@ namespace MisakaTranslator_WPF
                 // avoiding the duplicated translation query
                 if (ocrLastChara == srcText)
                 {
+                    IsOCRingFlag = false;
                     return;
                 }
                 else
