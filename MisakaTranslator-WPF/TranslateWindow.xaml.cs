@@ -132,11 +132,11 @@ namespace MisakaTranslator_WPF
         {
             if (hook == null)
             {
-                hook = new KeyboardMouseHook();
-                /* bool r = false;
+                bool r = false;
 
                 if (Common.UsingHotKey.IsMouse)
                 {
+                    hook = new KeyboardMouseHook();
                     hook.OnMouseActivity += Hook_OnMouseActivity;
                     if (Common.UsingHotKey.MouseButton == System.Windows.Forms.MouseButtons.Left) {
                         r = hook.Start(true, 1);
@@ -146,20 +146,25 @@ namespace MisakaTranslator_WPF
                 }
                 else
                 {
+                    /* hook = new KeyboardMouseHook();
                     hook.onKeyboardActivity += Hook_OnKeyBoardActivity;
                     int keycode = (int)Common.UsingHotKey.KeyCode;
-                    r = hook.Start(false, keycode);
+                    r = hook.Start(false, keycode); */
+
+                    /// register a timing-task for auto ocr, instead
+                    ocrTimerPause = true;
+                    ocrTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
+                    if (ocrTimer != null)
+                    {
+                        r = true;
+                    }
                 }
 
                 if (!r)
                 {
                     Growl.ErrorGlobal(Application.Current.Resources["Hook_Error_Hint"].ToString());
-                } */
+                }
             }
-
-            /// register a timing-task for auto ocr, instead
-            ocrTimerPause = true;
-            ocrTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
         }
         
         private void registerTimingOCR(object obj)
