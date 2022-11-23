@@ -763,7 +763,7 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
-                    if (hook != null)
+                    if (!Common.UsingHotKey.IsMouse)
                     {
                         ocrTimerPause = false;
                     }
@@ -772,7 +772,7 @@ namespace MisakaTranslator_WPF
                 }
                 else
                 {
-                    if (hook != null)
+                    if (!Common.UsingHotKey.IsMouse)
                     {
                         ocrTimerPause = true;
                     }
@@ -804,11 +804,14 @@ namespace MisakaTranslator_WPF
             Common.appSettings.TF_SizeW = Convert.ToString((int)this.ActualWidth);
             Common.appSettings.TF_SizeH = Convert.ToString((int)this.ActualHeight);
 
-            if (hook != null)
+            if (!Common.UsingHotKey.IsMouse)
             {
                 ocrTimerPause = false;
                 ocrTimer.Dispose();
+            }
 
+            if (hook != null)
+            {
                 hook.Stop();
                 hook = null;
             }
