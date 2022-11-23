@@ -108,14 +108,15 @@ namespace TranslatorLibrary
         public static void SetHttpProxiedClient(string addr)
         {
             lock (typeof(CommonFunction))
-                var address = new Uri(addr);
-                var px = new WebProxy() { Address = address, UseDefaultCredentials = true };
+            {
+                var px = new WebProxy() { Address = new Uri(addr), UseDefaultCredentials = true };
                 var ph = new HttpClientHandler() { Proxy = px };
                 HC = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
 
                 var headers = HC.DefaultRequestHeaders;
                 headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
                 headers.Connection.ParseAdd("keep-alive");
+            }
         }
         public static HttpClient GetHttpClient()
         {
