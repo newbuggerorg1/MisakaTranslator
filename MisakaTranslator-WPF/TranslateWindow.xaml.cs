@@ -112,6 +112,11 @@ namespace MisakaTranslator_WPF
 
             _artificialTransHelper = new ArtificialTransHelper(Convert.ToString(Common.GameID));
 
+            if (Common.HttpProxy != "")
+            {
+                TranslatorLibrary.SetHttpProxiedClient(Common.HttpProxy);
+            }
+
             if (Common.transMode == 1)
             {
                 Common.textHooker.Sevent += TranslateEventHook;
@@ -120,8 +125,6 @@ namespace MisakaTranslator_WPF
             {
                 MouseKeyboardHook_Init();
             }
-
-
         }
 
         /// unused
