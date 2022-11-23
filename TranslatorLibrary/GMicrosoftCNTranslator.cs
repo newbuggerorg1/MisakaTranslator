@@ -53,7 +53,7 @@ namespace TranslatorLibrary
 
         public void TranslatorInit(string param1 = "", string param2 = "")
         {
-            translator = new BingTranslator(CommonFunction.GetHttpProxiedClient());
+            translator = new BingTranslator(CommonFunction.GetHttpClient());
         }
     }
 }
