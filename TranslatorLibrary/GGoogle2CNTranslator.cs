@@ -53,7 +53,7 @@ namespace TranslatorLibrary
 
         public void TranslatorInit(string param1 = "", string param2 = "")
         {
-            translator = new GoogleTranslator2(CommonFunction.GetHttpProxiedClient());
+            translator = new GoogleTranslator2(CommonFunction.GetHttpClient());
         }
     }
 }
