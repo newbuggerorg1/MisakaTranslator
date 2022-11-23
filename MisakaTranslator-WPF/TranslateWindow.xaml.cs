@@ -104,6 +104,10 @@ namespace MisakaTranslator_WPF
             }
 
             IsNotPausedFlag = true;
+            if (Common.appSettings.HttpProxy != "")
+            {
+                CommonFunction.SetHttpProxiedClient(Common.appSettings.HttpProxy);
+            }
             _translator1 = TranslatorAuto(Common.appSettings.FirstTranslator);
             _translator2 = TranslatorAuto(Common.appSettings.SecondTranslator);
 
@@ -111,11 +115,6 @@ namespace MisakaTranslator_WPF
             _afterTransHandle = new AfterTransHandle(_beforeTransHandle);
 
             _artificialTransHelper = new ArtificialTransHelper(Convert.ToString(Common.GameID));
-
-            if (Common.appSettings.HttpProxy != "")
-            {
-                CommonFunction.SetHttpProxiedClient(Common.appSettings.HttpProxy);
-            }
 
             if (Common.transMode == 1)
             {
