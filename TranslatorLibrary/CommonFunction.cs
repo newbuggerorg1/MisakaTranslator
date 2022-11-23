@@ -108,7 +108,8 @@ namespace TranslatorLibrary
         public static void SetHttpProxiedClient(string addr)
         {
             lock (typeof(CommonFunction))
-                var px = new WebProxy() { Address = new Uri(addr), UseDefaultCredentials = true };
+                var address = new Uri(addr);
+                var px = new WebProxy() { Address = address, UseDefaultCredentials = true };
                 var ph = new HttpClientHandler() { Proxy = px };
                 HC = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
 
