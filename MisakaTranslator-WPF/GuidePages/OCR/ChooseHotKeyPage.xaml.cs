@@ -16,7 +16,8 @@ using System.Windows.Shapes;
 
 namespace MisakaTranslator_WPF.GuidePages.OCR
 {
-    /// unused
+    /// HotKey.IsMouse == false:
+    ///     use timing-task
 
     /// <summary>
     /// ChooseHotKeyPage.xaml 的交互逻辑
@@ -59,15 +60,17 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
         private void HotKeySetBtn_Click(object sender, RoutedEventArgs e)
         {
-            /* if (HotKeySourceCombox.SelectedIndex == 0)
+            if (HotKeySourceCombox.SelectedIndex == 0)
             {
                 //初始化钩子对象
                 if (hook == null)
                 {
-                    hook = new GlobalHook();
-                    hook.KeyDown += Hook_OnKeyBoardActivity;
+                    /* hook = new GlobalHook();
+                    hook.KeyDown += Hook_OnKeyBoardActivity; */
+
+                    Hook_OnKeyBoardActivity_TimingTaskFlag();
                 }
-            } */
+            }
 
             /* bool r = hook.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName);
             if (r)
@@ -79,15 +82,19 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["Hook_Error_Hint"].ToString());
             } */
         }
+        private void Hook_OnKeyBoardActivity_TimingTaskFlag()
+        {
+            HotKey.IsMouse = false;
+            HotKeyTag.Text = Application.Current.Resources["ChooseHotKeyPage_HotKeyTag"].ToString();
+        }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            /* if (HotKeyTag.Text == "")
+            if (HotKeyTag.Text == "")
             {
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseHotKeyPage_NoKeyHint"].ToString());
             }
-            else */
-            if (!int.TryParse(OCRDelayBox.Text, out int delay) || delay <= 0)
+            else if (!int.TryParse(OCRDelayBox.Text, out int delay) || delay <= 0)
             {
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["ChooseHotKeyPage_TooLessDelayHint"].ToString());
             }
