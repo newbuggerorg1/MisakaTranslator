@@ -101,7 +101,7 @@ namespace TranslatorLibrary
             return -1;
         }
 
-        public static HttpClient HC;
+        private static HttpClient HC;
         /// <summary>
         /// 获得HttpClinet单例，第一次调用自动初始化
         /// </summary>
