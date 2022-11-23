@@ -110,13 +110,11 @@ namespace TranslatorLibrary
             lock (typeof(CommonFunction))
                 var px = new WebProxy() { Address = new Uri(addr), UseDefaultCredentials = true };
                 var ph = new HttpClientHandler() { Proxy = px };
-                var hc = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
+                HC = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
 
-                var headers = hc.DefaultRequestHeaders;
+                var headers = HC.DefaultRequestHeaders;
                 headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
                 headers.Connection.ParseAdd("keep-alive");
-
-                HC = hc;
         }
         public static HttpClient GetHttpClient()
         {
