@@ -40,7 +40,7 @@ namespace TranslatorLibrary
 
             try
             {
-                var result = await translator.TranslateAsync(sourceText, desLang);
+                var result = await translator.TranslateAsync(sourceText, desLang, srcLang);
                 var chara = result.Translation;
                 return Task.FromResult(chara).Result;
             }
