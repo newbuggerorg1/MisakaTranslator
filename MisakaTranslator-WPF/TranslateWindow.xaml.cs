@@ -35,9 +35,10 @@ namespace MisakaTranslator_WPF
 
         private ArtificialTransHelper _artificialTransHelper;
 
-        private Timer ocrTimer;  // ocr timing-task
-        private bool ocrTimerPause;  // ocr timing-task pause flag
-        private string ocrLastChara;  // check the last text ocr recognized, avoiding the duplicated query
+        private static Timer ocrTimer;  // ocr timing-task
+        private static bool ocrTimerPause;  // ocr timing-task pause flag
+        private static int ocrLastCharaSize = 6;
+        private static List<string> ocrLastChara = new List<string>(ocrLastCharaSize);  // check the last text ocr recognized, avoiding the duplicated query
 
         private MecabHelper _mecabHelper;
         private BeforeTransHandle _beforeTransHandle;
@@ -338,7 +339,7 @@ namespace MisakaTranslator_WPF
             IsOCRingFlag = true;
 
             string srcText = null;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 // 重新OCR不需要等待
                 if (!isRenew)
@@ -347,14 +348,18 @@ namespace MisakaTranslator_WPF
                 srcText = await Common.ocr.OCRProcessAsync();
 
                 // avoiding the duplicated translation query
-                if (ocrLastChara == srcText)
+                if (ocrLastChara.Contains(srcText))
                 {
                     IsOCRingFlag = false;
                     return;
                 }
                 else
                 {
-                    ocrLastChara = srcText;
+                    if (ocrLastChara.Count == ocrLastChara.Capacity)
+                    {
+                        ocrLastChara.Clear();
+                    }
+                    ocrLastChara.Add(srcText);
                 }
 
                 if (!string.IsNullOrEmpty(srcText))
