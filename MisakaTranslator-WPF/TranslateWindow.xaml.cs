@@ -112,9 +112,9 @@ namespace MisakaTranslator_WPF
 
             _artificialTransHelper = new ArtificialTransHelper(Convert.ToString(Common.GameID));
 
-            if (Common.HttpProxy != "")
+            if (Common.appSettings.HttpProxy != "")
             {
-                TranslatorLibrary.SetHttpProxiedClient(Common.appSettings.HttpProxy);
+                CommonFunction.SetHttpProxiedClient(Common.appSettings.HttpProxy);
             }
 
             if (Common.transMode == 1)
