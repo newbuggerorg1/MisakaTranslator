@@ -60,5 +60,10 @@ namespace MisakaTranslator_WPF.SettingsPages
         {
             Common.appSettings.TransLimitNums = (int)TransLimitBox.Value;
         }
+
+        private void HttpProxyBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Common.appSettings.HttpProxy = HttpProxyBox.Text;
+        }
     }
 }
