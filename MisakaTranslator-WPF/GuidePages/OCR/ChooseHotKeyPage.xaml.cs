@@ -57,6 +57,11 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
             HotKeySourceCombox.Focus();//设置完后应该转移焦点
             WaitHotKeyDrawer.IsOpen = false;
         }
+        private void Hook_OnKeyBoardActivity_TimingTaskFlag()
+        {
+            HotKey.IsMouse = false;
+            HotKeyTag.Text = Application.Current.Resources["ChooseHotKeyPage_HotKeyTag"].ToString();
+        }
 
         private void HotKeySetBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -81,11 +86,6 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
             {
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["Hook_Error_Hint"].ToString());
             } */
-        }
-        private void Hook_OnKeyBoardActivity_TimingTaskFlag()
-        {
-            HotKey.IsMouse = false;
-            HotKeyTag.Text = Application.Current.Resources["ChooseHotKeyPage_HotKeyTag"].ToString();
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
@@ -115,7 +115,6 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
         private void HotKeySourceCombox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
             if (HotKeySourceCombox.SelectedIndex == 0)
             {
                 ChooseHotkeyBtn.Visibility = Visibility.Visible;
