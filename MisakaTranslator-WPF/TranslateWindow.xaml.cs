@@ -114,7 +114,7 @@ namespace MisakaTranslator_WPF
 
             if (Common.HttpProxy != "")
             {
-                TranslatorLibrary.SetHttpProxiedClient(Common.HttpProxy);
+                TranslatorLibrary.SetHttpProxiedClient(Common.appSettings.HttpProxy);
             }
 
             if (Common.transMode == 1)
