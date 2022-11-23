@@ -107,7 +107,7 @@ namespace TranslatorLibrary
         /// </summary>
         public static void SetHttpProxiedClient(string addr)
         {
-            lock (typeof(CommonFunction))
+            if (HC == null)
             {
                 var px = new WebProxy() { Address = new Uri(addr), UseDefaultCredentials = true };
                 var ph = new HttpClientHandler() { Proxy = px };
@@ -121,15 +121,13 @@ namespace TranslatorLibrary
         public static HttpClient GetHttpClient()
         {
             if (HC == null)
-                lock (typeof(CommonFunction))
-                    if (HC == null)
-                    {
-                        HC = new HttpClient() { Timeout = TimeSpan.FromSeconds(8) };
+            {
+                HC = new HttpClient() { Timeout = TimeSpan.FromSeconds(8) };
 
-                        var headers = HC.DefaultRequestHeaders;
-                        headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
-                        headers.Connection.ParseAdd("keep-alive");
-                    }
+                var headers = HC.DefaultRequestHeaders;
+                headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
+                headers.Connection.ParseAdd("keep-alive");
+            }
             return HC;
         }
 
