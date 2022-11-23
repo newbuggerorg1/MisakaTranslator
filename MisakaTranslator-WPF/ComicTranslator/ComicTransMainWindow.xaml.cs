@@ -62,6 +62,10 @@ namespace MisakaTranslator_WPF.ComicTranslator
 
             transRes1 = "";
             transRes2 = "";
+            if (Common.appSettings.HttpProxy != "")
+            {
+                CommonFunction.SetHttpProxiedClient(Common.appSettings.HttpProxy);
+            }
             _translator1 = TranslateWindow.TranslatorAuto(Common.appSettings.FirstTranslator);
             _translator2 = TranslateWindow.TranslatorAuto(Common.appSettings.SecondTranslator);
 
