@@ -105,7 +105,7 @@ namespace TranslatorLibrary
         /// <summary>
         /// 获得HttpClinet单例，第一次调用自动初始化
         /// </summary>
-        public void SetHttpProxiedClient(string addr)
+        public static void SetHttpProxiedClient(string addr)
         {
             lock (typeof(CommonFunction))
                 var px = new WebProxy() { Address = new Uri(addr), UseDefaultCredentials = true };
