@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace OCRLibrary
                 
                 var fileimg = TesseractOCR.Pix.Image.LoadFromFile(filename);
                 var recog = TesseractOCREngine.Process(fileimg);
+                File.Delete(filename);
+
                 var chara = recog.Text;
                 if (chara == "")
                 {
