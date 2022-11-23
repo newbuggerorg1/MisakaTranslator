@@ -45,7 +45,7 @@ namespace TranslatorLibrary
 
             string microsoftTransUrl = "https://bing.com/translate_a/single?client=gtx&dt=t&sl=" + srcLang + "&tl=" + desLang + "&tk=" + tk + "&q=" + HttpUtility.UrlEncode(sourceText);
 
-            var hc = CommonFunction.GetHttpProxiedClient();
+            var hc = CommonFunction.GetHttpClient();
 
             try
             {
