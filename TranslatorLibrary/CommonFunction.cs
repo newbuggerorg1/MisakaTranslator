@@ -33,6 +33,10 @@ namespace TranslatorLibrary
             { "有道翻译(公共接口)" , "YoudaoTranslator" },
             // { "ALAPI免费接口" , "AlapiTranslator"},
             { "谷歌翻译(公共接口)" , "GoogleCNTranslator"},
+            { "谷歌翻译G(公共接口)" , "GGoogleCNTranslator"},
+            { "谷歌翻译G2(公共接口)" , "GGoogle2CNTranslator"},
+            { "微软翻译(公共接口)" , "MicrosoftCNTranslator"},
+            { "微软翻译G(公共接口)" , "GMicrosoftCNTranslator"},
             { "JBeijing" , "JBeijingTranslator" },
             { "金山快译" , "KingsoftFastAITTranslator" },
             { "译典通", "Dreye"},
@@ -97,24 +101,33 @@ namespace TranslatorLibrary
             return -1;
         }
 
-        static HttpClient HC;
+        private static HttpClient HC;
         /// <summary>
         /// 获得HttpClinet单例，第一次调用自动初始化
         /// </summary>
+        public static void SetHttpProxiedClient(string addr)
+        {
+            if (HC == null)
+            {
+                var px = new WebProxy() { Address = new Uri(addr), UseDefaultCredentials = true };
+                var ph = new HttpClientHandler() { Proxy = px };
+                HC = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
+
+                var headers = HC.DefaultRequestHeaders;
+                headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
+                headers.Connection.ParseAdd("keep-alive");
+            }
+        }
         public static HttpClient GetHttpClient()
         {
             if (HC == null)
-                lock (typeof(CommonFunction))
-                    if (HC == null)
-                    {
-                        var px = new WebProxy() { Address = new Uri("http://127.0.0.1:1082"), UseDefaultCredentials = true };
-                        var ph = new HttpClientHandler() { Proxy = px };
-                        HC = new HttpClient(handler: ph, disposeHandler: true) { Timeout = TimeSpan.FromSeconds(8) };
-                        var headers = HC.DefaultRequestHeaders;
-                        headers.UserAgent.ParseAdd("MisakaTranslator");
-                        headers.Connection.ParseAdd("keep-alive");
-                        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12; // For FX4.7
-                    }
+            {
+                HC = new HttpClient() { Timeout = TimeSpan.FromSeconds(8) };
+
+                var headers = HC.DefaultRequestHeaders;
+                headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
+                headers.Connection.ParseAdd("keep-alive");
+            }
             return HC;
         }
 

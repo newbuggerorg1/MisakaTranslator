@@ -16,6 +16,9 @@ using System.Windows.Shapes;
 
 namespace MisakaTranslator_WPF.GuidePages.OCR
 {
+    /// HotKey.IsMouse == false:
+    ///     use timing-task
+
     /// <summary>
     /// ChooseHotKeyPage.xaml 的交互逻辑
     /// </summary>
@@ -54,6 +57,11 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
             HotKeySourceCombox.Focus();//设置完后应该转移焦点
             WaitHotKeyDrawer.IsOpen = false;
         }
+        private void Hook_OnKeyBoardActivity_TimingTaskFlag()
+        {
+            HotKey.IsMouse = false;
+            HotKeyTag.Text = Application.Current.Resources["ChooseHotKeyPage_HotKeyTag"].ToString();
+        }
 
         private void HotKeySetBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -62,12 +70,14 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 //初始化钩子对象
                 if (hook == null)
                 {
-                    hook = new GlobalHook();
-                    hook.KeyDown += Hook_OnKeyBoardActivity;
+                    /* hook = new GlobalHook();
+                    hook.KeyDown += Hook_OnKeyBoardActivity; */
+
+                    Hook_OnKeyBoardActivity_TimingTaskFlag();
                 }
             }
 
-            bool r = hook.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName);
+            /* bool r = hook.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName);
             if (r)
             {
                 WaitHotKeyDrawer.IsOpen = true;
@@ -75,7 +85,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
             else
             {
                 HandyControl.Controls.Growl.Error(Application.Current.Resources["Hook_Error_Hint"].ToString());
-            }
+            } */
         }
 
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
@@ -105,7 +115,6 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
 
         private void HotKeySourceCombox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
             if (HotKeySourceCombox.SelectedIndex == 0)
             {
                 ChooseHotkeyBtn.Visibility = Visibility.Visible;

@@ -34,6 +34,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
+    <PackageReference Include="GTranslate">
+      <Version>2.1.1</Version>
+    </PackageReference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -62,6 +65,10 @@
     <Compile Include="CommonFunction.cs" />
     <Compile Include="DreyeTranslator.cs" />
     <Compile Include="GoogleCNTranslator.cs" />
+    <Compile Include="GGoogleCNTranslator.cs" />
+    <Compile Include="GGoogle2CNTranslator.cs" />
+    <Compile Include="MicrosoftCNTranslator.cs" />
+    <Compile Include="GMicrosoftCNTranslator.cs" />
     <Compile Include="ITranslator.cs" />
     <Compile Include="JBeijingTranslator.cs" />
     <Compile Include="KingsoftFastAITTranslator.cs" />

@@ -33,9 +33,9 @@ namespace MisakaTranslator_WPF
         {
             OCREngine ocr;
             string res = null;
-            if (Common.appSettings.OCRsource == "TesseractOCR")
+            if (Common.appSettings.OCRsource == "Tesseract52OCR")
             {
-                ocr = new TesseractOCR();
+                ocr = new Tesseract52OCR();
                 if (ocr.OCR_Init("", "") != false)
                 {
                     ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
@@ -47,7 +47,7 @@ namespace MisakaTranslator_WPF
                     }
                     else
                     {
-                        HandyControl.Controls.Growl.WarningGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                        HandyControl.Controls.Growl.WarningGlobal($"Tesseract52OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                     }
                 }
                 else
@@ -137,6 +137,28 @@ namespace MisakaTranslator_WPF
                     HandyControl.Controls.Growl.ErrorGlobal($"WinRtOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
+            else if (Common.appSettings.OCRsource == "DangoOCR")
+            {
+                ocr = new DangoOCR();
+                if (ocr.OCR_Init("", "") != false)
+                {
+                    ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
+                    res = await ocr.OCRProcessAsync(img);
+
+                    if (res != null)
+                    {
+                        sourceText.Text = res;
+                    }
+                    else
+                    {
+                        HandyControl.Controls.Growl.WarningGlobal($"DangoOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                    }
+                }
+                else
+                {
+                    HandyControl.Controls.Growl.ErrorGlobal($"DangoOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                }
+            }
 
             if (res == null)
             {
@@ -164,6 +186,10 @@ namespace MisakaTranslator_WPF
                     else
                         res = res.Replace("\n", "").Replace("\r", "");
 
+                if (Common.appSettings.HttpProxy != "")
+                {
+                    CommonFunction.SetHttpProxiedClient(Common.appSettings.HttpProxy);
+                }
                 ITranslator translator1 = TranslateWindow.TranslatorAuto(Common.appSettings.FirstTranslator);
                 ITranslator translator2 = TranslateWindow.TranslatorAuto(Common.appSettings.SecondTranslator);
                 //5.提交翻译

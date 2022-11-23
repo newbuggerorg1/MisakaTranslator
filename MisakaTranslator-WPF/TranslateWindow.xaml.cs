@@ -35,6 +35,10 @@ namespace MisakaTranslator_WPF
 
         private ArtificialTransHelper _artificialTransHelper;
 
+        private Timer ocrTimer;  // ocr timing-task
+        private bool ocrTimerPause;  // ocr timing-task pause flag
+        private string ocrLastChara;  // check the last text ocr recognized, avoiding the duplicated query
+
         private MecabHelper _mecabHelper;
         private BeforeTransHandle _beforeTransHandle;
         private AfterTransHandle _afterTransHandle;
@@ -100,6 +104,10 @@ namespace MisakaTranslator_WPF
             }
 
             IsNotPausedFlag = true;
+            if (Common.appSettings.HttpProxy != "")
+            {
+                CommonFunction.SetHttpProxiedClient(Common.appSettings.HttpProxy);
+            }
             _translator1 = TranslatorAuto(Common.appSettings.FirstTranslator);
             _translator2 = TranslatorAuto(Common.appSettings.SecondTranslator);
 
@@ -116,10 +124,9 @@ namespace MisakaTranslator_WPF
             {
                 MouseKeyboardHook_Init();
             }
-
-
         }
 
+        /// unused
         /// <summary>
         /// 键盘鼠标钩子初始化
         /// </summary>
@@ -127,11 +134,11 @@ namespace MisakaTranslator_WPF
         {
             if (hook == null)
             {
-                hook = new KeyboardMouseHook();
                 bool r = false;
 
                 if (Common.UsingHotKey.IsMouse)
                 {
+                    hook = new KeyboardMouseHook();
                     hook.OnMouseActivity += Hook_OnMouseActivity;
                     if (Common.UsingHotKey.MouseButton == System.Windows.Forms.MouseButtons.Left) {
                         r = hook.Start(true, 1);
@@ -141,9 +148,18 @@ namespace MisakaTranslator_WPF
                 }
                 else
                 {
+                    /* hook = new KeyboardMouseHook();
                     hook.onKeyboardActivity += Hook_OnKeyBoardActivity;
                     int keycode = (int)Common.UsingHotKey.KeyCode;
-                    r = hook.Start(false, keycode);
+                    r = hook.Start(false, keycode); */
+
+                    /// register a timing-task for auto ocr, instead
+                    ocrTimerPause = true;
+                    ocrTimer = new Timer(registerTimingOCR, null, 0, Common.UsingOCRDelay);
+                    if (ocrTimer != null)
+                    {
+                        r = true;
+                    }
                 }
 
                 if (!r)
@@ -151,8 +167,14 @@ namespace MisakaTranslator_WPF
                     Growl.ErrorGlobal(Application.Current.Resources["Hook_Error_Hint"].ToString());
                 }
             }
-
-
+        }
+        
+        private void registerTimingOCR(object obj)
+        {
+            if (ocrTimerPause)
+            {
+                TranslateEventOcr();
+            }
         }
 
         /// <summary>
@@ -241,6 +263,22 @@ namespace MisakaTranslator_WPF
                     GoogleCNTranslator gct = new GoogleCNTranslator();
                     gct.TranslatorInit();
                     return gct;
+                case "GGoogleCNTranslator":
+                    GGoogleCNTranslator ggct = new GGoogleCNTranslator();
+                    ggct.TranslatorInit();
+                    return ggct;
+                case "GGoogle2CNTranslator":
+                    GGoogle2CNTranslator gg2ct = new GGoogle2CNTranslator();
+                    gg2ct.TranslatorInit();
+                    return gg2ct;
+                case "MicrosoftCNTranslator":
+                    MicrosoftCNTranslator mct = new MicrosoftCNTranslator();
+                    mct.TranslatorInit();
+                    return mct;
+                case "GMicrosoftCNTranslator":
+                    GMicrosoftCNTranslator gmct = new GMicrosoftCNTranslator();
+                    gmct.TranslatorInit();
+                    return gmct;
                 case "JBeijingTranslator":
                     JBeijingTranslator bj = new JBeijingTranslator();
                     bj.TranslatorInit(Common.appSettings.JBJCTDllPath);
@@ -300,13 +338,24 @@ namespace MisakaTranslator_WPF
             IsOCRingFlag = true;
 
             string srcText = null;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 // 重新OCR不需要等待
                 if (!isRenew)
                     await Task.Delay(Common.UsingOCRDelay);
 
                 srcText = await Common.ocr.OCRProcessAsync();
+
+                // avoiding the duplicated translation query
+                if (ocrLastChara == srcText)
+                {
+                    IsOCRingFlag = false;
+                    return;
+                }
+                else
+                {
+                    ocrLastChara = srcText;
+                }
 
                 if (!string.IsNullOrEmpty(srcText))
                     break;
@@ -716,10 +765,20 @@ namespace MisakaTranslator_WPF
             {
                 if(IsNotPausedFlag)
                 {
+                    if (!Common.UsingHotKey.IsMouse)
+                    {
+                        ocrTimerPause = false;
+                    }
+
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Play);
                 }
                 else
                 {
+                    if (!Common.UsingHotKey.IsMouse)
+                    {
+                        ocrTimerPause = true;
+                    }
+
                     PauseButton.SetValue(FontAwesome.WPF.Awesome.ContentProperty, FontAwesomeIcon.Pause);
                 }
                 IsNotPausedFlag = !IsNotPausedFlag;
@@ -746,6 +805,12 @@ namespace MisakaTranslator_WPF
             Common.appSettings.TF_LocY = Convert.ToString((int)this.Top);
             Common.appSettings.TF_SizeW = Convert.ToString((int)this.ActualWidth);
             Common.appSettings.TF_SizeH = Convert.ToString((int)this.ActualHeight);
+
+            if (!Common.UsingHotKey.IsMouse)
+            {
+                ocrTimerPause = false;
+                ocrTimer.Dispose();
+            }
 
             if (hook != null)
             {

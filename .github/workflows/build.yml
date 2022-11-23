@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [master-1.1.2]
+    branches: [master-1.2.x]
   pull_request:
 
 jobs:
@@ -13,4 +13,12 @@ jobs:
     - run: msbuild -v:m -r
     - uses: actions/upload-artifact@main
       with:
+        name: artifact1
         path: MisakaTranslator-WPF/bin
+    - uses: actions/upload-artifact@main
+      with:
+        name: artifact2
+        path: |
+          MisakaTranslator-WPF/bin/debug/TranslatorLibrary.*
+          MisakaTranslator-WPF/bin/debug/OCRLibrary.*
+          MisakaTranslator-WPF/bin/debug/MisakaTranslator-WPF.*

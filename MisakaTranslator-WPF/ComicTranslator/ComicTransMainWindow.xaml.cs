@@ -62,6 +62,10 @@ namespace MisakaTranslator_WPF.ComicTranslator
 
             transRes1 = "";
             transRes2 = "";
+            if (Common.appSettings.HttpProxy != "")
+            {
+                CommonFunction.SetHttpProxiedClient(Common.appSettings.HttpProxy);
+            }
             _translator1 = TranslateWindow.TranslatorAuto(Common.appSettings.FirstTranslator);
             _translator2 = TranslateWindow.TranslatorAuto(Common.appSettings.SecondTranslator);
 
@@ -81,18 +85,18 @@ namespace MisakaTranslator_WPF.ComicTranslator
                     HandyControl.Controls.Growl.ErrorGlobal($"百度翻译OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
-            else if (Common.appSettings.OCRsource == "Tesseract5")
+            else if (Common.appSettings.OCRsource == "Tesseract52OCR")
             {
                 if (ocr.OCR_Init(Common.appSettings.Tesseract5OCR_Path, Common.appSettings.Tesseract5OCR_Args) == false)
                 {
-                    HandyControl.Controls.Growl.ErrorGlobal($"Tesseract5 {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                    HandyControl.Controls.Growl.ErrorGlobal($"Tesseract52OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
-            else if (Common.appSettings.OCRsource == "TesseractOCR")
+            else if (Common.appSettings.OCRsource == "Tesseract5")
             {
                 if (ocr.OCR_Init("", "") == false)
                 {
-                    HandyControl.Controls.Growl.ErrorGlobal($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                    HandyControl.Controls.Growl.ErrorGlobal($"Tesseract5 {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
             else if (Common.appSettings.OCRsource == "WinRtOCR")
@@ -100,6 +104,13 @@ namespace MisakaTranslator_WPF.ComicTranslator
                 if (ocr.OCR_Init("", "") == false)
                 {
                     HandyControl.Controls.Growl.ErrorGlobal($"WinRtOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
+                }
+            }
+            else if (Common.appSettings.OCRsource == "DangoOCR")
+            {
+                if (ocr.OCR_Init("", "") == false)
+                {
+                    HandyControl.Controls.Growl.ErrorGlobal($"DangoOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
                 }
             }
 
