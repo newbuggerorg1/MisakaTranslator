@@ -27,11 +27,11 @@ namespace OCRLibrary
             switch (ocr)
             {
                 case "BaiduOCR":
-                    return new BaiduGeneralOCR(); ;
+                    return new BaiduGeneralOCR();
                 case "BaiduFanyiOCR":
                     return new BaiduFanyiOCR();
                 case "Tesseract52OCR":
-                    return new Tesseract52OCR(); ;
+                    return new Tesseract52OCR();
                 case "Tesseract5":
                     return new Tesseract5OCR();
                 case "WinRtOCR":
