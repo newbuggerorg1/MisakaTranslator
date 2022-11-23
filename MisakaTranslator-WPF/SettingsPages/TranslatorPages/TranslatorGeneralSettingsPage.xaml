@@ -19,6 +19,14 @@
                 <hc:NumericUpDown Name="TransLimitBox" Minimum="1" Margin="0,10,0,0" Width="380" Style="{StaticResource NumericUpDownExtend}" hc:InfoElement.TitlePlacement="Left" hc:InfoElement.TitleWidth="140" hc:InfoElement.Title="{StaticResource GeneralTransSettingsPage_Translimit}"  HorizontalAlignment="Left"/>
 
                 <CheckBox Name="EachRowTransCheckBox" Margin="0,10,0,0" Content="{StaticResource GeneralTransSettingsPage_EachRowTransCheckBox}" IsChecked="True" hc:InfoElement.Title="{StaticResource GeneralTransSettingsPage_SecondTranslator}" hc:Poptip.HitMode="None" hc:Poptip.IsOpen="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}" hc:Poptip.Content="{StaticResource GeneralTransSettingsPage_EachRowTransHint}" hc:Poptip.Placement="Right" Click="EachRowTransCheckBox_Click" HorizontalAlignment="Left"/>
+ 
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <hc:TextBox hc:InfoElement.TitlePlacement="Left" hc:InfoElement.Title="{StaticResource GeneralTransSettingsPage_HttpProxy}" Name="HttpProxyBox" ShowClearButton="True"/>
+                </Grid>
             </StackPanel>
         </StackPanel>
     </hc:ScrollViewer>
