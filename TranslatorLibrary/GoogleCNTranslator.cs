@@ -43,7 +43,7 @@ namespace TranslatorLibrary
 
             string googleTransUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=" + srcLang + "&tl=" + desLang + "&tk=" + tk + "&q=" + HttpUtility.UrlEncode(sourceText);
 
-            var hc = CommonFunction.GetHttpProxiedClient();
+            var hc = CommonFunction.GetHttpClient();
 
             try
             {
