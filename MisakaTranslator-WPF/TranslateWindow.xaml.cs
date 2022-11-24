@@ -334,7 +334,9 @@ namespace MisakaTranslator_WPF
         private async void TranslateEventOcr(bool isRenew = false)
         {
             if (!IsNotPausedFlag && IsOCRingFlag)
+            {
                 return;
+            }
 
             IsOCRingFlag = true;
 
@@ -343,15 +345,16 @@ namespace MisakaTranslator_WPF
             {
                 // 重新OCR不需要等待
                 if (!isRenew)
+                {
                     await Task.Delay(Common.UsingOCRDelay);
+                }
 
                 srcText = await Common.ocr.OCRProcessAsync();
 
                 // avoiding the duplicated translation query
                 if (ocrLastChara.Contains(srcText))
                 {
-                    IsOCRingFlag = false;
-                    return;
+                    srcText = null;
                 }
                 else
                 {
@@ -363,7 +366,9 @@ namespace MisakaTranslator_WPF
                 }
 
                 if (!string.IsNullOrEmpty(srcText))
+                {
                     break;
+                }
             }
 
             if (!string.IsNullOrEmpty(srcText))
