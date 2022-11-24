@@ -1,4 +1,5 @@
 extern alias Tesseract;
+using Tesseract.TesseractOCR;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
