@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,10 @@ namespace OCRLibrary
         {
             try
             {
-                var filedir = Environment.CurrentDirectory;
-                var filetime = DateTime.Now.ToFileTime().ToString();
-                var filename = filedir + "\\bmps\\" + filetime + ".bmp";
-                img.Save(filename, System.Drawing.Imaging.ImageFormat.Bmp);
-                
-                var fileimg = TesseractOCR.Pix.Image.LoadFromFile(filename);
-                var recog = TesseractOCREngine.Process(fileimg);
-                File.Delete(filename);
+                var stream = new MemoryStream();
+                img.Save(stream, ImageFormat.Bmp);
+                var recog = TesseractOCREngine.Process(TesseractOCR.Pix.Image.LoadFromMemory(stream.GetBuffer(), 0, stream.Length));
+                stream.Dispose();
 
                 var chara = recog.Text;
                 if (chara == "")
