@@ -55,26 +55,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
         private async void OCRTestBtn_Click(object sender, RoutedEventArgs e)
         {
             
-            if (Common.appSettings.OCRsource == "Tesseract52OCR")
-            {
-                if (Common.ocr.OCR_Init("", "") != false)
-                {
-                    string res = await Common.ocr.OCRProcessAsync();
-
-                    if (res != null)
-                    {
-                        HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
-                    }
-                    else {
-                        HandyControl.Controls.Growl.Error($"Tesseract52OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
-                    }
-                }
-                else
-                {
-                    HandyControl.Controls.Growl.Error($"Tesseract52OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
-                }
-            }
-            else if (Common.appSettings.OCRsource == "BaiduOCR")
+            if (Common.appSettings.OCRsource == "BaiduOCR")
             {
                 if (Common.ocr.OCR_Init(Common.appSettings.BDOCR_APIKEY, Common.appSettings.BDOCR_SecretKey))
                 {
@@ -107,9 +88,9 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 else
                     HandyControl.Controls.Growl.Error($"百度翻译OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
             }
-            else if (Common.appSettings.OCRsource == "Tesseract5")
+            else if (Common.appSettings.OCRsource == "TesseractOCR")
             {
-                if (Common.ocr.OCR_Init(Common.appSettings.Tesseract5OCR_Path, Common.appSettings.Tesseract5OCR_Args))
+                if (Common.ocr.OCR_Init("", ""))
                 {
                     string res = await Common.ocr.OCRProcessAsync();
 
@@ -119,12 +100,12 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                     }
                     else
                     {
-                        HandyControl.Controls.Growl.Error($"Tesseract5 {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
+                        HandyControl.Controls.Growl.Error($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
                     }
                 }
                 else
                 {
-                    HandyControl.Controls.Growl.Error($"Tesseract5 {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
+                    HandyControl.Controls.Growl.Error($"TesseractOCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
                 }
             }
             else if(Common.appSettings.OCRsource == "WinRtOCR")
