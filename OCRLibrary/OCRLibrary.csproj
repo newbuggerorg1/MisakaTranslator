@@ -59,8 +59,7 @@
     <Compile Include="OCRCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenCapture.cs" />
-    <Compile Include="Tesseract52OCR.cs" />
-    <Compile Include="Tesseract5OCR.cs" />
+    <Compile Include="TesseractOCR.cs" />
     <Compile Include="WinRtOCR.cs" />
     <Compile Include="DangoOCR.cs" />
   </ItemGroup>
@@ -71,6 +70,7 @@
     </PackageReference>
     <PackageReference Include="TesseractOCR">
       <Version>5.2.14</Version>
+      <Aliases>Tesseract</Aliases>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
