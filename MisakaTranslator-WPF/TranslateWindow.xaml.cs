@@ -35,9 +35,10 @@ namespace MisakaTranslator_WPF
 
         private ArtificialTransHelper _artificialTransHelper;
 
+        private static int ocrRetryNum = 3;  // ocr-retry attempts
         private static Timer ocrTimer;  // ocr timing-task
         private static bool ocrTimerPause;  // ocr timing-task pause flag
-        private static int ocrLastCharaSize = 6;
+        private static int ocrLastCharaSize = 3;
         private static List<string> ocrLastChara = new List<string>(ocrLastCharaSize);  // check the last text ocr recognized, avoiding the duplicated query
 
         private MecabHelper _mecabHelper;
@@ -174,7 +175,7 @@ namespace MisakaTranslator_WPF
         {
             if (ocrTimerPause)
             {
-                TranslateEventOcr(true);
+                TranslateEventOcr(isTimer = true);
             }
         }
 
@@ -331,7 +332,7 @@ namespace MisakaTranslator_WPF
         /// OCR事件
         /// </summary>
         /// <param name="isRenew">是否是重新获取翻译</param>
-        private async void TranslateEventOcr(bool isRenew = false)
+        private async void TranslateEventOcr(bool isRenew = false, bool isTimer = false)
         {
             if (!IsNotPausedFlag && IsOCRingFlag)
             {
@@ -341,10 +342,10 @@ namespace MisakaTranslator_WPF
             IsOCRingFlag = true;
 
             string srcText = null;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < ocrRetryNum; i++)
             {
                 // 重新OCR不需要等待
-                if (!isRenew)
+                if (!isRenew && !isTimer)
                 {
                     await Task.Delay(Common.UsingOCRDelay);
                 }
@@ -893,7 +894,7 @@ namespace MisakaTranslator_WPF
         {
             if (Common.transMode == 2)
             {
-                TranslateEventOcr(true);
+                TranslateEventOcr(isRenew = true);
             }
             else
             {
