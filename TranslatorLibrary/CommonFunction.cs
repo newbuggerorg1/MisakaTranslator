@@ -102,6 +102,7 @@ namespace TranslatorLibrary
         }
 
         private static HttpClient HC;
+        private static string HCUA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36";
         /// <summary>
         /// 获得HttpClinet单例，第一次调用自动初始化
         /// </summary>
@@ -111,11 +112,8 @@ namespace TranslatorLibrary
             {
                 var px = new WebProxy() { Address = new Uri(addr), UseDefaultCredentials = true };
                 var ph = new HttpClientHandler() { Proxy = px };
-                HC = new HttpClient(ph) { Timeout = TimeSpan.FromSeconds(8) };
-
-                var headers = HC.DefaultRequestHeaders;
-                headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
-                headers.Connection.ParseAdd("keep-alive");
+                HC = new HttpClient(handler: ph) { Timeout = TimeSpan.FromSeconds(8) };
+                HC.DefaultRequestHeaders.UserAgent.ParseAdd(HCUA);
             }
         }
         public static HttpClient GetHttpClient()
@@ -123,10 +121,7 @@ namespace TranslatorLibrary
             if (HC == null)
             {
                 HC = new HttpClient() { Timeout = TimeSpan.FromSeconds(8) };
-
-                var headers = HC.DefaultRequestHeaders;
-                headers.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36");
-                headers.Connection.ParseAdd("keep-alive");
+                HC.DefaultRequestHeaders.UserAgent.ParseAdd(HCUA);
             }
             return HC;
         }
