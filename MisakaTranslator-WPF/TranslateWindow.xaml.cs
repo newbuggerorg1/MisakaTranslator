@@ -174,7 +174,7 @@ namespace MisakaTranslator_WPF
         {
             if (ocrTimerPause)
             {
-                TranslateEventOcr();
+                TranslateEventOcr(true);
             }
         }
 
