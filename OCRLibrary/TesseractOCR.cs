@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+extern alias Tesseract;
 using Tesseract;
 
 namespace OCRLibrary
