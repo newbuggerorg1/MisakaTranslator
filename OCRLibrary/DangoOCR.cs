@@ -79,10 +79,10 @@ namespace OCRLibrary
                 var req = new StringContent(jstr, Encoding.UTF8, "application/json");
 
                 var resp = await hc.PostAsync("http://localhost:6666/ocr/api", req);
-                File.Delete(filename);
-
                 var content = await resp.Content.ReadAsStringAsync();
                 var jc = JsonConvert.DeserializeObject<JsonSuccess>(content);
+                File.Delete(filename);
+
                 var chara = "null";
                 for (int i = 0; i < jc.Data.Count; i++)
                 {
