@@ -175,7 +175,7 @@ namespace MisakaTranslator_WPF
         {
             if (ocrTimerPause)
             {
-                TranslateEventOcr(isTimer = true);
+                TranslateEventOcr(isTimer: true);
             }
         }
 
@@ -897,7 +897,7 @@ namespace MisakaTranslator_WPF
         {
             if (Common.transMode == 2)
             {
-                TranslateEventOcr(isRenew = true);
+                TranslateEventOcr(isRenew: true);
             }
             else
             {
