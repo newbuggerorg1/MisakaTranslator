@@ -1,5 +1,6 @@
 extern alias Tesseract;
-using Tesseract;
+// using Engine = Tesseract.Engine;
+// using Pix = Tesseract.Pix;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,8 +21,8 @@ namespace OCRLibrary
             try
             {
                 var stream = new MemoryStream();
-                img.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
-                var pix = Tesseract.Pix.Image.LoadFromMemory(stream.GetBuffer(), 0, Convert.ToInt32(stream.Length));
+                img.Save(stream, Imaging.ImageFormat.Bmp);
+                var pix = Pix.Image.LoadFromMemory(stream.GetBuffer(), 0, Convert.ToInt32(stream.Length));
                 var recog = engine.Process(pix);
                 stream.Dispose();
 
