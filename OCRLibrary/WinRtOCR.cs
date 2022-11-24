@@ -27,7 +27,7 @@ namespace OCRLibrary
                 stream.Dispose();
 
                 var chara = recog.Text;
-                if (chara == "")
+                if (string.IsNullOrEmpty(chara))
                 {
                     chara = "null";
                 }
