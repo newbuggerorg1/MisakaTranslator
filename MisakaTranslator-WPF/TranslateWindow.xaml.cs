@@ -310,7 +310,7 @@ namespace MisakaTranslator_WPF
         /// </summary>
         void Hook_OnKeyBoardActivity(object sender)
         {
-            TranslateEventOcr();
+            TranslateEventOcr(true);
         }
 
         /// <summary>
