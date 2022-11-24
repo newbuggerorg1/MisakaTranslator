@@ -1,6 +1,6 @@
 extern alias Tesseract;
-// using Engine = Tesseract.Engine;
-// using Pix = Tesseract.Pix;
+using Engine = Tesseract.Engine;
+using Pix = Tesseract.Pix;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
