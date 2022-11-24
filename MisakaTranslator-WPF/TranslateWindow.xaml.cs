@@ -38,7 +38,7 @@ namespace MisakaTranslator_WPF
         private static int ocrRetryNum = 3;  // ocr-retry attempts
         private static Timer ocrTimer;  // ocr timing-task
         private static bool ocrTimerPause;  // ocr timing-task pause flag
-        private static int ocrLastCharaSize = 3;
+        private static int ocrLastCharaSize = 4;  // ocr saves the last four charas within a list
         private static List<string> ocrLastChara = new List<string>(ocrLastCharaSize);  // check the last text ocr recognized, avoiding the duplicated query
 
         private MecabHelper _mecabHelper;
@@ -353,17 +353,20 @@ namespace MisakaTranslator_WPF
                 srcText = await Common.ocr.OCRProcessAsync();
 
                 // avoiding the duplicated translation query
-                if (ocrLastChara.Contains(srcText))
+                if (!isRenew)
                 {
-                    srcText = null;
-                }
-                else
-                {
-                    if (ocrLastChara.Count == ocrLastChara.Capacity)
+                    if (ocrLastChara.Contains(srcText))
                     {
-                        ocrLastChara.Clear();
+                        srcText = null;
                     }
-                    ocrLastChara.Add(srcText);
+                    else
+                    {
+                        if (ocrLastChara.Count == ocrLastChara.Capacity)
+                        {
+                            ocrLastChara.Clear();
+                        }
+                        ocrLastChara.Add(srcText);
+                    }
                 }
 
                 if (!string.IsNullOrEmpty(srcText))
