@@ -61,7 +61,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 {
                     string res = await Common.ocr.OCRProcessAsync();
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
                     }
@@ -80,7 +80,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 {
                     string res = await Common.ocr.OCRProcessAsync();
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                         HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
                     else
                         HandyControl.Controls.Growl.Error($"百度翻译OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{Common.ocr.GetLastError()}");
@@ -94,7 +94,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 {
                     string res = await Common.ocr.OCRProcessAsync();
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
                     }
@@ -114,7 +114,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 {
                     string res = await Common.ocr.OCRProcessAsync();
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
                     }
@@ -134,7 +134,7 @@ namespace MisakaTranslator_WPF.GuidePages.OCR
                 {
                     string res = await Common.ocr.OCRProcessAsync();
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         HandyControl.Controls.MessageBox.Show(res, Application.Current.Resources["MessageBox_Result"].ToString());
                     }
