@@ -43,7 +43,7 @@ namespace MisakaTranslator_WPF
                     ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
                     res = await ocr.OCRProcessAsync(img);
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         sourceText.Text = res;
                     }
@@ -65,7 +65,7 @@ namespace MisakaTranslator_WPF
                     ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
                     res = await ocr.OCRProcessAsync(img);
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                         FirstTransText.Text = res;
                     else
                         HandyControl.Controls.Growl.WarningGlobal($"百度翻译OCR {Application.Current.Resources["APITest_Error_Hint"]}\n{ocr.GetLastError()}");
@@ -81,7 +81,7 @@ namespace MisakaTranslator_WPF
                     ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
                     res = await ocr.OCRProcessAsync(img);
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         sourceText.Text = res;
                     }
@@ -103,7 +103,7 @@ namespace MisakaTranslator_WPF
                     ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
                     res = await ocr.OCRProcessAsync(img);
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         sourceText.Text = res;
                     }
@@ -125,7 +125,7 @@ namespace MisakaTranslator_WPF
                     ocr.SetOCRSourceLang(Common.appSettings.GlobalOCRLang);
                     res = await ocr.OCRProcessAsync(img);
 
-                    if (res != null)
+                    if (!string.IsNullOrEmpty(res))
                     {
                         sourceText.Text = res;
                     }
@@ -140,7 +140,7 @@ namespace MisakaTranslator_WPF
                 }
             }
 
-            if (res == null)
+            if (string.IsNullOrEmpty(res))
             {
                 FirstTransText.Text = "OCR ERROR";
             }
