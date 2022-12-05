@@ -35,12 +35,6 @@ namespace MisakaTranslator_WPF
 
         private ArtificialTransHelper _artificialTransHelper;
 
-        private static int ocrRetryNum = 3;  // ocr-retry attempts
-        private static Timer ocrTimer;  // ocr timing-task
-        private static bool ocrTimerPause;  // ocr timing-task pause flag
-        private static int ocrLastCharaSize = 4;  // ocr saves the last four charas within a list
-        private static List<string> ocrLastChara = new List<string>(ocrLastCharaSize);  // check the last text ocr recognized, avoiding the duplicated query
-
         private MecabHelper _mecabHelper;
         private BeforeTransHandle _beforeTransHandle;
         private AfterTransHandle _afterTransHandle;
@@ -58,6 +52,12 @@ namespace MisakaTranslator_WPF
         public static KeyboardMouseHook hook; //全局键盘鼠标钩子
         public volatile bool IsOCRingFlag; //线程锁:判断是否正在OCR线程中，保证同时只有一组在跑OCR
         public bool IsNotPausedFlag; //是否处在暂停状态（专用于OCR）,为真可以翻译
+
+        private static int ocrRetryNum = 3;  // ocr-retry attempts
+        private static Timer ocrTimer;  // ocr timing-task
+        private static bool ocrTimerPause;  // ocr timing-task pause flag
+        private static int ocrLastCharaSize = 4;  // ocr saves the last four charas within a list
+        private static List<string> ocrLastChara = new List<string>(ocrLastCharaSize);  // check the last text ocr recognized, avoiding the duplicated query
 
         private bool _isShowSource; //是否显示原文
         private bool _isLocked;
