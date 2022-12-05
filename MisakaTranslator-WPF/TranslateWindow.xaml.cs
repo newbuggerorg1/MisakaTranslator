@@ -345,7 +345,7 @@ namespace MisakaTranslator_WPF
             for (int i = 0; i < ocrRetryNum; i++)
             {
                 // 重新OCR不需要等待
-                if (!isRenew && !isTimer)
+                if (!isRenew || isTimer)
                 {
                     await Task.Delay(Common.UsingOCRDelay);
                 }
