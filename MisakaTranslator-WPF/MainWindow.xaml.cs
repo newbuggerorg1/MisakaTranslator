@@ -431,7 +431,7 @@ namespace MisakaTranslator_WPF {
 
 
         private void BlurWindow_ContentRendered(object sender, EventArgs e) {
-            List<string> res = Common.CheckUpdate();
+            /* List<string> res = Common.CheckUpdate();
             if (res != null) {
                 MessageBoxResult dr = HandyControl.Controls.MessageBox.Show(res[0] + "\n" + Application.Current.Resources["MainWindow_AutoUpdateCheck"].ToString(), "AutoUpdateCheck", MessageBoxButton.OKCancel);
 
@@ -439,7 +439,7 @@ namespace MisakaTranslator_WPF {
                     System.Diagnostics.Process.Start(res[1]);
                 }
 
-            }
+            } */
         }
 
         private void ComicTransBtn_Click(object sender, RoutedEventArgs e) {
