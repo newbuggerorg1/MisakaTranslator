@@ -273,16 +273,16 @@ namespace MisakaTranslator_WPF
                     GGoogle2CNTranslator gg2ct = new GGoogle2CNTranslator();
                     gg2ct.TranslatorInit();
                     return gg2ct;
-                case "GMicrosoftCNTranslator":
-                    GMicrosoftCNTranslator mct = new GMicrosoftCNTranslator();
-                    mct.TranslatorInit();
-                    return mct;
-                case "GMicrosoftBingCNTranslator":
-                    GMicrosoftBingCNTranslator mct = new GMicrosoftBingCNTranslator();
+                case "MicrosoftCNTranslator":
+                    MicrosoftCNTranslator mct = new MicrosoftCNTranslator();
                     mct.TranslatorInit();
                     return mct;
                 case "GMicrosoftCNTranslator":
                     GMicrosoftCNTranslator gmct = new GMicrosoftCNTranslator();
+                    gmct.TranslatorInit();
+                    return gmct;
+                case "GMicrosoftBingCNTranslator":
+                    GMicrosoftBingCNTranslator gmct = new GMicrosoftBingCNTranslator();
                     gmct.TranslatorInit();
                     return gmct;
                 case "JBeijingTranslator":
