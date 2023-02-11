@@ -282,9 +282,9 @@ namespace MisakaTranslator_WPF
                     gmct.TranslatorInit();
                     return gmct;
                 case "GMicrosoftBingCNTranslator":
-                    GMicrosoftBingCNTranslator gmct = new GMicrosoftBingCNTranslator();
-                    gmct.TranslatorInit();
-                    return gmct;
+                    GMicrosoftBingCNTranslator gmbct = new GMicrosoftBingCNTranslator();
+                    gmbct.TranslatorInit();
+                    return gmbct;
                 case "JBeijingTranslator":
                     JBeijingTranslator bj = new JBeijingTranslator();
                     bj.TranslatorInit(Common.appSettings.JBJCTDllPath);
