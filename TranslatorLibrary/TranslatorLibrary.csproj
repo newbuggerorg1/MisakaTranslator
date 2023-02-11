@@ -69,6 +69,7 @@
     <Compile Include="GGoogle2CNTranslator.cs" />
     <Compile Include="GMicrosoftCNTranslator.cs" />
     <Compile Include="GMicrosoftCNBingTranslator.cs" />
+    <Compile Include="MicrosoftCNTranslator.cs" />
     <Compile Include="ITranslator.cs" />
     <Compile Include="JBeijingTranslator.cs" />
     <Compile Include="KingsoftFastAITTranslator.cs" />
