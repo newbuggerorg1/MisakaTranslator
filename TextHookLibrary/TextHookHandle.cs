@@ -221,7 +221,7 @@ namespace TextHookLibrary {
                     await DetachProcess(GamePID);
                 }
                 else if (HandleMode == 2) {
-                    foreach (var item in PossibleGameProcessList)
+                    foreach (var item in PossibleGameProcessList.ToList())
                         if (PossibleGameProcessList[item.Key] == true) {
                             await DetachProcess(item.Key.Id);
                             PossibleGameProcessList[item.Key] = false;
@@ -246,7 +246,7 @@ namespace TextHookLibrary {
 
                 if (AutoHook == false) {
                     //不进行智能注入
-                    foreach (var item in PossibleGameProcessList)
+                    foreach (var item in PossibleGameProcessList.ToList())
                     {
                         await AttachProcess(item.Key.Id);
                         PossibleGameProcessList[item.Key] = true;
