@@ -35,6 +35,7 @@ namespace TranslatorLibrary
             { "谷歌翻译 (公共接口)" , "GoogleCNTranslator"},
             { "谷歌翻译 G (公共接口)" , "GGoogleCNTranslator"},
             { "谷歌翻译 G2 (公共接口)" , "GGoogle2CNTranslator"},
+            { "微软翻译 (公共接口)" , "MicrosoftCNTranslator"},
             { "微软翻译 G (公共接口)" , "GMicrosoftCNTranslator"},
             { "微软翻译 Bing G(公共接口)" , "GMicrosoftBingCNTranslator"},
             { "JBeijing" , "JBeijingTranslator" },
