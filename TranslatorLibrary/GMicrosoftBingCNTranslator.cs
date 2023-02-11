@@ -9,7 +9,7 @@ using GTranslate.Translators;
 
 namespace TranslatorLibrary
 {
-    public class GMicrosoftCNTranslator : ITranslator
+    public class GMicrosoftBingCNTranslator : ITranslator
     {
         private BingTranslator translator;
         private string errorInfo;//错误信息
