@@ -11,7 +11,7 @@ namespace TranslatorLibrary
 {
     public class GMicrosoftCNTranslator : ITranslator
     {
-        private BingTranslator translator;
+        private MicrosoftTranslator translator;
         private string errorInfo;//错误信息
 
         public string GetTkkJS;
