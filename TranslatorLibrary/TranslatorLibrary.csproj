@@ -35,7 +35,7 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="GTranslate">
-      <Version>2.1.1</Version>
+      <Version>2.1.3</Version>
     </PackageReference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
